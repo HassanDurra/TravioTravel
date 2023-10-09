@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using TravioHotel.DataContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+// Connection String Calling
+builder.Services.AddDbContext<DatabaseContext>(option =>
+option.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

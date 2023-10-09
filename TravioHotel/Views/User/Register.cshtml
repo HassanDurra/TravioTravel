@@ -1,6 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TravioHotel.Models.UserModel
 @{
     Layout = "~/Views/Shared/_Userlayout.cshtml";
     ViewData["Title"] = "Registeration";
@@ -31,20 +29,28 @@
                         <div class="custom-form custom-form-fields">
                             <h3>Registration</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <form>
+                            <form asp-action="Store" asp-controller="Auth" method="Post" enctype="multipart/form-data">
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username" required />
+                                    <input type="file" asp-for="Image" name="Image" class="form-control" placeholder="Username" required />
+                                    <span><i class="fa fa-user"></i></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" asp-for="Name" name="Name" class="form-control" placeholder="Enter Your Name" required />
+                                    <span><i class="fa fa-user"></i></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" asp-for="User_name" name="User_name" class="form-control" placeholder="Enter Your Name" required />
                                     <span><i class="fa fa-user"></i></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" required />
+                                    <input type="email" asp-for="Email" name="Email" class="form-control" placeholder="Email" required />
                                     <span><i class="fa fa-envelope"></i></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" required />
+                                    <input type="password" asp-for="Password" name="Password" class="form-control" placeholder="Password" required />
                                     <span><i class="fa fa-lock"></i></span>
                                 </div>
 
@@ -53,7 +59,7 @@
                                     <span><i class="fa fa-lock"></i></span>
                                 </div>
 
-                                <button class="btn btn-orange btn-block">Register</button>
+                                <button type="submit" class="btn btn-orange btn-block">Register</button>
                             </form>
 
                             <div class="other-links">
