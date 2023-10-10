@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "l9Ggqhey7vEu4bzSGrLg4aXfaxLNH9izdY5H2FTBDyw=",
+  "Hash": "c9GtuHNSLGxJQyHiK5GMkj2kE2kUza+qMWbERdQhNw0=",
   "Source": "TravioHotel",
   "BasePath": "_content/TravioHotel",
   "Mode": "Default",
@@ -23305,6 +23305,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\userassets\\js\\slick.min.js"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\UserProfileImages\\108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "UserProfileImages/108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserProfileImages\\108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg"
     }
   ]
 }

@@ -95,5 +95,45 @@ namespace TravioHotel.Controllers
             }
 
         }
+        // Login Function for users
+        public IActionResult User_Login()
+        {
+            return View("Views/User/Login.cshtml");
+        }
+        [HttpPost]
+        public async Task<IActionResult>Authentication(UserModel userData)
+        {
+            var user = await Database.User.FirstOrDefaultAsync(u => u.Email == userData.Email);
+            var hashedPassword = BCrypt.Net.BCrypt.Verify(userData.Password, user.Password);
+            if (user != null && hashedPassword == true)
+            {
+                if (user.email_verified_at == null)
+                {
+                    TempData["Error"] = "Please Verify Your Email Address We have sent a link to your mail";
+                    return RedirectToAction("User_Login");
+                }
+                else
+                {
+                    if (user.Role == 0)
+                    {
+                        return RedirectToAction("Index" , "User");
+                    }
+                    if (user.Role == 1)
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                }
+            }
+            
+                TempData["Error"] = "Invalid Credientals";
+                 return RedirectToAction("Login");
+
+
+            
+
+
+        }
+
+
     }
 }
