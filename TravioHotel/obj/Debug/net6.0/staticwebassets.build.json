@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NDySpRjn741hhL/PMYL6Hlo7YGQ6hD+HyC6rFaefvd8=",
+  "Hash": "JuUCUKRBDiIHf84WEBTpHypW1B1scBxgatCofbdjPmQ=",
   "Source": "TravioHotel",
   "BasePath": "_content/TravioHotel",
   "Mode": "Default",
@@ -23339,6 +23339,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UserProfileImages\\87cbee6c-8e0f-4eaa-b8b9-a5ea9d8c87be.png"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\UserProfileImages\\ad1b8548-2289-4ecc-bc63-0f7ef6a0b072.webp",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "UserProfileImages/ad1b8548-2289-4ecc-bc63-0f7ef6a0b072.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserProfileImages\\ad1b8548-2289-4ecc-bc63-0f7ef6a0b072.webp"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\UserProfileImages\\c9d0b3dd-5907-427f-bf01-0ea59dad87d9.png",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "UserProfileImages/c9d0b3dd-5907-427f-bf01-0ea59dad87d9.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserProfileImages\\c9d0b3dd-5907-427f-bf01-0ea59dad87d9.png"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\UserProfileImages\\dc88fafe-2233-4883-9b99-bb7bcad5b1f5.png",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "UserProfileImages/dc88fafe-2233-4883-9b99-bb7bcad5b1f5.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserProfileImages\\dc88fafe-2233-4883-9b99-bb7bcad5b1f5.png"
     }
   ]
 }

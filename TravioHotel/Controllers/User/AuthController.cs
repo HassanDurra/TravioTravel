@@ -62,11 +62,12 @@ namespace TravioHotel.Controllers
                         var saveUser = await Database.SaveChangesAsync();
                         if (saveUser > 0) // This will check if any record has been save if yes then the success message or else the error
                         {
-                            string EmailBody = $"Use this code to verify your accountUser ID: <a href='https://example.com/verify?id={UserRecords.Id}'>Verify</a>";
-                            string Subject = "Email Verification";
+                            string emailVerifyLink = Url.Action("Verify_Email", "Auth", new { id = UserRecords.Id }, Request.Scheme);
+                            string EmailBody       = $"Use this code to verify your account Email: '{userData.Email}' <a href=\"{emailVerifyLink}\">Verify</a>";
+                            string Subject         = "Email Verification";
                             await mailServer.Mail(userData.Email, Subject, EmailBody);
                             TempData["Success"] = "User Information has been saved Please Verify Your email using the link we sent.";
-                            return RedirectToAction("User_Login");
+                            return RedirectToAction("Login");
                         }
                         else
                         {
@@ -117,7 +118,7 @@ namespace TravioHotel.Controllers
             {
                 if (user.email_verified_at == null)
                 {
-                    TempData["Error"] = "Please Verify Your Email Address We have sent a link to your mail";
+                    TempData["Error"] = "Please Verify Your Email "+userData.Email+" We have sent a link to your mail";
                     return RedirectToAction("Login");
                 }
                 else
@@ -144,7 +145,27 @@ namespace TravioHotel.Controllers
 
 
         }
+        // Function to verify Email Address
+        public async Task<IActionResult> Verify_Email(UserModel user , int id)
+        {
+            var userData = await Database.User.FirstOrDefaultAsync(u => u.Id == id);
+            var currentData = Convert.ToString(DateTime.UtcNow);
 
+            if (userData != null)
+            {
+                userData.email_verified_at = currentData;
+                await Database.SaveChangesAsync();
+                TempData["Success"] = "Your "+userData.Email+" Has been Verified! You can now loggin using this email.";
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                TempData["Error"] = "Failed to Verify Your Email Address";
+                return RedirectToAction("Login");
+            }
+        }
 
     }
+   
+   
 }
