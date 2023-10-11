@@ -558,30 +558,48 @@
                             
                                 <div class="flex-content">
                                     <div class="custom-form custom-form-fields">
-                                        <h3>Login</h3>
+                                        <h3>Reset Password</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <form>
+                                        <form id="resetForm">
                                                 
-                                            <div class="form-group">
-                                                 <input type="text" class="form-control" placeholder="Username"  required/>
-                                                 <span><i class="fa fa-user"></i></span>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                 <input type="password" class="form-control" placeholder="Password"  required/>
-                                                 <span><i class="fa fa-lock"></i></span>
-                                            </div>
-                                            
-                                            <div class="checkbox">
-                                                 <label><input type="checkbox"> Remember me</label>
-                                            </div>
-                                            
-                                            <button class="btn btn-orange btn-block mt-0">Login</button>
+                                           <!-- Reset Form  -->
+                                           <div id="formContainer">
+                                            <div class="form-group" id="EmailContainer">
+                                                <input type="text" name="Email" class="form-control" placeholder="Enter Your email address..."  />
+                                                <span><i class="fa fa-user"></i></span>
+                                           </div>
+                                           <div class="form-group" id="verificationContainer" style="display: none;">
+                                                <input type="text" name="Verification" class="form-control" placeholder="Enter Verification Code"  />
+                                                <span><i class="fa fa-check"></i></span>
+                                           </div>
+                                         <!-- Password Reset Button -->
+                                           <div id="passwordContainer" style="display: none;">
+                                               <div class="form-group" id="EmailContainer">
+                                                   <input type="text" name="Password" class="form-control" placeholder="Enter new Password" />
+                                                   <span><i class="fa fa-lock"></i></span>
+                                                   </div>
+       
+                                                   <div class="form-group">
+                                                   <input type="password" name="ConfirmPassword" class="form-control" placeholder="Confirm Password"  />
+                                                   <span><i class="fa fa-lock"></i></span>
+                                                   </div>
+
+                                           </div>
+                                         <!-- Password Reset  -->
+                                           <!-- <div class="checkbox">
+                                           </div> -->
+                                           <button type="submit" id="verificationButton" class="btn btn-orange btn-block mt-0">Get Code</button>
+
+                                           </div>
+                                           <div id="successContainer" style="display: none;">
+                                            <h4 style="color: green; text-align:center;">Password Success fully Changed</h4>
+                                            <p style="text-align: center; padding :10px;">You can now login with your new Password!</p>
+                                           </div>
+                                           <!-- Reset Form -->
                                         </form>
                                         
                                         <div class="other-links">
-                                            <p class="link-line">New Here ? <a href="#">Signup</a></p>
-                                            <a class="simple-link" href="#">Forgot Password ?</a>
+                                            <p class="link-line">back to ? <a href="#">Login</a></p>
                                         </div><!-- end other-links -->
                                     </div><!-- end custom-form -->
                                     
@@ -743,7 +761,79 @@
         <script src="js/bootstrap-5.3.2.min.js"></script>
         <script src="js/custom-navigation.js"></script>
         <!-- Page Scripts Ends -->
+        <script>
+
+               $(document).ready(function(){
+
+                //Verification Variables
+                let submitBtn          = $('#verificationButton');
+                let EmailContainer     = $('#emailContainer');
+                let verificationContainer = $("#verificationContainer");
+                let passwordContainer     = $("#passwordContainer");
+                let Email                 = $('input[name="Email"]');
+                let Verification          = $('input[name="Verification"]');
+                let Password              = $('input[name="Password"]');
+                let ConfirmPassword       = $('input[name="ConfirmPassword"]');
+                let resetForm             = $('#resetForm');
+                let formContainer         = $("#formContainer");
+                let successContainer      = $("#successContainer");
+                $(submitBtn).on('click',function(e){
+
+                    isValid  = true ;
+                    if(submitBtn.text() == "Get Code" || submitBtn.text() == "Send Again")
+                    {
+                        if(Email.val() == "")
+                        {
+                            isValid = false ;
+                            e.preventDefault();
+                            alert('Please Fill Email Input');
+                        }
+                        else
+                        {
+                            e.preventDefault();
+                            alert("Verification code sent please verify your code");
+                            verificationContainer.show();
+                            Email.prop('readonly' , true);
+                            submitBtn.text("Verify Code"); 
+                        }
+                    } // Send the email for with verification code 
+
+                    // Will Verify The code
+                    if(submitBtn.text() == "Verify Code" || submitBtn.text() == "Verify Again")
+                    {
+                        if(Verification.val() == "")
+                        {
+                            isValid = false ;
+                            e.preventDefault();
+                            alert('Please Fill Verification Input');
+                        }
+                        else
+                        {
+                            e.preventDefault();
+                            alert("Verification Done Reset Password now");
+                            verificationContainer.hide();
+                            passwordContainer.show();
+                            Email.prop('readonly' , true);
+                            submitBtn.text("Reset"); 
+                        }
+                    }
+                    if(submitBtn.text() == "Reset" || submitBtn.text() == "Try Again")
+                    {
+                            e.preventDefault();
+                            alert("working")
+                            formContainer.hide();
+                            successContainer.show();
+                    }
+
+                });
+
+               }); 
+
+
+
+        </script>
     </body>
+
 
 <!-- Mirrored from kiswa.net/themes/star-travel/demo/demo-ltr/login-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 08 Oct 2023 16:25:56 GMT -->
 </html>

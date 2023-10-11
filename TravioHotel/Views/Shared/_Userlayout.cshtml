@@ -80,8 +80,18 @@
                     <div class="col-12 col-md-6">
                         <div id="links">
                             <ul class="list-unstyled list-inline">
-                                <li class="list-inline-item"><a href="login-1.html"><span><i class="fa fa-lock"></i></span>Login</a></li>
+                             @if(ViewBag.isLoggedIn == null || ViewBag.isLoggedIn == ""){
+                                <li class="list-inline-item"><a asp-controller="Auth" asp-area="User" asp-action="Login"><span><i class="fa fa-lock"></i></span>Login</a></li>
                                 <li class="list-inline-item"><a asp-controller="Auth" asp-area="User" asp-action="Registeration"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
+                              }
+                               else{
+                                <li class="list-inline-item"><a asp-controller="Auth" asp-area="User" asp-action="Login"><span><i class="fa fa-lock"></i></span>Logout</a></li>
+                                }
+                             
+
+
+
+
                                 <li class="list-inline-item">
                                     <form>
                                         <ul class="list-inline">

@@ -14,6 +14,7 @@ namespace TravioHotel.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public int Role { get; set; } = 0;
+        public int Status { get; set; } = 0; // 0 , offline 1,Online ,2 Blocked
         public string?  Image { get; set; }
         public string? created_at { get; set; }
         public string? email_verified_at { get; set; }

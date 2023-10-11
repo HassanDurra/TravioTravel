@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Bcpg;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
 using TravioHotel.DataContext;
 using TravioHotel.Models;
 using TravioHotel.Services;
+using Newtonsoft.Json;
 
 namespace TravioHotel.Controllers
 {
@@ -14,13 +19,15 @@ namespace TravioHotel.Controllers
         public readonly DatabaseContext Database;
         public readonly IWebHostEnvironment fileEnvironment;
         public readonly MailServer mailServer;
-
-        public  AuthController(DatabaseContext Database  , IWebHostEnvironment _fileEnvironment , MailServer _mailServer)
+        public readonly RandomGenerate random;
+        public readonly HttpContext httpContext;
+        public  AuthController(DatabaseContext Database  , HttpContext _httpContext , IWebHostEnvironment _fileEnvironment , MailServer _mailServer , RandomGenerate _random)
         {
             this.Database        = Database;
             this.fileEnvironment = _fileEnvironment;
             this.mailServer      = _mailServer;
-
+            this.random          = _random;
+            this.httpContext     = _httpContext;
 
         }
         // End of Database Context Section
@@ -125,6 +132,11 @@ namespace TravioHotel.Controllers
                 {
                     if (user.Role == 0)
                     {
+                        string userDataJson = JsonConvert.SerializeObject(user);
+                        httpContext.Session.SetString("user", userDataJson);
+
+                        var userInformaton = httpContext.Session.GetString("user");
+                        ViewBag.isLogin    = userInformaton;
                         return RedirectToAction("Index" , "Home");
                     }
                     if (user.Role == 1)
@@ -164,8 +176,93 @@ namespace TravioHotel.Controllers
                 return RedirectToAction("Login");
             }
         }
+        // Reset Password Section
+        public IActionResult ResetPassword()
+        {
+            return View("Views/User/ResetPassword.cshtml");
+        }
+        public async Task<IActionResult> Check_email(string Email)
+        {
+            var userData         = await Database.User.FirstOrDefaultAsync(u => u.Email == Email);
+            var verificationData = await Database.Verification.FirstOrDefaultAsync(v => v.Verification_email == Email);
 
+            if(verificationData != null)
+            {
+                Database.Verification.Remove(verificationData);
+                await Database.SaveChangesAsync();
+            }
+            var VerificationCode = random.NumberGenerate(6);
+            if (userData != null)
+            {
+                var createVerification = new VerificationModel
+                {
+                    Verification_email = Email,
+                    Verification_code  = VerificationCode 
+                };
+                await Database.Verification.AddAsync(createVerification);
+                var storeCode = await Database.SaveChangesAsync();
+                // Sending Email with verification code
+               
+                if(storeCode > 0 )
+                {
+                    var EmailBody = $"use this code to verify your account " + VerificationCode + "";
+                    var Subject   = "Email Verification Code";
+                    var sendEmail = mailServer.Mail(Email, Subject, EmailBody);
+                    var message   = new { message = "Success" };
+                    return Json(message);
+                }
+                else
+                {
+                    var message = new { message = "Error" };
+                    return Json(message);
+                }
+            }
+            var response = new { message = "no records"};
+            return Json(response) ;
+;        } // this function was used to send verification code to user email
+
+        // To verify The Code 
+        public async Task<IActionResult> Verify_Code(VerificationModel verification_table ,  string Verification)
+        {
+            var verificationData = await Database.Verification.FirstOrDefaultAsync(u => u.Verification_code == Verification);
+            if(verificationData != null)
+            {
+                Database.Verification.Remove(verificationData);
+                await Database.SaveChangesAsync();
+                var response = new { message = "Success" };
+                return Json(response);
+            }
+
+            var message = new { message = "Error" };
+            return Json(message);
+        } 
+        // This function will reset the password 
+        public async Task<IActionResult> Reset_password( string Password , string Email)
+        {
+            var userData = await Database.User.FirstOrDefaultAsync(u => u.Email == Email);
+            if(userData != null)
+            {
+                var HashedPassword  = BCrypt.Net.BCrypt.HashPassword(Password);
+                userData.Password   = HashedPassword;
+                var passwordReseted = await Database.SaveChangesAsync();
+                if(passwordReseted > 0)
+                {
+                    var currentData = Convert.ToString(DateTime.UtcNow);
+                    var Subject     = "Your Password Was Reset";
+                    var EmailBody   = $"Your Password Reseted On :" + currentData + " ";
+                    await           mailServer.Mail(Email, Subject, EmailBody);
+                    var response    = new {message = "Success"};
+                    return Json(response);
+                }
+                
+            }
+            var message = new { message = "Error" };
+
+            return Json(message);
+        }
+        
+        } // The Password Code Reseted 
     }
    
    
-}
+

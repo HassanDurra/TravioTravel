@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<MailServer , MailServer>();    
+// Custom Services Dependency Injections
+builder.Services.AddScoped<MailServer, MailServer>();
+builder.Services.AddScoped<RandomGenerate , RandomGenerate>();
+
 // Connection String Calling
 builder.Services.AddDbContext<DatabaseContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));

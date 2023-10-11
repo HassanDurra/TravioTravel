@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pdu3sKlqo51NQOyum2y60DDtaUnhqHelFtcSrUPfh0IUOn7PJF4u4d4A0+0nXvegl9A0vXzkEYQmLOr2hp9zGw==",
+  "dgSpecHash": "coAoBFovCmTl3/vi9Kbsycpyf+5tQtamkeNge/1GldgDblzum/KOnMkMiOh3ReAS9RkGH7wXR3w3jztxmUDOLA==",
   "success": true,
   "projectFilePath": "D:\\E-project2023\\TravioTravel\\TravioHotel\\TravioHotel.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "C:\\Users\\OneWorldSolutions\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\OneWorldSolutions\\.nuget\\packages\\mimekit\\4.2.0\\mimekit.4.2.0.nupkg.sha512",
     "C:\\Users\\OneWorldSolutions\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\OneWorldSolutions\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\OneWorldSolutions\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\OneWorldSolutions\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\OneWorldSolutions\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

@@ -1,6 +1,6 @@
 ﻿@model TravioHotel.Models.UserModel 
 @{
-    ViewData["title"] = "User Login";
+    ViewData["title"] = "Login";
     Layout = "~/Views/Shared/_Userlayout.cshtml";
 }
 
@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <h1 class="page-title">Login</h1>
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a asp-controller="Home" asp-area="User" asp-action="Index">Home</a></li>
                     <li>/ Login</li>
                 </ul>
             </div><!-- end columns -->
@@ -49,8 +49,8 @@
                             </form>
 
                             <div class="other-links">
-                                <p class="link-line">New Here ? <a href="#">Signup</a></p>
-                                <a class="simple-link" href="#">Forgot Password ?</a>
+                                <p class="link-line">New Here ? <a asp-action="Registeration" asp-controller="Auth" asp-area="User">Signup</a></p>
+                                <a class="simple-link" asp-action="ResetPassword" asp-controller="Auth" asp-area="User">Forgot Password ?</a>
                             </div><!-- end other-links -->
                         </div><!-- end custom-form -->
 
@@ -64,3 +64,4 @@
         </div><!-- end container -->
     </div><!-- end login -->
 </section><!-- end innerpage-wrapper -->
+<!-- Script Links-->
