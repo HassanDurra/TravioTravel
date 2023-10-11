@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using TravioHotel.DataContext;
+using TravioHotel.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<MailServer , MailServer>();    
 // Connection String Calling
 builder.Services.AddDbContext<DatabaseContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));

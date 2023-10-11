@@ -21920,5 +21920,21 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\UserProfileImages\108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\UserProfileImages\87cbee6c-8e0f-4eaa-b8b9-a5ea9d8c87be.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>TravioHotel</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/TravioHotel</BasePath>
+      <RelativePath>UserProfileImages/87cbee6c-8e0f-4eaa-b8b9-a5ea9d8c87be.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\UserProfileImages\87cbee6c-8e0f-4eaa-b8b9-a5ea9d8c87be.png))</OriginalItemSpec>
+    </StaticWebAsset>
   </ItemGroup>
 </Project>

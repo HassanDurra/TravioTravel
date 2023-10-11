@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 using TravioHotel.DataContext;
 using TravioHotel.Models;
+using TravioHotel.Services;
 
 namespace TravioHotel.Controllers
 {
@@ -12,11 +13,15 @@ namespace TravioHotel.Controllers
         // Creating Database Context so we can connect with database then insert our records
         public readonly DatabaseContext Database;
         public readonly IWebHostEnvironment fileEnvironment;
-        public  AuthController(DatabaseContext Database  , IWebHostEnvironment _fileEnvironment)
+        public readonly MailServer mailServer;
+
+        public  AuthController(DatabaseContext Database  , IWebHostEnvironment _fileEnvironment , MailServer _mailServer)
         {
-            this.Database = Database;
+            this.Database        = Database;
             this.fileEnvironment = _fileEnvironment;
-            
+            this.mailServer      = _mailServer;
+
+
         }
         // End of Database Context Section
         public IActionResult Registeration()
@@ -57,8 +62,11 @@ namespace TravioHotel.Controllers
                         var saveUser = await Database.SaveChangesAsync();
                         if (saveUser > 0) // This will check if any record has been save if yes then the success message or else the error
                         {
-                            TempData["Success"] = "User Information has been saved";
-                            return RedirectToAction("Registeration");
+                            string EmailBody = $"Use this code to verify your accountUser ID: <a href='https://example.com/verify?id={UserRecords.Id}'>Verify</a>";
+                            string Subject = "Email Verification";
+                            await mailServer.Mail(userData.Email, Subject, EmailBody);
+                            TempData["Success"] = "User Information has been saved Please Verify Your email using the link we sent.";
+                            return RedirectToAction("User_Login");
                         }
                         else
                         {
@@ -96,7 +104,7 @@ namespace TravioHotel.Controllers
 
         }
         // Login Function for users
-        public IActionResult User_Login()
+        public IActionResult Login()
         {
             return View("Views/User/Login.cshtml");
         }
@@ -110,13 +118,13 @@ namespace TravioHotel.Controllers
                 if (user.email_verified_at == null)
                 {
                     TempData["Error"] = "Please Verify Your Email Address We have sent a link to your mail";
-                    return RedirectToAction("User_Login");
+                    return RedirectToAction("Login");
                 }
                 else
                 {
                     if (user.Role == 0)
                     {
-                        return RedirectToAction("Index" , "User");
+                        return RedirectToAction("Index" , "Home");
                     }
                     if (user.Role == 1)
                     {
@@ -125,8 +133,11 @@ namespace TravioHotel.Controllers
                 }
             }
             
-                TempData["Error"] = "Invalid Credientals";
-                 return RedirectToAction("Login");
+            TempData["Error"] = "Invalid Credientals";
+            return RedirectToAction("Login");
+            
+            
+             
 
 
             

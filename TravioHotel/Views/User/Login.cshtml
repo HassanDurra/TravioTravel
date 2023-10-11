@@ -1,6 +1,6 @@
 ﻿@model TravioHotel.Models.UserModel 
 @{
-    TempData["title"] = "User Login";
+    ViewData["title"] = "User Login";
     Layout = "~/Views/Shared/_Userlayout.cshtml";
 }
 
@@ -9,10 +9,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-title">Login 1</h1>
+                <h1 class="page-title">Login</h1>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item">Login 1</li>
+                    <li><a href="#">Home</a></li>
+                    <li>/ Login</li>
                 </ul>
             </div><!-- end columns -->
         </div><!-- end row -->
@@ -55,7 +55,7 @@
                         </div><!-- end custom-form -->
 
                         <div class="flex-content-img custom-form-img">
-                            <img src="images/login.jpg" class="img-fluid" alt="registration-img" />
+                            <img src="~/userassets/images/login.jpg" class="img-fluid" alt="registration-img" />
                         </div><!-- end custom-form-img -->
                     </div><!-- end form-content -->
 

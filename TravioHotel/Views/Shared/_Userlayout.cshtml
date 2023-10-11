@@ -877,7 +877,7 @@
     @if(TempData["Error"] != null)
     {
         <script>
-            toastr.success('@TempData["Error"]');
+            toastr.error('@TempData["Error"]');
         </script>
     }
 </body>
