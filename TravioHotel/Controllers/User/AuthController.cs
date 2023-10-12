@@ -10,6 +10,7 @@ using TravioHotel.DataContext;
 using TravioHotel.Models;
 using TravioHotel.Services;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace TravioHotel.Controllers
 {
@@ -20,15 +21,15 @@ namespace TravioHotel.Controllers
         public readonly IWebHostEnvironment fileEnvironment;
         public readonly MailServer mailServer;
         public readonly RandomGenerate random;
-        public readonly HttpContext httpContext;
-        public  AuthController(DatabaseContext Database  , HttpContext _httpContext , IWebHostEnvironment _fileEnvironment , MailServer _mailServer , RandomGenerate _random)
+        public readonly IHttpContextAccessor httpContext;
+        public  AuthController(DatabaseContext Database , IHttpContextAccessor _httpContext  , IWebHostEnvironment _fileEnvironment , MailServer _mailServer , RandomGenerate _random)
         {
             this.Database        = Database;
             this.fileEnvironment = _fileEnvironment;
             this.mailServer      = _mailServer;
             this.random          = _random;
             this.httpContext     = _httpContext;
-
+            
         }
         // End of Database Context Section
         public IActionResult Registeration()
@@ -132,16 +133,36 @@ namespace TravioHotel.Controllers
                 {
                     if (user.Role == 0)
                     {
-                        string userDataJson = JsonConvert.SerializeObject(user);
-                        httpContext.Session.SetString("user", userDataJson);
+                        var UserData = new
+                        {
 
-                        var userInformaton = httpContext.Session.GetString("user");
-                        ViewBag.isLogin    = userInformaton;
+                            id      = user.Id,
+                            name    = user.Name,
+                            email   = user.Email,
+                            image   = user.Image,
+                            status  = user.Status,
+
+                        }; // This will the array of our data to be stored in Session
+                        string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
+                        httpContext.HttpContext.Session.SetString("user", userDataJson); // Then we will store it to session
+                    
                         return RedirectToAction("Index" , "Home");
                     }
                     if (user.Role == 1)
                     {
-                        return RedirectToAction("Dashboard", "Admin");
+                        var UserData = new
+                        {
+
+                            id = user.Id,
+                            name = user.Name,
+                            email = user.Email,
+                            image = user.Image,
+                            status = user.Status,
+
+                        }; // This will the array of our data to be stored in Session
+                        string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
+                        httpContext.HttpContext.Session.SetString("admin", userDataJson); // Then we will store it to session
+                        return RedirectToAction("Admin", "Dashboard");
                     }
                 }
             }
@@ -260,8 +281,14 @@ namespace TravioHotel.Controllers
 
             return Json(message);
         }
+        public IActionResult User_Logout()
+        {
+            httpContext.HttpContext.Session.Remove("user");
+            return RedirectToAction("Index" , "Home");
+        }
         
         } // The Password Code Reseted 
+
     }
    
    

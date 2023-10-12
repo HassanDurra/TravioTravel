@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TravioHotel.DataContext;
 using TravioHotel.Services;
-
+using Microsoft.AspNetCore.Http;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,7 +9,8 @@ builder.Services.AddControllersWithViews();
 // Custom Services Dependency Injections
 builder.Services.AddScoped<MailServer, MailServer>();
 builder.Services.AddScoped<RandomGenerate , RandomGenerate>();
-
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
 // Connection String Calling
 builder.Services.AddDbContext<DatabaseContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
@@ -27,7 +28,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
