@@ -82,11 +82,21 @@
                             <ul class="list-unstyled list-inline">
                              @if(ViewBag.isLoggedIn == null || ViewBag.isLoggedIn == ""){
                                 <li class="list-inline-item"><a asp-controller="Auth" asp-area="User" asp-action="Login"><span><i class="fa fa-lock"></i></span>Login</a></li>
-                                <li class="list-inline-item"><a asp-controller="Auth" asp-area="User" asp-action="Registeration"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
-                              }
-                               else{
+                                    <li class="list-inline-item"><a asp-controller="Auth" asp-area="User" asp-action="Registeration"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
+                                }
+                                else{
+                                    
+                                        var userData = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ViewBag.isLoggedIn); // Convert ViewBag data to json to get the records
+                                    <li class="list-inline-item dropdown">
+                                        <a href="#" class="nav-link" data-bs-toggle="dropdown">@userData.name &nbsp;<img style="width: 40px; height:40px ; border-radius:50%; border:2px solid rgb(255, 179, 0); object-fit:cover;" src="~/UserProfileImages/@userData.image" alt=""></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item text-dark" href="flight-homepage.html">My Dashboard</a></li>
+                                            <li><a class="dropdown-item text-dark" href="flight-listing-left-sidebar.html">My Profile</a></li>
+                                            <li><a class="dropdown-item text-dark" asp-controller="Auth" asp-area="Auth" asp-action="User_Logout">Logout</a></li>
+
+                                        </ul>
+                                    </li>
                                 
-                                    <li class="list-inline-item"><a asp-controller="Auth" asp-area="Auth" asp-action="User_Logout"><span><i class="fa fa-lock"></i></span>Logout</a></li>
                                 }
                              
 

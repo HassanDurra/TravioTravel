@@ -153,10 +153,10 @@ namespace TravioHotel.Controllers
                         var UserData = new
                         {
 
-                            id = user.Id,
-                            name = user.Name,
-                            email = user.Email,
-                            image = user.Image,
+                            id     = user.Id,
+                            name   = user.Name,
+                            email  = user.Email,
+                            image  = user.Image,
                             status = user.Status,
 
                         }; // This will the array of our data to be stored in Session
