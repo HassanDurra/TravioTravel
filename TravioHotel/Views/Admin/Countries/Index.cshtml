@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Adminlayout.cshtml";
+    ViewData["title"] = "All Countries";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Fees Collection</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example4" class="display" style="min-width:100%">
+                <thead>
+                    <tr>
+                        <th>Country Id</th>
+                        <th>Country Name</th>
+                        <th>Iso</th>
+                        <th>Phone Code </th>
+                        <th>Currency </th>
+                        <th>Region</th>
+                        <th>Capital</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="countriesTableData">
+                    <tr>
+                        <td>01</td>
+                        <td>Tiger Nixon</td>
+                        <td>#54605</td>
+                        <td>Library</td>
+                        <td>Cash</td>
+                        <td><span class="badge light badge-success">Paid</span></td>
+                        <td>2011/04/25</td>
+                        <td><strong>120$</strong></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -23,7 +23,11 @@
 	<link href="~/dashboardassets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 	<link href="~/dashboardassets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
 	<link href="~/dashboardassets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link href="~/dashboardassets/vendor/datatables/css/jquery.dataTables.min.css"/>
 	
+	<link href="~/dashboardassets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<!-- Custom Stylesheet -->
+	<link href="~/dashboardassets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 	<!-- Style css -->
 	<link href="~/dashboardassets/css/style.css" rel="stylesheet">
 	
@@ -994,12 +998,15 @@
 	***********************************-->
 	<!--**********************************
 		Scripts
-	***********************************-->
+
 	<!-- Required vendors -->
 	<script src="~/dashboardassets/vendor/global/global.min.js"></script>
 
 	<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<!-- Custom -->
+	<script src="~/dashboardassets/custom/js/Countries.js"></script>
 	<!-- Apex Chart -->
 
 	<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
@@ -1010,13 +1017,36 @@
 	<script src="~/dashboardassets/js/dashboard/dashboard-1.js"></script>
 
 	<script src="~/dashboardassets/vendor/owl-carousel/owl.carousel.js"></script>
-	<script src="~/dashboardassets/vendor/bootstrap-datetimepicker/js/moment.js"></script>
-	<script src="~/dashboardassets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="~/dashboardassets/vendor/global/global.min.js"></script>
+	<script src="~/dashboardassets/vendor/chart.js/Chart.bundle.min.js"></script>
+	<!-- Apex Chart -->
+	<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
+
+	<!-- Datatable -->
+	<script src="~/dashboardassets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="~/dashboardassets/js/plugins-init/datatables.init.js"></script>
+
+	<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 
 	<script src="~/dashboardassets/js/custom.min.js"></script>
 	<script src="~/dashboardassets/js/dlabnav-init.js"></script>
-	<script src="~/dashboardassets/js/styleSwitcher.js"></script>
 	<script src="~/dashboardassets/js/demo.js"></script>
+	<script src="~/dashboardassets/js/styleSwitcher.js"></script>
+
+	<!-- Page Scripts Ends -->
+	<!-- Using Toastr-->
+	@if (TempData["Success"] != null)
+	{
+		<script>
+			toastr.success('@TempData["Success"]');
+		</script>
+	}
+	@if (TempData["Error"] != null)
+	{
+		<script>
+			toastr.error('@TempData["Error"]');
+		</script>
+	}
 	<script>
 		function TravlCarousel()
 			{

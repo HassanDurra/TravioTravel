@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TravioHotel.DataContext;
 using TravioHotel.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -33,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Country}/{action=Index}/{id?}");
 
 app.Run();

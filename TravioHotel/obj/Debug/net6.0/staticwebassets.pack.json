@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\dashboardassets\\css\\style.css"
     },
     {
+      "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\custom\\js\\Countries.js",
+      "PackagePath": "staticwebassets\\dashboardassets\\custom\\js\\Countries.js"
+    },
+    {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\icons\\avasta\\css\\style.css",
       "PackagePath": "staticwebassets\\dashboardassets\\icons\\avasta\\css\\style.css"
     },

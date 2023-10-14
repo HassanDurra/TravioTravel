@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KN1O0tLnoMzNqFqcrD8TgXgNckHwSIHFpmMIp1MmkEU=",
+  "Hash": "XbRbThXbLcCSbQoTmsMP+9kYdRpPdfDhW27/EMhW4is=",
   "Source": "TravioHotel",
   "BasePath": "_content/TravioHotel",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dashboardassets\\css\\style.css"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\custom\\js\\Countries.js",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "dashboardassets/custom/js/Countries.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dashboardassets\\custom\\js\\Countries.js"
     },
     {
       "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\icons\\avasta\\css\\style.css",
