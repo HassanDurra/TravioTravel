@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `airline` (
   `icao` varchar(200) DEFAULT NULL,
   `iata` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=929 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+;
 
 --
 -- Dumping data for table `airline`
@@ -971,7 +971,7 @@ INSERT INTO `airline` (`id`, `name`, `logo_url`, `icao`, `iata`) VALUES
 (926, 'TAG Aviation', 'undefined', 'VIP', '-'),
 (927, 'TAG Aviation Malta', 'undefined', 'TEU', '-'),
 (928, 'TAG Aviation San Marino', 'undefined', 'TAG', '-');
-COMMIT;
+COMMIT;'
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TravioHotel.CustomClasses;
 using TravioHotel.DataContext;
 using TravioHotel.Models;
@@ -10,40 +12,124 @@ namespace TravioHotel.Controllers.Admin
 	public class AirlinesController : Controller
 	{
 		public readonly DatabaseContext Database;
-		public readonly IHttpClientFactory HttpClientFactory;
-
-		public AirlinesController( DatabaseContext _database , IHttpClientFactory _httpClientFactory)
+		
+		public AirlinesController( DatabaseContext _database )
 		{
 			this.Database = _database;
-			this.HttpClientFactory = _httpClientFactory;
 		}
-		public IActionResult Index()
+		public async Task<IActionResult>Index()
 		{
+			var airlinesData  = await Database.Airlines.Where(e => e.deleted_at == null).ToListAsync();
+            return View("Views/Admin/Airlines/Index.cshtml", airlinesData);
+        }public async Task<IActionResult>Trash()
+		{
+			var airlinesData  = await Database.Airlines.Where(e => e.deleted_at != null).ToListAsync();
+            return View("Views/Admin/Airlines/Trash.cshtml", airlinesData);
+        }
 
-			return View("Views/Admin/Airlines/Index.cshtml");
+		public IActionResult create()
+		{
+			TempData["action"] = "create";
+			return View("Views/Admin/Airlines/Create.cshtml");
 		}
+		// This will Insert Data from form Submission
+		public async Task<IActionResult>Store(Airlines airline)
+		{
+			var checkAirlines  = await Database.Airlines.FirstOrDefaultAsync(e => e.Airlinename == airline.Airlinename);
+			if (checkAirlines == null) { 
+			var insertData = new Airlines()
+			{
+				AirlineImage = airline.AirlineImage ,
+				Airlinename  = airline.Airlinename ,
+                ICAOCode     = airline.ICAOCode ,
+				IATACode     = airline.IATACode ,
+			};
 
+			Database.Airlines.AddAsync(insertData);
+			var savedData = await Database.SaveChangesAsync();
+
+			if(savedData > 0)
+			{
+				TempData["Success"] = "Airline Has Been Saved";
+				return RedirectToAction("Index", "Airlines");
+			}
+			TempData["Error"] = "Failed to Add Airline Service";
+			return RedirectToAction("Create", "Airlines");
+            }
+			TempData["Error"] = "This Airline Is Already Exists ";
+			return RedirectToAction("Create", "Airlines");
+        }
+		// Removing The Airlines
+		public async Task<IActionResult>Delete(int? id)
+		{
+			var airlineData = await Database.Airlines.FirstOrDefaultAsync(e => e.Id == id);
+            var currentData = Convert.ToString(DateTime.UtcNow);
+
+            if (airlineData != null)
+			{
+				var UpdateData =  airlineData.deleted_at = currentData;
+				
+				await Database.SaveChangesAsync();
+				TempData["Success"] = "Airline Has been Added to Trash";
+				return RedirectToAction("Index", "Airlines");
+			}
+            TempData["Error"] = "Failed to Add Airline To Trash";
+            return RedirectToAction("Index", "Airlines");
+        }
+		//Restoring Data From Trash
+		public async Task<IActionResult>Restore(int? id)
+		{
+			var airlineData = await Database.Airlines.FirstOrDefaultAsync(e => e.Id == id);
+    
+			if (airlineData != null)
+			{
+				var UpdateData = airlineData.deleted_at = null;
+
+				await Database.SaveChangesAsync();
+				TempData["Success"] = "Airline Has been Restored";
+				return RedirectToAction("Index", "Airlines");
+
+            }
+            TempData["Error"] = "Failed to Restore Airline From Trash";
+            return RedirectToAction("Index", "Airlines");
+        }
+		// Deleting Data Permantly
+		public async Task<IActionResult> Destroy(int? id)
+		{
+            var airlineData = await Database.Airlines.FirstOrDefaultAsync(e => e.Id == id);
+
+            if (airlineData != null)
+            {
+                Database.Airlines.Remove(airlineData);
+                await Database.SaveChangesAsync();
+                TempData["Success"] = "Airline Has been Deleted";
+                return RedirectToAction("Index", "Airlines");
+
+            }
+            TempData["Error"] = "Failed to Delete Airline ";
+            return RedirectToAction("Index", "Airlines");
+        }
+		// This Will Insert Data from JsonFile
 		public async Task<IActionResult> addServices(Airlines airlineServices)
 		{
-			var client = HttpClientFactory.CreateClient();
-			client.DefaultRequestHeaders.Add("X-Api-Key", "anTBNYvOBTsdb1abq+8zuw==24rvwrou6aVPb27j");
-			var response = await client.GetAsync("https://api.api-ninjas.com/v1/airlines");
-			response.EnsureSuccessStatusCode();
+			var JsonData = System.IO.File.ReadAllText("D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\airlines.json");
+            JArray jsonArrays = JArray.Parse(JsonData);
 
-			var content   = await response.Content.ReadAsStringAsync();
-			var airlines = JsonConvert.DeserializeObject<List<AirlinesApi>>(content); 
-
-			foreach( var airlineList in airlines)
+            foreach (var jsonArray in jsonArrays)
 			{
-				var allData = new Airlines() { 
-					AirlineImage  = airlineList.logo_url,
-					Airlinename   = airlineList.name ,
-					IATACode      = airlineList.iata ,
-					ICAOCode      = airlineList.icao				
-				};
-				Database.Airlines.Add(allData);
+				var airlineModel = new Airlines() {
+
+
+				    AirlineImage = (string)jsonArray["AirlineImage"],
+				    Airlinename = (string)jsonArray["Airlinename"],
+				    ICAOCode = (string)jsonArray["ICAOCode"],
+				    IATACode = (string)jsonArray["IATACode"],
+
+                 };
+				Database.Airlines.AddAsync(airlineModel);
+
 			}
-			
+
 			var saveChanges  = 	await Database.SaveChangesAsync();
 
 			if(saveChanges > 0)

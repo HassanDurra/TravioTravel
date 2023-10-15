@@ -186,13 +186,16 @@
   background: -webkit-linear-gradient(left, #ffbf31 0%, #ff890e 100%);
   background: linear-gradient(to right, #ffbf31 0%, #ff890e 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbf31', endColorstr='#ff890e',GradientType=1 ); }
-
+.DZ-theme-btn{
+    display:none!important;
+}
 .gradient-14 {
-  background: #23bdb8;
-  background: -moz-linear-gradient(-45deg, #23bdb8 0%, #43e794 100%);
-  background: -webkit-linear-gradient(-45deg, #23bdb8 0%, #43e794 100%);
-  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23bdb8', endColorstr='#43e794',GradientType=1 ); }
+    background: #23bdb8;
+    background: -moz-linear-gradient(-45deg, #23bdb8 0%, #43e794 100%);
+    background: -webkit-linear-gradient(-45deg, #23bdb8 0%, #43e794 100%);
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23bdb8', endColorstr='#43e794',GradientType=1 );
+}
 
 .gradient-15 {
   background: #9a56ff;

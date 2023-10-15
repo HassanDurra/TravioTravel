@@ -16,8 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\E-project2023\TravioTravel\TravioHotel
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/E-project2023/TravioTravel/TravioHotel/Views/Admin/Airlines/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlybGluZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/E-project2023/TravioTravel/TravioHotel/Views/Admin/Airlines/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlybGluZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-project2023/TravioTravel/TravioHotel/Views/Admin/Airlines/Trash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlybGluZXNcVHJhc2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/E-project2023/TravioTravel/TravioHotel/Views/Admin/Countries/Index.cshtml]
