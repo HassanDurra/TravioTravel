@@ -181,7 +181,7 @@ namespace TravioHotel.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("TravioHotel.Models.States", b =>
+            modelBuilder.Entity("TravioHotel.Models.State", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -206,7 +206,7 @@ namespace TravioHotel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("States");
+                    b.ToTable("State");
                 });
 
             modelBuilder.Entity("TravioHotel.Models.UserModel", b =>

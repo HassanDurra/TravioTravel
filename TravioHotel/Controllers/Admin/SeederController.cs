@@ -95,17 +95,17 @@ namespace TravioHotel.Controllers.Admin
 
             foreach (var jsonArray in jsonArrays)
             {
-                var stateModel = new States()
+                var stateModel = new State()
                 {
 
-                    name = (string)jsonArray["name"],
+                    name         = (string)jsonArray["name"],
                     country_code = (string)jsonArray["country_code"],
-                    iso2 = (string)jsonArray["iso2"],
-                    country_id = (int)jsonArray["country_id"],
-                    fips = (string)jsonArray["fips"],
+                    iso2         = (string)jsonArray["iso2"],
+                    country_id   = (int)jsonArray["country_id"],
+                    fips         = (string)jsonArray["fips_code"],
                  
                 };
-                Database.States.AddAsync(stateModel);
+                Database.State.AddAsync(stateModel);
 
             }
 

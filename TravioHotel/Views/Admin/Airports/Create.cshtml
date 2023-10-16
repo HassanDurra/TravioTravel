@@ -37,18 +37,24 @@
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Country</label>
-                        <select class="form-control" asp-for="Country_iso" name="Country_iso">
+                        <select id="Country_Select" class="form-control" asp-for="Country_iso" name="Country_iso">
                             <option value="">Select Country</option>
                             @foreach(var countryData in ViewBag.data.country)
                             {
                                 <option value="@countryData.iso2">@countryData.name</option>
                             }
                         </select>
+                    </div> 
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">City </label>
+                        <select id="CitySelect" class="form-control" asp-for="City_name" name="City_name">
+                            <option value="">Select Country First</option>
+                        </select>
                     </div>
-                    <div class="mb-3 col-md-3">
+                    <div class="mb-3 col-md-6">
                         <label class="form-label">IATA Code <small>(International Air Transport Association)</small></label>
                         <input type="text" name="IataCode" asp-for="IataCode" class="form-control" placeholder="IATA code">
-                    </div>  <div class="mb-3 col-md-3">
+                    </div>  <div class="mb-3 col-md-6">
                         <label>ICAO Code <small>(The International Civil Aviation Organization) | (optional)</small></label>
                         <input type="text" name="IcaoCode" asp-for="IcaoCode" class="form-control" placeholder="ICAO code">
                     </div>

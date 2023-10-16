@@ -1,7 +1,4 @@
-[
-{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
-{"type":"database","name":"dazzle"},
-{"type":"table","name":"states","database":"dazzle","data":
+
 [
 {"id":"1","name":"Southern Nations, Nationalities, and Peoples' Region","country_id":"70","country_code":"ET","fips_code":"54","iso2":"SN","latitude":"6.51569110","longitude":"36.95410700","flag":"1","wikiDataId":"Q203193","created_at":"2019-10-05 17:48:35","updated_at":"2020-12-21 15:50:21"},
 {"id":"2","name":"Somali Region","country_id":"70","country_code":"ET","fips_code":"52","iso2":"SO","latitude":"6.66122930","longitude":"43.79084530","flag":"1","wikiDataId":"Q202800","created_at":"2019-10-05 17:48:35","updated_at":"2020-12-21 15:50:21"},
@@ -4870,5 +4867,4 @@
 {"id":"4913","name":"In Salah","country_id":"4","country_code":"DZ","fips_code":null,"iso2":"57","latitude":"27.21492290","longitude":"1.84843960","flag":"1","wikiDataId":"Q76593022","created_at":"2021-04-11 15:29:14","updated_at":"2021-04-11 15:37:23"},
 {"id":"4914","name":"In Guezzam","country_id":"4","country_code":"DZ","fips_code":null,"iso2":"58","latitude":"20.38643230","longitude":"4.77893940","flag":"1","wikiDataId":"Q77102475","created_at":"2021-04-11 15:29:49","updated_at":"2021-04-11 15:37:42"}
 ]
-}
-]
+

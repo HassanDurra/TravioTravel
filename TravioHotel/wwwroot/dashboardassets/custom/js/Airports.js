@@ -3,6 +3,7 @@
     let imageUrl    = $('input[name="Image"]');
     let name        = $('input[name="Name"]');
     let country     = $('select[name="Country_iso"]');
+    let City        = $('select[name="City_name"]');
     let IataCode    = $('input[name="IataCode"]');
     let Description = $('textarea[name="Description"]');
     let AirportForm = $('#airportForm');
@@ -28,5 +29,33 @@
             e.preventDefault();
             toastr["error"]("Airport Description is Required");
         }
+        if (City.val() == "") {
+            e.preventDefault();
+            toastr["error"]("Airport City is Required");
+        }
+    });
+
+    // Drop Down For Cities Data
+    $(country).on('change', function (e) {
+        e.preventDefault();
+        $(City).html('<option value=""> Fetching Cities...</option>');
+        $.ajax({
+            url  : 'Airport/GetCities',
+            type: "Get",
+            data: AirportForm.serialize(),
+            success: function (response) {
+                if (response.message == "Success") {
+                    e.preventDefault();
+                    tableRow = "";
+                    $(response.city).each(function (index, value) {
+                        tableRow += `
+                        <option value="${value.name}">${value.name}</option>    
+                        `;
+                    });
+                    $(City).html(tableRow);
+                }
+            }
+        });
+
     })
 })

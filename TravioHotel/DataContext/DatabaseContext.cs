@@ -12,7 +12,7 @@ namespace TravioHotel.DataContext
         public DbSet<Airlines> Airlines { get ; set; }
         public DbSet<Airport> Airports { get ; set; }
         public DbSet<Cities> Cities { get ; set; }
-        public DbSet<States> States { get ; set; }
+        public DbSet<State> State { get ; set; }
         public DbSet<VerificationModel> Verification {  get ; set; } 
     
     }
