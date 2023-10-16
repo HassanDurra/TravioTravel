@@ -12,15 +12,25 @@ namespace TravioHotel.Controllers.Admin
 	public class AirlinesController : Controller
 	{
 		public readonly DatabaseContext Database;
-		
-		public AirlinesController( DatabaseContext _database )
+		public readonly IHttpContextAccessor httpContext;
+		public AirlinesController( DatabaseContext _database , IHttpContextAccessor _httpContext )
 		{
 			this.Database = _database;
+			this.httpContext = _httpContext;
 		}
 		public async Task<IActionResult>Index()
 		{
-			var airlinesData  = await Database.Airlines.Where(e => e.deleted_at == null).ToListAsync();
-            return View("Views/Admin/Airlines/Index.cshtml", airlinesData);
+            
+		  var userData  = httpContext.HttpContext.Session.GetString("admin"); // Then we will store it to session
+		  ViewBag.isLoggedIn = userData;
+			if (userData != "" || userData != null)
+			{
+                var airlinesData = await Database.Airlines.Where(e => e.deleted_at == null).ToListAsync();
+                return View("Views/Admin/Airlines/Index.cshtml", airlinesData);
+            }
+			TempData["Error"] = "Please Login First To Access Admin Dashboard";
+			return RedirectToAction("Login", "Auth");
+
         }public async Task<IActionResult>Trash()
 		{
 			var airlinesData  = await Database.Airlines.Where(e => e.deleted_at != null).ToListAsync();
@@ -31,6 +41,12 @@ namespace TravioHotel.Controllers.Admin
 		{
 			TempData["action"] = "create";
 			return View("Views/Admin/Airlines/Create.cshtml");
+		}
+		public async Task<IActionResult>Edit(int ? id)
+		{
+			var airlinesData = await Database.Airlines.FirstOrDefaultAsync(e => e.Id == id);
+			TempData["action"] = "edit";
+			return View("Views/Admin/Airlines/Create.cshtml" , airlinesData);
 		}
 		// This will Insert Data from form Submission
 		public async Task<IActionResult>Store(Airlines airline)
@@ -59,6 +75,24 @@ namespace TravioHotel.Controllers.Admin
 			TempData["Error"] = "This Airline Is Already Exists ";
 			return RedirectToAction("Create", "Airlines");
         }
+		// Updating All Records
+		public async Task<IActionResult>Update( Airlines airlines)
+		{
+			var AirlineData = await Database.Airlines.FirstOrDefaultAsync(e=>e.Id == airlines.Id);
+			if(AirlineData != null)
+			{
+
+               AirlineData.AirlineImage = airlines.AirlineImage;
+               AirlineData.Airlinename  = airlines.Airlinename ;
+			   AirlineData.ICAOCode     = airlines.ICAOCode ;
+			   AirlineData.IATACode     = airlines.IATACode ;			
+				await Database.SaveChangesAsync();
+				TempData["Success"] = "Airline Information Has been Updated";
+				return RedirectToAction("Index", "Airlines");
+			}
+			TempData["Error"] = "Failed to update Airline Information";
+			return RedirectToAction("Index", "Airlines");
+		}
 		// Removing The Airlines
 		public async Task<IActionResult>Delete(int? id)
 		{
@@ -110,36 +144,5 @@ namespace TravioHotel.Controllers.Admin
             return RedirectToAction("Index", "Airlines");
         }
 		// This Will Insert Data from JsonFile
-		public async Task<IActionResult> addServices(Airlines airlineServices)
-		{
-			var JsonData = System.IO.File.ReadAllText("D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\airlines.json");
-            JArray jsonArrays = JArray.Parse(JsonData);
-
-            foreach (var jsonArray in jsonArrays)
-			{
-				var airlineModel = new Airlines() {
-
-
-				    AirlineImage = (string)jsonArray["AirlineImage"],
-				    Airlinename = (string)jsonArray["Airlinename"],
-				    ICAOCode = (string)jsonArray["ICAOCode"],
-				    IATACode = (string)jsonArray["IATACode"],
-
-                 };
-				Database.Airlines.AddAsync(airlineModel);
-
-			}
-
-			var saveChanges  = 	await Database.SaveChangesAsync();
-
-			if(saveChanges > 0)
-			{
-				TempData["Success"] = "Airlines Services Added to Database Successfully";
-				return RedirectToAction("Index", "Airlines");
-			}
-			TempData["Error"] = "failed To Save Services To Database";
-			return RedirectToAction("Index", "Airlines");
-			
-		}
 	}
 }

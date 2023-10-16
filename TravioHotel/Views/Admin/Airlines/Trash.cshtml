@@ -1,16 +1,18 @@
-﻿@model List<TravioHotel.Models.Airlines>
+﻿@model List<TravioHotel.Models.Airport>
 @{
-    ViewData["title"] = "Trashed Airlines Services";
     Layout = "~/Views/Shared/_Adminlayout.cshtml";
+    ViewData["title"] = "Trashed Airports";
 }
 <div class="card">
     <div class="card-header d-flex">
 
 
-        <h4 class="card-title">Trashed Airline Services</h4>
+        <h4 class="card-title">Trashed Airports</h4>
+        <div class="d-flex">
 
-        <a asp-action="Index" asp-controller="Airlines" class="btn btn-success" title="All Airlines"><i class="fa fa-home"></i></a>
-
+            <a class="btn btn-success" asp-action="Index" asp-controller="Airport" title="All Airports"><i class="fa fa-home"></i></a>
+            
+        </div>
 
     </div>
     <div class="card-body">
@@ -18,33 +20,34 @@
             <table id="example4" class="display" style="min-width:100%">
                 <thead>
                     <tr>
-                        <th>Service Id</th>
-                        <th>Service Logo</th>
-                        <th>Service Name</th>
-                        <th>ICAO Code </th>
+                        <th>Airport Id</th>
+                        <th>Airport Image</th>
+                        <th>Airport Name</th>
+                        <th>Airport Country </th>
                         <th>IATA Code </th>
+                        <th>ICAO Code </th>
                         <th>Action</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var airline in Model)
+                    @foreach (var airport in ViewBag.data.Airports)
                     {
                         <tr>
-                            <td>@airline.Id</td>
-                            @if (airline.AirlineImage == "undefined")
+                            <td>@airport.Id</td>
+                            @if (airport.Image == "undefined")
                             {
                                 <td class="text-danger">No Image</td>
                             }
                             else
                             {
-                                <td><img src="@airline.AirlineImage" style="width:40px  ; height:40px ; object-fit:contain"></td>
+                                <td><img src="@airport.Image" style="width:40px  ; height:40px ; object-fit:contain"></td>
                             }
-
-                            <td>@airline.Airlinename</td>
-                            <td>@airline.ICAOCode</td>
-                            <td>@airline.IATACode</td>
-                            <td><a class="btn btn-success" href="/Airlines/Restore/@airline.Id"><i class="fa fa-undo"></i></a> | <a href="/Airlines/Destroy/@airline.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                            <td>@airport.Name</td>
+                            <td>@ViewBag.data.Country.name</td>
+                            <td>@airport.IcaoCode</td>
+                            <td>@airport.IataCode</td>
+                            <td><a class="btn btn-success" href="/Airport/Restore/@airport.Id"><i class="fa fa-undo"></i></a> | <a href="/Airport/Destroy/@airport.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
 
                         </tr>
                     }
@@ -95,3 +98,4 @@
 <script src="~/dashboardassets/js/dlabnav-init.js"></script>
 <script src="~/dashboardassets/js/demo.js"></script>
 <script src="~/dashboardassets/js/styleSwitcher.js"></script>
+

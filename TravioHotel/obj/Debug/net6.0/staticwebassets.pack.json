@@ -33,6 +33,14 @@
       "PackagePath": "staticwebassets\\airlines.json"
     },
     {
+      "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\cities.json",
+      "PackagePath": "staticwebassets\\cities.json"
+    },
+    {
+      "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\countries.json",
+      "PackagePath": "staticwebassets\\countries.json"
+    },
+    {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -55,6 +63,10 @@
     {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\custom\\js\\Airlines.js",
       "PackagePath": "staticwebassets\\dashboardassets\\custom\\js\\Airlines.js"
+    },
+    {
+      "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\custom\\js\\Airports.js",
+      "PackagePath": "staticwebassets\\dashboardassets\\custom\\js\\Airports.js"
     },
     {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\custom\\js\\Countries.js",
@@ -1451,6 +1463,10 @@
     {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\states.json",
+      "PackagePath": "staticwebassets\\states.json"
     },
     {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\toastr\\toastr.css",

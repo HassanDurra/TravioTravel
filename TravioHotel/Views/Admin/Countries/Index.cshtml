@@ -1,6 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<TravioHotel.Models.Countries> ;
 @{
     Layout = "~/Views/Shared/_Adminlayout.cshtml";
     ViewData["title"] = "All Countries";
@@ -17,26 +15,38 @@
                     <tr>
                         <th>Country Id</th>
                         <th>Country Name</th>
-                        <th>Iso</th>
+                        <th>Iso 2</th>
+                        <th>Iso 3</th>
                         <th>Phone Code </th>
                         <th>Currency </th>
-                        <th>Region</th>
+                        <th>Currency Symbol </th>
                         <th>Capital</th>
-                        <th>Action</th>
+                        <th>Region</th>
+                        <th>Sub Region</th>
+                        <th>Native</th>
+                        <th>Emoji </th>
+                    
                     </tr>
                 </thead>
-                <tbody id="countriesTableData">
-                    <tr>
-                        <td>01</td>
-                        <td>Tiger Nixon</td>
-                        <td>#54605</td>
-                        <td>Library</td>
-                        <td>Cash</td>
-                        <td><span class="badge light badge-success">Paid</span></td>
-                        <td>2011/04/25</td>
-                        <td><strong>120$</strong></td>
-                    </tr>
-                    
+                <tbody>
+                  @foreach(var Countries in  Model)
+                    {
+                       <tr>
+                           <td>@Countries.id</td>
+                           <td>@Countries.name</td>
+                           <td>@Countries.iso2</td>
+                           <td>@Countries.iso3</td>
+                           <td>@Countries.phonecode</td>
+                           <td>@Countries.currency</td>
+                           <td>@Countries.currency_symbol</td>
+                           <td>@Countries.capital</td>
+                           <td>@Countries.region</td>
+                           <td>@Countries.subregion</td>
+                           <td>@Countries.native</td>
+                           <td>@Countries.emoji</td>
+                         
+                       </tr>
+                    }
                 </tbody>
             </table>
         </div>

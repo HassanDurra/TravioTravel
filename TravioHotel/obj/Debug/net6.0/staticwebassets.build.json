@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2DAmNbdpi4HDYo2NhTukIshb5AtkcShhrO3T+SH5XlY=",
+  "Hash": "tNYNh1me4iFZqmrMCIctbLZnnjbd7tEnyk9hkBlZCFY=",
   "Source": "TravioHotel",
   "BasePath": "_content/TravioHotel",
   "Mode": "Default",
@@ -66,6 +66,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\airlines.json"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\cities.json",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "cities.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cities.json"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\countries.json",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "countries.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\countries.json"
     },
     {
       "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\css\\site.css",
@@ -168,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dashboardassets\\custom\\js\\Airlines.js"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\custom\\js\\Airports.js",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "dashboardassets/custom/js/Airports.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dashboardassets\\custom\\js\\Airports.js"
     },
     {
       "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\dashboardassets\\custom\\js\\Countries.js",
@@ -6101,6 +6152,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\states.json",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "states.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\states.json"
     },
     {
       "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\toastr\\toastr.css",

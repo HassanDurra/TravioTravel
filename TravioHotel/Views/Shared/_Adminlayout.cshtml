@@ -833,18 +833,26 @@
 							<li><a asp-action="Trash" asp-controller="Airlines">Trashed</a></li>
 							
 						</ul>
-					</li>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-041-graph"></i>
-							<span class="nav-text">Charts</span>
+					</li><li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+						<i class="fa fa-plane-departure"></i>
+							<span class="nav-text">Airports</span>
 						</a>
 						<ul aria-expanded="false">
-							<li><a href="chart-flot.html">Flot</a></li>
-							<li><a href="chart-morris.html">Morris</a></li>
-							<li><a href="chart-chartjs.html">Chartjs</a></li>
-							<li><a href="chart-chartist.html">Chartist</a></li>
-							<li><a href="chart-sparkline.html">Sparkline</a></li>
-							<li><a href="chart-peity.html">Peity</a></li>
+							<li><a asp-action="Index" asp-controller="Airport">All Airports</a></li>
+							<li><a asp-action="Create" asp-controller="Airport">Add New</a></li>
+							<li><a asp-action="Trash" asp-controller="Airport">Trashed</a></li>
+							
+						</ul>
+					</li>
+					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+							<i class="fa fa-globe"></i>
+							<span class="nav-text">Countries</span>
+						</a>
+						<ul aria-expanded="false">
+							<li><a asp-action="Index" asp-controller="Country">All Countries</a></li>
+							<li><a href="chart-morris.html">All States</a></li>
+							<li><a href="chart-chartjs.html">All Cities</a></li>
+						
 						</ul>
 					</li>
 					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

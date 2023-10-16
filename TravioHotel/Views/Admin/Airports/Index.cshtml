@@ -1,0 +1,102 @@
+﻿@model List<TravioHotel.Models.Airport>
+@{
+    Layout            = "~/Views/Shared/_Adminlayout.cshtml";
+    ViewData["title"] = "All Airports";
+}
+<div class="card">
+<div class="card-header d-flex">
+
+
+    <h4 class="card-title">All Airline Services</h4>
+    <div class="d-flex">
+
+        <a class="btn btn-danger" asp-action="Trash" asp-controller="Airport" title="Trashed Airlines"><i class="fa fa-trash"></i></a>
+        | <a class="ml-4 mr-3 btn btn-success" asp-action="Create" asp-controller="Airport" title="Add Airlines"><i class="fa fa-plus"></i></a>
+
+    </div>
+
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table id="example4" class="display" style="min-width:100%">
+            <thead>
+                <tr>
+                    <th>Airport Id</th>
+                    <th>Airport Image</th>
+                    <th>Airport Name</th>
+                    <th>Airport Country </th>
+                    <th>IATA Code </th>
+                    <th>ICAO Code </th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var airport in ViewBag.data.Airports)
+                {
+                    <tr>
+                        <td>@airport.Id</td>
+                        @if (airport.Image == "undefined")
+                        {
+                            <td class="text-danger">No Image</td>
+                        }
+                        else
+                        {
+                            <td><img src="@airport.Image" style="width:40px  ; height:40px ; object-fit:contain"></td>
+                        }
+                        <td>@airport.Name</td>
+                        <td>@ViewBag.data.Country.name</td>
+                        <td>@airport.IcaoCode</td>
+                        <td>@airport.IataCode</td>
+                        <td><a class="btn btn-danger" href="/Airport/Delete/@airport.Id"><i class="fa fa-trash"></i></a> | <a href="/Airport/Edit/@airport.Id" class="btn btn-success"><i class="fa fa-pen"></i></a></td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<!-- Scripts start -->
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+<!--**********************************
+    Scripts
+
+<!-- Required vendors -->
+<script src="~/dashboardassets/vendor/global/global.min.js"></script>
+
+<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!-- Custom -->
+<script src="~/dashboardassets/custom/js/Countries.js"></script>
+<!-- Apex Chart -->
+
+<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
+
+
+<!-- Chart piety plugin files -->
+<!-- Dashboard 1 -->
+<script src="~/dashboardassets/js/dashboard/dashboard-1.js"></script>
+
+<script src="~/dashboardassets/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="~/dashboardassets/vendor/global/global.min.js"></script>
+<script src="~/dashboardassets/vendor/chart.js/Chart.bundle.min.js"></script>
+<!-- Apex Chart -->
+<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
+
+<!-- Datatable -->
+<script src="~/dashboardassets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/dashboardassets/js/plugins-init/datatables.init.js"></script>
+
+<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+<script src="~/dashboardassets/js/custom.min.js"></script>
+<script src="~/dashboardassets/js/dlabnav-init.js"></script>
+<script src="~/dashboardassets/js/demo.js"></script>
+<script src="~/dashboardassets/js/styleSwitcher.js"></script>
+
