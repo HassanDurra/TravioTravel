@@ -121,7 +121,8 @@ namespace TravioHotel.Controllers.Service
                     await mailServer.Mail(userData.Email, Subject, EmailBody);
 
                     TempData["Success"] = "User Information has been saved. Please verify your email using the link we sent.";
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Registeration", "Agent");
+
                 }
                 else
                 {
