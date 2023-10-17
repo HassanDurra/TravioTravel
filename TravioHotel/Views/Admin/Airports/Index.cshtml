@@ -25,6 +25,7 @@
                     <th>Airport Image</th>
                     <th>Airport Name</th>
                     <th>Airport Country </th>
+                    <th>Airport City</th>
                     <th>IATA Code </th>
                     <th>ICAO Code </th>
                     <th>Action</th>
@@ -46,8 +47,9 @@
                         }
                         <td>@airport.Name</td>
                         <td>@ViewBag.data.Country.name</td>
-                        <td>@airport.IcaoCode</td>
+                        <td>@airport.City_name</td>
                         <td>@airport.IataCode</td>
+                        <td>@airport.IcaoCode</td>
                         <td><a class="btn btn-danger" href="/Airport/Delete/@airport.Id"><i class="fa fa-trash"></i></a> | <a href="/Airport/Edit/@airport.Id" class="btn btn-success"><i class="fa fa-pen"></i></a></td>
 
                     </tr>

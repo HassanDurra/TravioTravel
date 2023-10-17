@@ -7,7 +7,7 @@
     let IataCode    = $('input[name="IataCode"]');
     let Description = $('textarea[name="Description"]');
     let AirportForm = $('#airportForm');
-
+   
     $(AirportForm).submit(function (e) {
         if (imageUrl.val() == "") {
             e.preventDefault();
@@ -36,11 +36,13 @@
     });
 
     // Drop Down For Cities Data
+
     $(country).on('change', function (e) {
+
         e.preventDefault();
         $(City).html('<option value=""> Fetching Cities...</option>');
         $.ajax({
-            url  : 'Airport/GetCities',
+            url: getCitiesUrl,
             type: "Get",
             data: AirportForm.serialize(),
             success: function (response) {
@@ -49,8 +51,8 @@
                     tableRow = "";
                     $(response.city).each(function (index, value) {
                         tableRow += `
-                        <option value="${value.name}">${value.name}</option>    
-                        `;
+                            <option value="${value.name}">${value.name}</option>
+                            `;
                     });
                     $(City).html(tableRow);
                 }
@@ -58,4 +60,5 @@
         });
 
     })
+   
 })
