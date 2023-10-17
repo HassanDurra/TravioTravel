@@ -34,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Airport}/{action=Index}/{id?}");
+    pattern: "{controller=Agent}/{action=Registeration}/{id?}");
 
 app.Run();

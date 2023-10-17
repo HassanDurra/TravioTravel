@@ -1,0 +1,217 @@
+﻿
+@model TravioHotel.Models.UserModel ;
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from travl.dexignlab.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2023 21:58:54 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Travl : Hotel Admin Dashboard Bootstrap 5 Template" />
+    <meta property="og:title" content="Travl : Hotel Admin Dashboard Bootstrap 5 Template" />
+    <meta property="og:description" content="Travl : Hotel Admin Dashboard Bootstrap 5 Template" />
+    <meta property="og:image" content="social-image.png" />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- PAGE TITLE HERE -->
+    <title>Travio Airlines Agent | Registeration</title>
+
+    <!-- FAVICONS ICON -->
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <link href="~/dashboardassets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="~/dashboardassets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="~/dashboardassets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="~/dashboardassets/vendor/datatables/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/toastr/toastr.min.css" />
+
+    <link href="~/dashboardassets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="~/dashboardassets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <!-- Style css -->
+    <link href="~/dashboardassets/css/style.css" rel="stylesheet">
+
+</head>
+<style>
+
+    .DZ-theme-btn {
+        display: none !important;
+    }
+</style>
+
+<body  style="height:100%!important;background:black!important;">
+    <div class=" h-100" style=" margin:20px!important;">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-md-6">
+                <div class="authincation-content">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+                                <div class="text-center mb-3">
+                                        <a href="index.html"><img src="~/dashboardassets/images/logo-full.png" alt=""></a>
+                                </div>
+                                <h4 class="text-center mb-4">Sign up your Service Account</h4>
+                                <form asp-action="Register" method="Post" asp-area="Service" asp-controller="Agent" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                            <label class="mb-1"><strong>Airline Service  <small class="text-danger">required</small></strong></label>
+                                        <select type="text" name="airlineID" class="form-control" placeholder="username">
+                                            <option value="">Choose Airline Service</option>
+                                            @foreach (var services in ViewBag.Data.services)
+                                            {
+                                                    <option value="@services.Id">@services.Airlinename</option>
+                                                }
+                                            </select>
+                                    </div> 
+                                    <div class="mb-3">
+                                            <label class="mb-1"><strong>Profile Image <small>(optional)</small></strong></label>
+                                        <input type="file" asp-for="Image" name="Image" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                            <label class="mb-1"><strong>Full Name  <small class="text-danger">required</small></strong></label>
+                                        <input type="text" asp-for="Name" name="Name" class="form-control" placeholder="Full Name">
+                                    </div> 
+                                    <div class="mb-3">
+                                        <label class="mb-1"><strong>Username <small class="text-danger">required</small></strong></label>
+                                        <input type="text" asp-for="User_name" name="User_name" class="form-control" placeholder="User Name (Must Be Unique)">
+                                    </div>
+                                    <div class="mb-3">
+                                            <label class="mb-1"><strong>Email  <small class="text-danger">required</small></strong></label>
+                                        <input type="email" asp-for="Email" name="Email" class="form-control" placeholder="hello@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                            <label class="mb-1"><strong>Password  <small class="text-danger">required</small></strong></label>
+                                        <input type="password" asp-for="Password" name="Password" class="form-control" value="Password">
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+                                    </div>
+                                </form>
+                                <div class="new-account mt-3">
+                                    <p>Already have an account? <a class="text-primary" asp-action="Login" asp-controller="Auth">Sign in</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Scripts Links-->
+<script src="~/dashboardassets/vendor/global/global.min.js"></script>
+
+<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!-- Custom -->
+<script src="~/dashboardassets/custom/js/Countries.js"></script>
+<!-- Apex Chart -->
+
+<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
+
+
+<!-- Chart piety plugin files -->
+<!-- Dashboard 1 -->
+<script src="~/dashboardassets/js/dashboard/dashboard-1.js"></script>
+
+<script src="~/dashboardassets/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="~/dashboardassets/vendor/global/global.min.js"></script>
+<script src="~/dashboardassets/vendor/chart.js/Chart.bundle.min.js"></script>
+<!-- Apex Chart -->
+<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
+
+<!-- Datatable -->
+<script src="~/dashboardassets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/dashboardassets/js/plugins-init/datatables.init.js"></script>
+
+<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+<script src="~/dashboardassets/js/custom.min.js"></script>
+<script src="~/dashboardassets/js/dlabnav-init.js"></script>
+<script src="~/dashboardassets/js/demo.js"></script>
+<script src="~/dashboardassets/js/styleSwitcher.js"></script>
+
+	<!-- Page Scripts Ends -->
+	<!-- Using Toastr-->
+	@if (TempData["Success"] != null)
+	{
+		<script>
+			toastr.success('@TempData["Success"]');
+		</script>
+	}
+	@if (TempData["Error"] != null)
+	{
+		<script>
+			toastr.error('@TempData["Error"]');
+		</script>
+	}
+	<script>
+		function TravlCarousel() {
+
+			/*  testimonial one function by = owl.carousel.js */
+			jQuery('.front-view-slider').owlCarousel({
+				loop: false,
+				margin: 15,
+				nav: true,
+				autoplaySpeed: 3000,
+				navSpeed: 3000,
+				paginationSpeed: 3000,
+				slideSpeed: 3000,
+				smartSpeed: 3000,
+				autoplay: false,
+				animateOut: 'fadeOut',
+				dots: true,
+				navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+				responsive: {
+					0: {
+						items: 1
+					},
+
+					768: {
+						items: 2
+					},
+
+					1400: {
+						items: 2
+					},
+					1600: {
+						items: 3
+					},
+					1750: {
+						items: 3
+					}
+				}
+			})
+		}
+
+		jQuery(window).on('load', function () {
+			setTimeout(function () {
+				TravlCarousel();
+			}, 1000);
+		});
+	</script>
+	<script>
+		$(function () {
+			$('#datetimepicker').datetimepicker({
+				inline: true,
+			});
+		});
+
+		$(document).ready(function () {
+			$(".booking-calender .fa.fa-clock-o").removeClass(this);
+			$(".booking-calender .fa.fa-clock-o").addClass('fa-clock');
+		});
+	</script>
+
+</body>
+
+<!-- Mirrored from travl.dexignlab.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2023 21:59:22 GMT -->
+</html>

@@ -181,6 +181,25 @@ namespace TravioHotel.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("TravioHotel.Models.Service_account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("serviceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Service_Account");
+                });
+
             modelBuilder.Entity("TravioHotel.Models.State", b =>
                 {
                     b.Property<int>("Id")
