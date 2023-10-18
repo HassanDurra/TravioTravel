@@ -1,0 +1,109 @@
+﻿@model TravioHotel.Models.Aircraft ;
+@{
+    Layout = "~/Views/Shared/_ServiceLayout.cshtml";
+    if (TempData["action"] == "create")
+    {
+        ViewData["title"] = "Create";
+        ViewData["parentButton"] = "Create";
+        ViewData["parentAction"] = "Store";
+    }
+    else
+    {
+        ViewData["title"] = "Edit";
+        ViewData["parentButton"] = "Update";
+        ViewData["parentAction"] = "Update";
+    }
+
+}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Aircraft Adding Form</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form id="aircraftForm" asp-action="@ViewData["parentAction"]" asp-controller="Aircraft" asp-area="Service" method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Aircraft Image </label>
+                        
+                        <input type="file" name="aircraft_image" asp-for="aircraft_image" class="form-control" placeholder="Service Logo Url">
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Aircraft Airline Service</label>
+                        <input type="text" readonly value="@TempData["agent_id"]" name="agent_id" asp-for="agent_id" class="form-control" placeholder="Service Agent Id">
+                    </div> 
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Aircraft Model Name</label>
+                        <input type="text" name="aircraft_model_name" asp-for="aircraft_model_name" class="form-control" placeholder="Model Name">
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">Aircraft Model Number</label>
+                        <input type="text" name="aircraft_model_number" asp-for="aircraft_model_number" class="form-control" placeholder="Model Number">
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label>Number Of Seats <small>(The Total Number Of Seats in Aircraft)</small></label>
+                        <input type="text" name="total_seats" asp-for="total_seats" class="form-control" placeholder="Total Seats">
+                    </div> 
+                    <div class="mb-3 col-md-6">
+                        <label>Total Bussiness Seats <small>(The Total Number Of business Class Seats in Aircraft)</small></label>
+                        <input type="text" name="bussiness_seats" asp-for="bussiness_seats" class="form-control" placeholder="Total Seats">
+                    </div>   
+                    <div class="mb-3 col-md-6">
+                        <label>Total First Class Seats <small>(The Total Number Of First Class Seats in Aircraft)</small></label>
+                        <input type="text" name="first_class_seats" asp-for="first_class_seats" class="form-control" placeholder="Total Seats">
+                    </div>  
+                    <div class="mb-3 col-md-6">
+                        <label>Total Economy Class Seats <small>(The Total Number Of Economy Class Seats in Aircraft)</small></label>
+                        <input type="text" name="economy_seats" asp-for="economy_seats" class="form-control" placeholder="Total Seats">
+                    </div> 
+                   
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">@ViewData["parentButton"]</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Script files-->
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+<!--**********************************
+    Scripts
+
+<!-- Required vendors -->
+<script src="~/dashboardassets/vendor/global/global.min.js"></script>
+
+<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<!-- Custom -->
+<script src="~/dashboardassets/custom/js/Countries.js"></script>
+<!-- Apex Chart -->
+
+<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
+
+
+<!-- Chart piety plugin files -->
+<!-- Dashboard 1 -->
+<script src="~/dashboardassets/js/dashboard/dashboard-1.js"></script>
+
+<script src="~/dashboardassets/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="~/dashboardassets/vendor/global/global.min.js"></script>
+<script src="~/dashboardassets/vendor/chart.js/Chart.bundle.min.js"></script>
+<!-- Apex Chart -->
+<script src="~/dashboardassets/vendor/apexchart/apexchart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!-- Datatable -->
+<script src="~/dashboardassets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/dashboardassets/js/plugins-init/datatables.init.js"></script>
+
+<script src="~/dashboardassets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+<script src="~/dashboardassets/js/custom.min.js"></script>
+<script src="~/dashboardassets/js/dlabnav-init.js"></script>
+<script src="~/dashboardassets/js/demo.js"></script>
+<script src="~/dashboardassets/js/styleSwitcher.js"></script>
+
+<!--End of Script Files-->

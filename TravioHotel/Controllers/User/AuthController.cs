@@ -164,6 +164,22 @@ namespace TravioHotel.Controllers
                         httpContext.HttpContext.Session.SetString("admin", userDataJson); // Then we will store it to session
                         return RedirectToAction("Admin", "Dashboard");
                     }
+                    if (user.Role == 2)
+                    {
+                        var UserData = new
+                        {
+
+                            id     = user.Id,
+                            name   = user.Name,
+                            email  = user.Email,
+                            image  = user.Image,
+                            status = user.Status,
+
+                        }; // This will the array of our data to be stored in Session
+                        string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
+                        httpContext.HttpContext.Session.SetString("service", userDataJson); // Then we will store it to session
+                        return RedirectToAction("Create", "Aircraft");
+                    }
                 }
             }
             
