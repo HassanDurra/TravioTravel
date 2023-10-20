@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tNYNh1me4iFZqmrMCIctbLZnnjbd7tEnyk9hkBlZCFY=",
+  "Hash": "mYO+vokcIIUvJsjOJIvfyXF6kGWBg9idwQdbEs98fbM=",
   "Source": "TravioHotel",
   "BasePath": "_content/TravioHotel",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\E-project2023\\TravioTravel\\TravioHotel\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TravioHotel.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\AircraftImages\\9049cccc-aa4f-45b0-abe6-dd900624bcde.jpg",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "AircraftImages/9049cccc-aa4f-45b0-abe6-dd900624bcde.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AircraftImages\\9049cccc-aa4f-45b0-abe6-dd900624bcde.jpg"
     },
     {
       "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\airlines.json",
@@ -28133,6 +28150,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\userassets\\js\\custom\\Authentication.js"
+    },
+    {
+      "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\home.js",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "userassets/js/custom/home.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\userassets\\js\\custom\\home.js"
     },
     {
       "Identity": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom-date-picker.js",

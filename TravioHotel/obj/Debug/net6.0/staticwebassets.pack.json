@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\TravioHotel.bundle.scp.css"
     },
     {
+      "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\AircraftImages\\9049cccc-aa4f-45b0-abe6-dd900624bcde.jpg",
+      "PackagePath": "staticwebassets\\AircraftImages\\9049cccc-aa4f-45b0-abe6-dd900624bcde.jpg"
+    },
+    {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\UserProfileImages\\108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg",
       "PackagePath": "staticwebassets\\UserProfileImages\\108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg"
     },
@@ -6671,6 +6675,10 @@
     {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\Authentication.js",
       "PackagePath": "staticwebassets\\userassets\\js\\custom\\Authentication.js"
+    },
+    {
+      "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\home.js",
+      "PackagePath": "staticwebassets\\userassets\\js\\custom\\home.js"
     },
     {
       "Id": "D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\jquery-3.3.1.min.js",
