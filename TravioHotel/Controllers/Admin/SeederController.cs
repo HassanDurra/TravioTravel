@@ -16,7 +16,7 @@ namespace TravioHotel.Controllers.Admin
 
         public async Task<IActionResult> addServices(Airlines airlineServices)
         {
-            var JsonData = System.IO.File.ReadAllText("D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\airlines.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\airlines.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
@@ -49,7 +49,7 @@ namespace TravioHotel.Controllers.Admin
         //this will add data to countries table
         public async Task<IActionResult> addCountries()
         {
-            var JsonData = System.IO.File.ReadAllText("D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\countries.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\countries.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
@@ -90,7 +90,7 @@ namespace TravioHotel.Controllers.Admin
         } // Countries Seeder
         public async Task<IActionResult> addStates()
         {
-            var JsonData = System.IO.File.ReadAllText("D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\states.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\states.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
@@ -122,7 +122,7 @@ namespace TravioHotel.Controllers.Admin
         } // Countries Seeder
         public async Task<IActionResult> addCities()
         {
-            var JsonData = System.IO.File.ReadAllText("D:\\E-project2023\\TravioTravel\\TravioHotel\\wwwroot\\cities.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\cities.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
