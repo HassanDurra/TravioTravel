@@ -6677,6 +6677,10 @@
       "PackagePath": "staticwebassets\\userassets\\js\\custom\\Authentication.js"
     },
     {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\home.js",
+      "PackagePath": "staticwebassets\\userassets\\js\\custom\\home.js"
+    },
+    {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\jquery-3.3.1.min.js",
       "PackagePath": "staticwebassets\\userassets\\js\\jquery-3.3.1.min.js"
     },

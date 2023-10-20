@@ -10,6 +10,7 @@ namespace TravioHotel.Models
         public string Airlinename { get; set; }
         public string IATACode { get; set; }    
         public string ICAOCode { get; set; }    
+        
         public string? deleted_at { get; set; }
        
     }

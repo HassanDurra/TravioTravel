@@ -23,7 +23,7 @@
                 </div><!-- end meta -->
             </li><!-- end item-1 -->
 
-            <li class="item-2" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(images/homepage-slider-1.jpg) 50% 0%;background-size:cover;
+            <li class="item-2" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(~/images/homepage-slider-1.jpg) 50% 0%;background-size:cover;
                         height:100%;">
                 <div class=" meta">
                     <div class="container">
@@ -53,22 +53,52 @@
                     <div class="tab-content">
 
                         <div id="flights" class="tab-pane in active">
-                            <form>
+                            <form asp-action="FlightBooking" asp-controller="Booking" asp-area="User" method="Post">
                                 <div class="row">
 
                                     <div class="col-12 col-md-12 col-lg-5 col-xl-4">
                                         <div class="row">
 
                                             <div class="col-12 col-md-6 col-lg-6">
-                                                <div class="form-group left-icon">
-                                                    <input type="text" class="form-control" placeholder="From">
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" name="from_country">
+                                                        <option value="">From Country</option>
+                                                        @foreach(var country in ViewBag.country){
+                                                        <option value="@country.id">@country.name</option>
+                                                        }
+                                                    </select>
                                                     <i class="fa fa-map-marker"></i>
+                                                </div>
+                                            </div><!-- end columns -->
+                                              <div class="col-12 col-md-6 col-lg-6">
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" readonly name="from_city">
+                                                        <option value="">From City</option>
+                                                    </select>
+                                                    <i class="fa fa-map-marker"></i>
+                                                </div>
+                                            </div><!-- end columns -->
+                                              <div class="col-12 col-md-6 col-lg-6">
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" name="to_country">
+                                                        <option value="">To Country</option>
+                                                        @foreach (var country in ViewBag.country)
+                                                        {
+                                                            <option value="@country.id">@country.name</option>
+                                                        }
+                                                    </select>
+                                                    <i class="fa fa-map-marker"></i>
+                                                   
                                                 </div>
                                             </div><!-- end columns -->
 
                                             <div class="col-12 col-md-6 col-lg-6">
-                                                <div class="form-group left-icon">
-                                                    <input type="text" class="form-control" placeholder="To">
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" readonly name="to_city">
+                                                        <option value="">To City</option>
+                                                    </select>
+                                                    
+
                                                     <i class="fa fa-map-marker"></i>
                                                 </div>
                                             </div><!-- end columns -->
@@ -81,14 +111,14 @@
 
                                             <div class="col-6 col-md-6 col-lg-6">
                                                 <div class="form-group left-icon">
-                                                    <input type="text" class="form-control dpd1" placeholder="Check In">
+                                                    <input type="text" class="form-control dpd1" placeholder="Check In" name="check_in">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
                                             </div><!-- end columns -->
 
                                             <div class="col-6 col-md-6 col-lg-6">
                                                 <div class="form-group left-icon">
-                                                    <input type="text" class="form-control dpd2" placeholder="Check Out">
+                                                    <input type="text" class="form-control dpd2" placeholder="Check Out" name="check_out">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
                                             </div><!-- end columns -->
@@ -98,7 +128,7 @@
 
                                     <div class="col-12 col-md-12 col-lg-2 col-xl-2">
                                         <div class="form-group right-icon">
-                                            <select class="form-control">
+                                            <select class="form-control" name="adults">
                                                 <option selected>Adults</option>
                                                 <option>1</option>
                                                 <option>2</option>
@@ -109,7 +139,7 @@
                                     </div><!-- end columns -->
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                        <button class="btn btn-orange">Search</button>
+                                        <button class="btn btn-orange" type="submit">Search</button>
                                     </div><!-- end columns -->
 
                                 </div><!-- end row -->
@@ -1326,3 +1356,11 @@
     </div><!-- end container -->
 </section><!-- end vehicle-offers -->
 <!--Data ends here-->
+    <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/userassets/js/custom/home.js"></script>
+
+<script>
+
+    let getCitiesUrl = '@Url.Action("getCities" , "Home")';
+
+</script>
