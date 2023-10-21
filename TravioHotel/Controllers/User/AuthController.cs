@@ -70,7 +70,9 @@ namespace TravioHotel.Controllers
                         var saveUser = await Database.SaveChangesAsync();
                         if (saveUser > 0) // This will check if any record has been save if yes then the success message or else the error
                         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                             string emailVerifyLink = Url.Action("Verify_Email", "Auth", new { id = UserRecords.Id }, Request.Scheme);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                             string EmailBody       = $"Use this code to verify your account Email: '{userData.Email}' <a href=\"{emailVerifyLink}\">Verify</a>";
                             string Subject         = "Email Verification";
                             await mailServer.Mail(userData.Email, Subject, EmailBody);
@@ -121,7 +123,9 @@ namespace TravioHotel.Controllers
         public async Task<IActionResult>Authentication(UserModel userData)
         {
             var user = await Database.User.FirstOrDefaultAsync(u => u.Email == userData.Email);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             var hashedPassword = BCrypt.Net.BCrypt.Verify(userData.Password, user.Password);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             if (user != null && hashedPassword == true)
             {
                 if (user.email_verified_at == null)
@@ -144,7 +148,9 @@ namespace TravioHotel.Controllers
 
                         }; // This will the array of our data to be stored in Session
                         string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                         httpContext.HttpContext.Session.SetString("user", userDataJson); // Then we will store it to session
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                     
                         return RedirectToAction("Index" , "Home");
                     }
@@ -161,7 +167,9 @@ namespace TravioHotel.Controllers
 
                         }; // This will the array of our data to be stored in Session
                         string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                         httpContext.HttpContext.Session.SetString("admin", userDataJson); // Then we will store it to session
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                         return RedirectToAction("Admin", "Dashboard");
                     }
                     if (user.Role == 2)
@@ -177,7 +185,9 @@ namespace TravioHotel.Controllers
 
                         }; // This will the array of our data to be stored in Session
                         string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                         httpContext.HttpContext.Session.SetString("service", userDataJson); // Then we will store it to session
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                         return RedirectToAction("Create", "Aircraft");
                     }
                 }
@@ -299,7 +309,9 @@ namespace TravioHotel.Controllers
         }
         public IActionResult User_Logout()
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             httpContext.HttpContext.Session.Remove("user");
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return RedirectToAction("Index" , "Home");
         }
         

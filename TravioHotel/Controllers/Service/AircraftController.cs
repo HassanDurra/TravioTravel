@@ -32,16 +32,24 @@ namespace TravioHotel.Controllers.Service
 
         public IActionResult Create()
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             var userData = httpContext.HttpContext.Session.GetString("service");
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             if( userData != "" && userData != null)
             {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 dynamic userIdData = JsonConvert.DeserializeObject(userData);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                 // Assuming "id" is the property containing the user ID
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 int userId = userIdData.id;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
                 var Service_account_id = Database.Service_Account.Where(e => e.userId == userId).FirstOrDefault();
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 TempData["agent_id"]   = Service_account_id.Id;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 TempData["action"]     = "create";
                 return View("Views/Service/Aircraft/Create.cshtml");
             }
@@ -78,7 +86,9 @@ namespace TravioHotel.Controllers.Service
                     first_class_seats     = aircraftData.first_class_seats,
 
                 };
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 Database.Aircrafts.AddAsync(AircraftData);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 var savedAircrafts = await Database.SaveChangesAsync();
                 if(savedAircrafts > 0)
                 {

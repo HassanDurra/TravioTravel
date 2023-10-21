@@ -20,7 +20,9 @@ namespace TravioHotel.Controllers.Admin
             var airports = await Database.Airports.Where(e => e.delete_at == null).ToListAsync();
             var uniqueCountryIsos = airports.Where(a => a.delete_at == null).Select(a => a.Country_iso).Distinct();
 
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             Countries countries = null;
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             if (uniqueCountryIsos.Any())
             {
                 countries = await Database.Countries.Where(c => uniqueCountryIsos.Contains(c.iso2)).FirstAsync();
@@ -36,7 +38,9 @@ namespace TravioHotel.Controllers.Admin
 
             var uniqueCountryIsos = airports.Where(a => a.delete_at != null).Select(a => a.Country_iso).Distinct();
 
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             Countries countries = null;
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             if (uniqueCountryIsos.Any())
             {
                 countries = await Database.Countries.Where(c => uniqueCountryIsos.Contains(c.iso2)).FirstAsync();
@@ -78,7 +82,9 @@ namespace TravioHotel.Controllers.Admin
                     IataCode = airport.IataCode,
                     IcaoCode = airport.IcaoCode
                 };
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 Database.Airports.AddAsync(saveAirport);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 var SavedData = await Database.SaveChangesAsync();
                 if (SavedData > 0)
                 {

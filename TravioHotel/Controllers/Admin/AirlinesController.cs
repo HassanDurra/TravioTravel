@@ -21,7 +21,9 @@ namespace TravioHotel.Controllers.Admin
 		public async Task<IActionResult>Index()
 		{
             
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 		  var userData  = httpContext.HttpContext.Session.GetString("admin"); // Then we will store it to session
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 		  ViewBag.isLoggedIn = userData;
 			if (userData != "" || userData != null)
 			{
@@ -61,7 +63,9 @@ namespace TravioHotel.Controllers.Admin
 				IATACode     = airline.IATACode ,
 			};
 
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 			Database.Airlines.AddAsync(insertData);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 			var savedData = await Database.SaveChangesAsync();
 
 			if(savedData > 0)
