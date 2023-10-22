@@ -16,12 +16,12 @@ namespace TravioHotel.Controllers.User
         }
         public IActionResult Index()
         {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
             string isLogedIn   = httpContext.HttpContext.Session.GetString("user") ?? ""; 
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+            
             ViewBag.isLoggedIn = isLogedIn;
             ViewBag.country    = database.Countries.ToList();
-            return View("Views/User/Index.cshtml" , isLogedIn);
+            return View("Views/User/Index.cshtml");
 
         }
         // Selecting Country

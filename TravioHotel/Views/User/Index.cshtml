@@ -1,6 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TravioHotel.Models.BookingRequest ;
 @{
     ViewData["title"] = "Home";
     Layout = "~/Views/Shared/_Userlayout.cshtml";
@@ -53,7 +51,7 @@
                     <div class="tab-content">
 
                         <div id="flights" class="tab-pane in active">
-                            <form asp-action="FlightBooking" asp-controller="Booking" asp-area="User" method="Post">
+                            <form asp-action="RequestBooking" asp-controller="BookingRequest" asp-area="User" method="Post">
                                 <div class="row">
 
                                     <div class="col-12 col-md-12 col-lg-5 col-xl-4">
@@ -61,7 +59,7 @@
 
                                             <div class="col-12 col-md-6 col-lg-6">
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" name="from_country">
+                                                    <select class="form-control" name="from_country" asp-for="from_country">
                                                         <option value="">From Country</option>
                                                         @foreach(var country in ViewBag.country){
                                                         <option value="@country.id">@country.name</option>
@@ -72,7 +70,7 @@
                                             </div><!-- end columns -->
                                               <div class="col-12 col-md-6 col-lg-6">
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" readonly name="from_city">
+                                                    <select class="form-control" readonly name="from_city" asp-for="from_city">
                                                         <option value="">From City</option>
                                                     </select>
                                                     <i class="fa fa-map-marker"></i>
@@ -80,7 +78,7 @@
                                             </div><!-- end columns -->
                                               <div class="col-12 col-md-6 col-lg-6">
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" name="to_country">
+                                                    <select class="form-control" name="to_country" asp-for="to_country">
                                                         <option value="">To Country</option>
                                                         @foreach (var country in ViewBag.country)
                                                         {
@@ -94,7 +92,7 @@
 
                                             <div class="col-12 col-md-6 col-lg-6">
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" readonly name="to_city">
+                                                    <select class="form-control" readonly name="to_city" asp-for="to_city">
                                                         <option value="">To City</option>
                                                     </select>
                                                     
@@ -111,14 +109,14 @@
 
                                             <div class="col-6 col-md-6 col-lg-6">
                                                 <div class="form-group left-icon">
-                                                    <input type="text" class="form-control dpd1" placeholder="Check In" name="check_in">
+                                                    <input type="text" class="form-control dpd1" placeholder="Check In" name="departure_date" asp-for="departure_date">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
                                             </div><!-- end columns -->
 
                                             <div class="col-6 col-md-6 col-lg-6">
                                                 <div class="form-group left-icon">
-                                                    <input type="text" class="form-control dpd2" placeholder="Check Out" name="check_out">
+                                                    <input type="text" class="form-control dpd2" placeholder="Check Out" name="arrival_date" asp-for="arrival_date">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
                                             </div><!-- end columns -->
@@ -127,19 +125,14 @@
                                     </div><!-- end columns -->
 
                                     <div class="col-12 col-md-12 col-lg-2 col-xl-2">
-                                        <div class="form-group right-icon">
-                                            <select class="form-control" name="adults">
-                                                <option selected>Adults</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                            </select>
+                                        <div class="form-group left-icon">
+                                           <input name="number_of_adults"  type="number" placeholder="Number Of Adults" asp-for="number_of_adults" class="form-control" />
                                             <i class="fa fa-angle-down"></i>
                                         </div>
                                     </div><!-- end columns -->
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                        <button class="btn btn-orange" type="submit">Search</button>
+                                        <button class="btn btn-orange" type="submit">Send Request</button>
                                     </div><!-- end columns -->
 
                                 </div><!-- end row -->

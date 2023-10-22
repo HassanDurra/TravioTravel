@@ -70,9 +70,9 @@ namespace TravioHotel.Controllers
                         var saveUser = await Database.SaveChangesAsync();
                         if (saveUser > 0) // This will check if any record has been save if yes then the success message or else the error
                         {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+
                             string emailVerifyLink = Url.Action("Verify_Email", "Auth", new { id = UserRecords.Id }, Request.Scheme);
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
                             string EmailBody       = $"Use this code to verify your account Email: '{userData.Email}' <a href=\"{emailVerifyLink}\">Verify</a>";
                             string Subject         = "Email Verification";
                             await mailServer.Mail(userData.Email, Subject, EmailBody);
