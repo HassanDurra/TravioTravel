@@ -75,9 +75,7 @@ namespace TravioHotel.Controllers.Admin
                 var saveAirport = new Airport()
                 {
                     Name = airport.Name,
-                    Image = airport.Image,
                     Country_iso = airport.Country_iso,
-                    Description = airport.Description,
                     City_name   = airport.City_name,
                     IataCode = airport.IataCode,
                     IcaoCode = airport.IcaoCode
@@ -106,8 +104,7 @@ namespace TravioHotel.Controllers.Admin
             if (Airports != null)
             {
                 Airports.Name = oldAirports.Name;
-                Airports.Image = oldAirports.Image;
-                Airports.Description = oldAirports.Description;
+            
                 Airports.Country_iso = oldAirports.Country_iso;
                 Airports.City_name = oldAirports.City_name;
                 Airports.IataCode = oldAirports.IataCode;

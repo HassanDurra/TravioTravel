@@ -16,18 +16,11 @@ namespace TravioHotel.Controllers.Admin
 
         public async Task<IActionResult> addServices(Airlines airlineServices)
         {
-            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\airlines.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\Users\\admin\\Documents\\Hassan E-project\\TravioTravel\\TravioHotel\\wwwroot\\airlines.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
             {
-#pragma warning disable CS8601 // Possible null reference assignment.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8601 // Possible null reference assignment.
-#pragma warning disable CS8601 // Possible null reference assignment.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 var airlineModel = new Airlines()
                 {
 
@@ -65,25 +58,11 @@ namespace TravioHotel.Controllers.Admin
         //this will add data to countries table
         public async Task<IActionResult> addCountries()
         {
-            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\countries.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\Users\\admin\\Documents\\Hassan E-project\\TravioTravel\\TravioHotel\\wwwroot\\countries.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
             {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8601 // Possible null reference assignment.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 var countryModel = new Countries()
                 {
 
@@ -136,7 +115,7 @@ namespace TravioHotel.Controllers.Admin
         } // Countries Seeder
         public async Task<IActionResult> addStates()
         {
-            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\states.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\Users\\admin\\Documents\\Hassan E-project\\TravioTravel\\TravioHotel\\wwwroot\\states.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
@@ -180,19 +159,12 @@ namespace TravioHotel.Controllers.Admin
         } // Countries Seeder
         public async Task<IActionResult> addCities()
         {
-            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\cities.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\Users\\admin\\Documents\\Hassan E-project\\TravioTravel\\TravioHotel\\wwwroot\\cities.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
             {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8601 // Possible null reference assignment.
-#pragma warning disable CS8604 // Possible null reference argument.
-#pragma warning disable CS8601 // Possible null reference assignment.
-#pragma warning disable CS8601 // Possible null reference assignment.
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8604 // Possible null reference argument.
+
                 var cityModel = new Cities()
                 {
 
@@ -205,17 +177,9 @@ namespace TravioHotel.Controllers.Admin
 
 
                 };
-#pragma warning restore CS8604 // Possible null reference argument.
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning restore CS8601 // Possible null reference assignment.
-#pragma warning restore CS8601 // Possible null reference assignment.
-#pragma warning restore CS8604 // Possible null reference argument.
-#pragma warning restore CS8601 // Possible null reference assignment.
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
                 Database.Cities.AddAsync(cityModel);
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
 
             }
 
@@ -229,6 +193,44 @@ namespace TravioHotel.Controllers.Admin
             TempData["Error"] = "failed To Save Services To Database";
             return RedirectToAction("Index", "Airlines");
 
+        }
+        // Airports Seeder Function 
+        public async Task<IActionResult>addAirports()
+        {
+
+            var JsonData = System.IO.File.ReadAllText("C:\\Users\\admin\\Documents\\Hassan E-project\\TravioTravel\\TravioHotel\\wwwroot\\airports.json");
+            JArray jsonArrays = JArray.Parse(JsonData);
+
+            foreach (var jsonArray in jsonArrays)
+            {
+
+                var airportModel = new Airport()
+                {
+
+                    Name        = (string)jsonArray["name"],
+                    Country_iso = (string)jsonArray["country_code"],
+                    City_name   = (string)jsonArray["city_name"],
+                    IataCode    = (string)jsonArray["iata_code"],
+                    IcaoCode    = (string)jsonArray["icao_code"],
+
+
+
+                };
+
+                Database.Airports.AddAsync(airportModel);
+
+
+            }
+
+            var saveChanges = await Database.SaveChangesAsync();
+
+            if (saveChanges > 0)
+            {
+                TempData["Success"] = "Cities Added to Database Successfully";
+                return RedirectToAction("Index", "Country");
+            }
+            TempData["Error"] = "failed To Save Services To Database";
+            return RedirectToAction("Index", "Airlines");
         }
     }
 }
