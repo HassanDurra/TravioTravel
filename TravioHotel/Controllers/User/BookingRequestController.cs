@@ -37,8 +37,22 @@ namespace TravioHotel.Controllers.User
              
             }
 
-            TempData["Error"] = "Before Requesting For A Flight Booking You must Login";
-            return RedirectToAction("Login", "Auth");
+          //  TempData["Error"] = "Before Requesting For A Flight Booking You must Login";
+            return View("Views/User/Listing.cshtml");
+       }
+        //This Function Will get The IATA Code from Airports 
+        public async Task<IActionResult> getAirportsIata(string fromCity , string toCity)
+        {
+                var from_city = await Database.Airports.Where(e => e.City_name == fromCity).FirstOrDefaultAsync();
+                var to_city = await Database.Airports.Where(e => e.City_name == toCity).FirstOrDefaultAsync();
+        
+                if(fromCity != null || toCity != null)
+                {
+                    var Data  = new {fromCityDetails = from_city ,  toCityDetails = to_city}; 
+                    return Json(Data);
+                }
+                 var message = new { message = "No Data Found" };
+                 return Json(message);   
         }
     }
 }

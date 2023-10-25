@@ -103,8 +103,13 @@ namespace TravioHotel.Controllers
               var saveUser = await Database.SaveChangesAsync();       
               if(saveUser > 0) // This will check if any record has been save if yes then the success message or else the error
                 {
-                    TempData["Success"] = "User Information has been saved";
-                    return RedirectToAction("Registeration");
+                    string emailVerifyLink = Url.Action("Verify_Email", "Auth", new { id = UserRecords.Id }, Request.Scheme);
+
+                    string EmailBody = $"Use this code to verify your account Email: '{userData.Email}' <a href=\"{emailVerifyLink}\">Verify</a>";
+                    string Subject = "Email Verification";
+                    await mailServer.Mail(userData.Email, Subject, EmailBody);
+                    TempData["Success"] = "User Information has been saved Please Verify Your email using the link we sent.";
+                    return RedirectToAction("Login");
                 }
               else
                {
@@ -123,9 +128,9 @@ namespace TravioHotel.Controllers
         public async Task<IActionResult>Authentication(UserModel userData)
         {
             var user = await Database.User.FirstOrDefaultAsync(u => u.Email == userData.Email);
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
             var hashedPassword = BCrypt.Net.BCrypt.Verify(userData.Password, user.Password);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
             if (user != null && hashedPassword == true)
             {
                 if (user.email_verified_at == null)
@@ -148,9 +153,9 @@ namespace TravioHotel.Controllers
 
                         }; // This will the array of our data to be stored in Session
                         string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
                         httpContext.HttpContext.Session.SetString("user", userDataJson); // Then we will store it to session
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
                     
                         return RedirectToAction("Index" , "Home");
                     }

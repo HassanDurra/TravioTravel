@@ -22,9 +22,11 @@
         <div class="container">
             <div class="row">
                 <input id="from_city" name="from_city" value="karachi" />
-                <input name="to_city" id="to_city" value="Manama" />
+                <input name="to_city" id="to_city" value="Bahrain" />
                 <input name="departureDate" value="10/25/2023" />
                 <input name="arrivalDate" value="10/25/2023" />
+                    
+               
                 <div class="col-12 col-md-12 col-lg-3 side-bar left-side-bar">
 
                     <div class="side-bar-block filter-block">
@@ -367,7 +369,7 @@
 
 <script>
 
-    let getIataCode = '@Url.Action("getIata" , "BookingRequest")';
+    let getIataCode = '@Url.Action("getAirportsIata" , "BookingRequest")';
 
     $(document).ready(function () {
 
@@ -380,7 +382,23 @@
             type : 'post' ,
             data: {fromCity : from_city.val() , toCity : to_city.val()},
             success:function(response){
-                console.log(response); 
+                let FromCity = response.fromCityDetails.iataCode;
+                let toCity   = response.toCityDetails.iataCode;
+                
+                // Now We Will Get Details From Flight Schedules Through Our Api Then Will Show the Airlines Results of avaialble Schedules
+                $.ajax({
+
+                    url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + FromCity + "/" + toCity + "/20231026/",
+                    type: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
+                        'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
+                    },
+                    success: function (response) {
+
+                    }
+                })
+               
             }
         })
 
