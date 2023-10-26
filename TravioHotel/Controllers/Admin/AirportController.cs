@@ -75,16 +75,14 @@ namespace TravioHotel.Controllers.Admin
                 var saveAirport = new Airport()
                 {
                     Name = airport.Name,
-                    
                     Country_iso = airport.Country_iso,
-                    
                     City_name   = airport.City_name,
                     IataCode = airport.IataCode,
                     IcaoCode = airport.IcaoCode
                 };
-
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 Database.Airports.AddAsync(saveAirport);
-
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 var SavedData = await Database.SaveChangesAsync();
                 if (SavedData > 0)
                 {
@@ -106,6 +104,7 @@ namespace TravioHotel.Controllers.Admin
             if (Airports != null)
             {
                 Airports.Name = oldAirports.Name;
+            
                 Airports.Country_iso = oldAirports.Country_iso;
                 Airports.City_name = oldAirports.City_name;
                 Airports.IataCode = oldAirports.IataCode;
