@@ -9,93 +9,101 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TravioHotel
 build_property.RootNamespace = TravioHotel
-build_property.ProjectDir = C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\
+build_property.ProjectDir = C:\Users\admin\Documents\Hassan E-project\TravioTravel\TravioHotel\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel
+build_property.MSBuildProjectDirectory = C:\Users\admin\Documents\Hassan E-project\TravioTravel\TravioHotel
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Airlines/Create.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/Airlines/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlybGluZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Airlines/Index.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/Airlines/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlybGluZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Airlines/Trash.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/Airlines/Trash.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlybGluZXNcVHJhc2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Airports/Create.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/Airports/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlycG9ydHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Airports/Index.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/Airports/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlycG9ydHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Airports/Trash.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/Airports/Trash.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlycG9ydHNcVHJhc2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Dashboard.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/BookingRequest/Requested.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va2luZ1JlcXVlc3RcUmVxdWVzdGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Service/Aircraft/Create.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Service/Aircraft/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVxBaXJjcmFmdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Service/Registeration.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Service/Registeration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZVxSZWdpc3RlcmF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Shared/Error.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Shared/_ServiceLayout.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Shared/_ServiceLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZXJ2aWNlTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Shared/_Userlayout.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Shared/_Userlayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2VybGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/Index.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/Login.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/User/Listing.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMaXN0aW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/Register.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/ResetPassword.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/User/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/Services.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/User/Services.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTZXJ2aWNlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/_ViewImports.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/_ViewStart.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Shared/_Adminlayout.cshtml]
+[C:/Users/admin/Documents/Hassan E-project/TravioTravel/TravioHotel/Views/Shared/_Adminlayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbmxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-c64rele7py

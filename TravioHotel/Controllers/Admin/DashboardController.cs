@@ -10,7 +10,9 @@ namespace TravioHotel.Controllers.Admin
         }    
         public IActionResult Admin()
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             var loggedIn       = httpContext.HttpContext.Session.GetString("admin") ?? "";
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             ViewBag.IsLoggedIn = loggedIn;
             if(ViewBag.IsLoggedIn == "" ) {
                 TempData["Error"] = "You Cannot Access Admin Dashboard Login First";

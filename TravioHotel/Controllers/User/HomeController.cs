@@ -16,10 +16,12 @@ namespace TravioHotel.Controllers.User
         }
         public IActionResult Index()
         {
+
             string isLogedIn   = httpContext.HttpContext.Session.GetString("user") ?? ""; 
+            
             ViewBag.isLoggedIn = isLogedIn;
             ViewBag.country    = database.Countries.ToList();
-            return View("Views/User/Index.cshtml" , isLogedIn);
+            return View("Views/User/Index.cshtml");
 
         }
         // Selecting Country
@@ -29,6 +31,9 @@ namespace TravioHotel.Controllers.User
             var Data   = new { city = cities };
             return Json(Data);
         }
-
+        public IActionResult Listing()
+        {
+            return View("Views/User/Listing.cshtml");
+        }
     }
 }
