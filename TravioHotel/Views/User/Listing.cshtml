@@ -404,14 +404,11 @@
 
                     $.ajax({
 
-                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + fromCountry + "/" + toCity + "/"+formattedDeparture+"/",
+                       
+                        url: "https://airlabs.co/api/v9/schedules?dep_iata="+fromCountry+"&arr_iata="+toCity+"&api_key=0d4a36ba-1c29-4cef-86e5-0fa2fc843eb9",
                         type: 'GET',
-                        headers: {
-                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
-                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
-                        },
                         success: function (response) {
-
+            
                         }
                     })
                 }
