@@ -34,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=BookingRequest}/{action=Index}/{id?}");
+    pattern: "{controller=Seeder}/{action=addAirports}/{id?}");
 
 app.Run();

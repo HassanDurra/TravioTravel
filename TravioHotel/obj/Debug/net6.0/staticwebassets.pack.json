@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\airlines.json"
     },
     {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\airports.json",
+      "PackagePath": "staticwebassets\\airports.json"
+    },
+    {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\cities.json",
       "PackagePath": "staticwebassets\\cities.json"
     },

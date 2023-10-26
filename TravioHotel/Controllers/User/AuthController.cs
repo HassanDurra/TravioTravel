@@ -148,10 +148,9 @@ namespace TravioHotel.Controllers
 
                         }; // This will the array of our data to be stored in Session
                         string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
                         httpContext.HttpContext.Session.SetString("user", userDataJson); // Then we will store it to session
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
-                    
+
                         return RedirectToAction("Index" , "Home");
                     }
                     if (user.Role == 1)
