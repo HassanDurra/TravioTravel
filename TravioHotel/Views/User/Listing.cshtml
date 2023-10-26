@@ -22,7 +22,9 @@
         <div class="container">
             <div class="row">
                 <input id="from_city" name="from_city" value="karachi" />
-                <input name="to_city" id="to_city" value="Bahrain" />
+                <input name="from_country" id="from_country" value="PK" />
+                <input name="to_city" id="to_city" value="Manama" />
+                <input name="to_country" id="to_country" value="BH" />
                 <input name="departureDate" value="10/25/2023" />
                 <input name="arrivalDate" value="10/25/2023" />
                     
@@ -373,17 +375,27 @@
 
     $(document).ready(function () {
 
-        let from_city = $('#from_city');
-        let to_city = $('#to_city');
+        let from_city     = $('#from_city');
+        let to_city       = $('#to_city');
+        let fromCountries = $("#from_country");
+        let toCountries   = $("#to_country");
         let departureDate = $('input[name="departureDate"]');
         // Sending Data to our getIata function to retrieve IATA CODE OF AIRPORTS
         $.ajax({
             url  : getIataCode , 
             type : 'post' ,
-            data: {fromCity : from_city.val() , toCity : to_city.val()},
+            data: {fromCity : from_city.val() , toCity : to_city.val() , from_country : fromCountries.val() , to_country : toCountries.val()},
             success:function(response){
-                let FromCity = response.fromCityDetails.iataCode;
-                let toCity   = response.toCityDetails.iataCode;
+                if(response.message == "FromCountry")
+                {
+                    console.log(response.toCountryDetails.iataCode);
+                    return false ;
+                }
+                else
+                {
+                    let FromCity = response.fromCityDetails.iataCode;
+                    let toCity = response.toCityDetails.iataCode;
+                }
                 
                 // Now We Will Get Details From Flight Schedules Through Our Api Then Will Show the Airlines Results of avaialble Schedules
                 $.ajax({
