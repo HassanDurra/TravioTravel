@@ -22,16 +22,16 @@ namespace TravioHotel.Controllers.User
         {
             string isLogedIn = httpContext.HttpContext.Session.GetString("user") ?? "";
             ViewBag.isLoggedIn = isLogedIn;
-            if (ViewBag.isLoggedIn != "")
+            if (ViewBag.isLoggedIn == "")
             {
                 
-                    var fromCountry = await Database.Cities.Where(e => e.name == booking_data.from_city).FirstOrDefaultAsync();
-                    var toCountry = await Database.Cities.Where(e => e.name == booking_data.to_city).FirstOrDefaultAsync();
+                    var fromCountry = await Database.Countries.Where(e => e.id == booking_data.from_country).FirstOrDefaultAsync();
+                    var toCountry   = await Database.Countries.Where(e => e.id == booking_data.to_country).FirstOrDefaultAsync();
 
                     var BookingRequestDetails = new
                     {
-                        from_country  = fromCountry.country_code,
-                        to_country    = toCountry.country_code,
+                        from_country  = fromCountry.iso2,
+                        to_country    = toCountry.iso2,
                         from_city     = booking_data.from_city,
                         to_city       = booking_data.to_city,
                         departureDate = booking_data.departure_date,
@@ -47,18 +47,29 @@ namespace TravioHotel.Controllers.User
             
         }
         //This Function Will get The IATA Code from Airports 
-        public async Task<IActionResult> getAirportsIata(string fromCity , string toCity, string fromCountryIso  , string toCountryIso)
+        public async Task<IActionResult> getAirportsIata(string fromCity , string toCity, string from_country, string to_country)
         {
                 var from_city = await Database.Airports.Where(e => e.City_name == fromCity).FirstOrDefaultAsync();
                 var to_city   = await Database.Airports.Where(e => e.City_name == toCity).FirstOrDefaultAsync();
-                if(from_city == null || to_city == null)
+                var fromCountry = await Database.Airports.Where(e => e.Country_iso == from_country).FirstOrDefaultAsync();
+                var toCountry = await Database.Airports.Where(e => e.Country_iso == to_country).FirstOrDefaultAsync();
+
+                 if (from_city == null && to_city != null)
                 {
-                var fromCountry  = await Database.Airports.Where(e => e.Country_iso == fromCountryIso).FirstOrDefaultAsync();
-                var toCountry    = await Database.Airports.Where(e => e.Country_iso == toCountryIso).FirstOrDefaultAsync();
-                var Data = new { fromCountryDetails = fromCountry, toCountryDetails = toCountry, message = "FromCountry" };
-                return Json(Data);
+                    var Data = new { fromCountryDetails = fromCountry, toCityDetails = to_city, message = "FromCountry" };
+                    return Json(Data);
                 }
-                if(fromCity != null && toCity != null)
+                if(to_city == null && from_city != null)
+                {
+                    var Data = new { fromCityDetails = from_city, toCountry = toCountry, message = "toCountry" };
+                    return Json(Data);
+                }
+                if (to_city == null && from_city == null)
+                {
+                    var Data = new { fromCountryDetails = fromCountry, toCountry = toCountry, message = "FromCountryAndCity" };
+                    return Json(Data);
+                }
+                if (fromCity != null && toCity != null)
                 {
                     var Data  = new {fromCityDetails = from_city ,  toCityDetails = to_city , message = "FromCity"}; 
                     return Json(Data);

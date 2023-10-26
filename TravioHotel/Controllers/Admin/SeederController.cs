@@ -198,7 +198,8 @@ namespace TravioHotel.Controllers.Admin
         public async Task<IActionResult>addAirports()
         {
 
-            var JsonData = System.IO.File.ReadAllText("C:\\Users\\admin\\Documents\\Hassan E-project\\TravioTravel\\TravioHotel\\wwwroot\\airports.json");
+            //var JsonData = System.IO.File.ReadAllText("C:\\Users\\admin\\Documents\\Hassan E-project\\TravioTravel\\TravioHotel\\wwwroot\\airports.json");
+            var JsonData = System.IO.File.ReadAllText("C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\airports.json");
             JArray jsonArrays = JArray.Parse(JsonData);
 
             foreach (var jsonArray in jsonArrays)
@@ -226,7 +227,7 @@ namespace TravioHotel.Controllers.Admin
 
             if (saveChanges > 0)
             {
-                TempData["Success"] = "Cities Added to Database Successfully";
+                TempData["Success"] = "Airpots Added to Database Successfully";
                 return RedirectToAction("Index", "Country");
             }
             TempData["Error"] = "failed To Save Services To Database";

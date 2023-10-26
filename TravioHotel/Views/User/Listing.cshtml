@@ -21,12 +21,12 @@
     <div id="flight-listings" class="innerpage-section-padding">
         <div class="container">
             <div class="row">
-                <input id="from_city" name="from_city" value="karachi" />
-                <input name="from_country" id="from_country" value="PK" />
-                <input name="to_city" id="to_city" value="Manama" />
-                <input name="to_country" id="to_country" value="BH" />
-                <input name="departureDate" value="10/25/2023" />
-                <input name="arrivalDate" value="10/25/2023" />
+                <input id="from_city" name="from_city" value="@ViewBag.BookingDetails.from_city" />
+                <input name="from_country" id="from_country" value="@ViewBag.BookingDetails.from_country" />
+                <input name="to_city" id="to_city" value="@ViewBag.BookingDetails.to_city" />
+                <input name="to_country" id="to_country" value="@ViewBag.BookingDetails.to_country" />
+                <input name="departureDate" value="@ViewBag.BookingDetails.departureDate" />
+                <input name="arrivalDate" value="@ViewBag.BookingDetails.arrivalDate" />
                     
                
                 <div class="col-12 col-md-12 col-lg-3 side-bar left-side-bar">
@@ -381,35 +381,91 @@
         let toCountries   = $("#to_country");
         let departureDate = $('input[name="departureDate"]');
         // Sending Data to our getIata function to retrieve IATA CODE OF AIRPORTS
+        // Converting Date Format From dd/mm/yyy To YYYYMMDD for api
+            const DatePart    = departureDate.val().split('/'); // This Will Remove the / from the values      
+            const month   = DatePart[0];
+            const date    = DatePart[1];
+            const year    = DatePart[2];
+            const formattedMonth = String(month).padStart(2 , '0');
+            const formattedDate  = String(date).padStart(2 , '0');
+            let formattedDeparture = `${year}${formattedMonth}${formattedDate}`;
+         
+    
+        // End Of Converting Date Format   
         $.ajax({
             url  : getIataCode , 
             type : 'post' ,
             data: {fromCity : from_city.val() , toCity : to_city.val() , from_country : fromCountries.val() , to_country : toCountries.val()},
             success:function(response){
                 if(response.message == "FromCountry")
-                {
-                    console.log(response.toCountryDetails.iataCode);
-                    return false ;
+                {   
+                    let fromCountry = response.fromCountryDetails.iataCode ;
+                    let toCity      = response.toCityDetails.iataCode;
+
+                    $.ajax({
+
+                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + fromCountry + "/" + toCity + "/"+formattedDeparture+"/",
+                        type: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
+                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
+                        },
+                        success: function (response) {
+
+                        }
+                    })
+                }
+                else if (response.message == "toCountry") {
+                    let FromCity  = response.fromCityDetails.iataCode;
+                    let toCountry = response.toCountry.iataCode;
+                    $.ajax({
+
+                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + FromCity + "/" + toCountry + "/"+ formattedDeparture +"/ ",
+                        type: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
+                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
+                        },
+                        success: function (response) {
+
+                        }
+                    });
+                } else if (response.message == "FromCountryAndCity") {
+                    let fromCountry  = response.fromCountryDetails.iataCode;
+                    let toCountry    = response.toCountry.iataCode;
+                    $.ajax({
+
+                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + fromCountry  + "/" + toCountry + "/" + formattedDeparture + "/ ",
+                        type: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
+                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
+                        },
+                        success: function (response) {
+
+                        }
+                    });
                 }
                 else
                 {
                     let FromCity = response.fromCityDetails.iataCode;
                     let toCity = response.toCityDetails.iataCode;
+                    $.ajax({
+
+                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + FromCity + "/" + toCity + "/"+ formattedDeparture +"/ ",
+                        type: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
+                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
+                        },
+                        success: function (response) {
+
+                        }
+                    })
                 }
                 
                 // Now We Will Get Details From Flight Schedules Through Our Api Then Will Show the Airlines Results of avaialble Schedules
-                $.ajax({
-
-                    url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + FromCity + "/" + toCity + "/20231026/",
-                    type: 'GET',
-                    headers: {
-                        'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
-                        'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
-                    },
-                    success: function (response) {
-
-                    }
-                })
+              
                
             }
         })
