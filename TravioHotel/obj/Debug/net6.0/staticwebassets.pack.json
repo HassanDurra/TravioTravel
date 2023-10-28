@@ -3209,6 +3209,10 @@
       "PackagePath": "staticwebassets\\userassets\\images\\loader-orange.gif"
     },
     {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\loader.svg",
+      "PackagePath": "staticwebassets\\userassets\\images\\loader.svg"
+    },
+    {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\login.jpg",
       "PackagePath": "staticwebassets\\userassets\\images\\login.jpg"
     },

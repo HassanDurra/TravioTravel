@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qW5vqKpRmIC3yVI4TyNgQeO8qMJov3Ko0Om3DNum/K4=",
+  "Hash": "Rzrk6ROWbrMdpKuLKdjvJqwkqCe3BLYfPwimJ4o2qFE=",
   "Source": "TravioHotel",
   "BasePath": "_content/TravioHotel",
   "Mode": "Default",
@@ -13530,6 +13530,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\userassets\\images\\latest-blog-3.jpg"
+    },
+    {
+      "Identity": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\loader.svg",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "userassets/images/loader.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\userassets\\images\\loader.svg"
     },
     {
       "Identity": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\loader-orange.gif",

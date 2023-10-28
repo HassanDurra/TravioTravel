@@ -189,8 +189,13 @@
 
                 </div><!-- end columns -->
 
-                <div class="col-12 col-md-12 col-lg-9 content-side " id="serviceContainer">
-
+                <div class="col-12 col-md-12 col-lg-9 content-side position-relative " id="serviceContainer">
+                    
+                            <div class="container" id="searchingLoader" style="position: absolute; top: 30%; left: 50%;transform: translate(-50%  , -50%);">
+                                <center><img src="~/userassets/images/loader.svg" alt=""></center>
+                                <br>
+                                <center><h1>Searching Flights</h1></center>
+                            </div>
                    
                   
                     <div class="pages pagination-margin">
@@ -219,6 +224,7 @@
     let getAirlines = '@Url.Action("getAirlinesService", "BookingRequest")';
     $(document).ready(function () {
         let serviceContainer = $('#serviceContainer');
+        let searchingLoader   = $('#searchingLoader');
         let from_city        = $('#from_city');
         let to_city          = $('#to_city');
         let fromCountries    = $("#from_country");
@@ -305,6 +311,7 @@
                                             type: "Post",
                                             data: { AirlinesIata: allAirlinesIata },
                                             success: function (response) {
+                                                $(searchingLoader).fadeOut();
                                                 let cardContainer = "";
                                                 $(response.data).each(function (index, value) {
                                                     cardContainer += `
