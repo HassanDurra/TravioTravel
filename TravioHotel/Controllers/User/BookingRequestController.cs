@@ -22,8 +22,8 @@ namespace TravioHotel.Controllers.User
         {
             string isLogedIn = httpContext.HttpContext.Session.GetString("user") ?? "";
             ViewBag.isLoggedIn = isLogedIn;
-            if (ViewBag.isLoggedIn == "")
-            {
+                if (ViewBag.isLoggedIn == "")
+                {
                 
                     var fromCountry = await Database.Countries.Where(e => e.id == booking_data.from_country).FirstOrDefaultAsync();
                     var toCountry   = await Database.Countries.Where(e => e.id == booking_data.to_country).FirstOrDefaultAsync();
@@ -36,6 +36,7 @@ namespace TravioHotel.Controllers.User
                         to_city       = booking_data.to_city,
                         departureDate = booking_data.departure_date,
                         arrivalDate   = booking_data.arrival_date,
+                        adults        = booking_data.number_of_adults,
                     };
                     ViewBag.BookingDetails = BookingRequestDetails;
                     return View("Views/User/Listing.cshtml");

@@ -21,14 +21,18 @@
     <div id="flight-listings" class="innerpage-section-padding">
         <div class="container">
             <div class="row">
-                <input id="from_city" name="from_city" value="@ViewBag.BookingDetails.from_city" />
-                <input name="from_country" id="from_country" value="@ViewBag.BookingDetails.from_country" />
-                <input name="to_city" id="to_city" value="@ViewBag.BookingDetails.to_city" />
-                <input name="to_country" id="to_country" value="@ViewBag.BookingDetails.to_country" />
-                <input name="departureDate" value="@ViewBag.BookingDetails.departureDate" />
-                <input name="arrivalDate" value="@ViewBag.BookingDetails.arrivalDate" />
-                    
-               
+
+                <!--These are the dynamic input field for data retreiving-->
+                <input type="hidden"  id="from_city" name="from_city" value="@ViewBag.BookingDetails.from_city" />
+                <input type="hidden" name="from_country" id="from_country" value="@ViewBag.BookingDetails.from_country" />
+                <input type="hidden" name="to_city" id="to_city" value="@ViewBag.BookingDetails.to_city" />
+                <input type="hidden" name="to_country" id="to_country" value="@ViewBag.BookingDetails.to_country" />
+                <input type="hidden" name="departureDate" value="@ViewBag.BookingDetails.departureDate" />
+                <input type="hidden" name="arrivalDate" value="@ViewBag.BookingDetails.arrivalDate" />
+                <input type="hidden" name="adults" value="@ViewBag.BookingDetails.adults" />
+                <!--These are the dynamic input field for data retreiving-->
+
+
                 <div class="col-12 col-md-12 col-lg-3 side-bar left-side-bar">
 
                     <div class="side-bar-block filter-block">
@@ -375,11 +379,12 @@
 
     $(document).ready(function () {
 
-        let from_city     = $('#from_city');
-        let to_city       = $('#to_city');
-        let fromCountries = $("#from_country");
-        let toCountries   = $("#to_country");
-        let departureDate = $('input[name="departureDate"]');
+        let from_city      = $('#from_city');
+        let to_city        = $('#to_city');
+        let fromCountries  = $("#from_country");
+        let toCountries    = $("#to_country");
+        let departureDate  = $('input[name="departureDate"]');
+        let numberofAdults = $('input[name="adults"]');
         // Sending Data to our getIata function to retrieve IATA CODE OF AIRPORTS
         // Converting Date Format From dd/mm/yyy To YYYYMMDD for api
             const DatePart    = departureDate.val().split('/'); // This Will Remove the / from the values      
@@ -388,8 +393,8 @@
             const year    = DatePart[2];
             const formattedMonth = String(month).padStart(2 , '0');
             const formattedDate  = String(date).padStart(2 , '0');
-            let formattedDeparture = `${year}${formattedMonth}${formattedDate}`;
-         
+            let formattedDeparture = `${year}-${formattedMonth}-${formattedDate}`;
+            
     
         // End Of Converting Date Format   
         $.ajax({
@@ -401,63 +406,226 @@
                 {   
                     let fromCountry = response.fromCountryDetails.iataCode ;
                     let toCity      = response.toCityDetails.iataCode;
-
+                    // First we Will Authorize our self to Amadeus.com then we can get a generated access token for api product usage
+                    //Authorizing
+                    var tokenUrl = "https://test.api.amadeus.com/v1/security/oauth2/token";
+                    // Amadeus Client Credientals
+                    const clientid = "gOIqKp00iu9rGRDRb893Mwa6YgagLRLz"; //Your App Api Key
+                    const clientSecret = "86nyQTrv9AF5SkU4"; // Api Secret Key
+                    //Creating A Data Variable to send these credentials
+                    const requestData = {
+                        grant_type: 'client_credentials',
+                        client_id: clientid,
+                        client_secret: clientSecret
+                    };
+                    //Converting Data Request to A url-encode String
+                    const requestDataString = Object.keys(requestData).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(requestData[key])).join('&');
+                    // Now Sending Ajax Request
                     $.ajax({
+                        url: tokenUrl,
+                        method: 'Post',
+                        data: requestDataString,
+                        success: function (clientData) {
+                            const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers'; // The Api Service You Want Use
+                            const accessToken = clientData.access_token; // This Is mendatory to authorize user to use the api service
+                            const SearchParams = {
+                                originLocationCode: fromCountry,
+                                destinationLocationCode: toCity,
+                                departureDate: formattedDeparture,// Date Format YYYY-MM-DD
+                                adults: 4
+                            }; // these are the params that we will send to our flight search api
+                            const requestDataString = Object.keys(SearchParams).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(SearchParams[key])).join('&');
+                            // Now Our Date And Uri is ready we will create a ajax Get request to send data and get data from response
+                            $.ajax({
+                                url: apiUrl + '?' + requestDataString,
+                                method: "Get",
+                                headers: {
+                                    'Authorization': 'Bearer ' + accessToken,
+                                },
+                                success: function (response) {
+                                    if (response.data == "" || response.data == null) {
+                                        alert("no flights found")
+                                    }
+                                    else {
+                                        console.log(response.data);
+                                    }
 
-                       
-                        url: "https://airlabs.co/api/v9/schedules?dep_iata="+fromCountry+"&arr_iata="+toCity+"&api_key=0d4a36ba-1c29-4cef-86e5-0fa2fc843eb9",
-                        type: 'GET',
-                        success: function (response) {
-            
+                                }
+
+
+                            });
                         }
+
                     })
+
+
                 }
+                /// ============== ///
+                if (response.message == "FromCountryAndCity") {
+                    let fromCountry = response.fromCountryDetails.iataCode;
+                    let toCity = response.toCountry.iataCode;
+                    // First we Will Authorize our self to Amadeus.com then we can get a generated access token for api product usage
+                    //Authorizing
+                    var tokenUrl = "https://test.api.amadeus.com/v1/security/oauth2/token";
+                    // Amadeus Client Credientals
+                    const clientid = "gOIqKp00iu9rGRDRb893Mwa6YgagLRLz"; //Your App Api Key
+                    const clientSecret = "86nyQTrv9AF5SkU4"; // Api Secret Key
+                    //Creating A Data Variable to send these credentials
+                    const requestData = {
+                        grant_type: 'client_credentials',
+                        client_id: clientid,
+                        client_secret: clientSecret
+                    };
+                    //Converting Data Request to A url-encode String
+                    const requestDataString = Object.keys(requestData).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(requestData[key])).join('&');
+                    // Now Sending Ajax Request
+                    $.ajax({
+                        url: tokenUrl,
+                        method: 'Post',
+                        data: requestDataString,
+                        success: function (clientData) {
+                            const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers'; // The Api Service You Want Use
+                            const accessToken = clientData.access_token; // This Is mendatory to authorize user to use the api service
+                            const SearchParams = {
+                                originLocationCode: fromCountry,
+                                destinationLocationCode: toCity,
+                                departureDate: formattedDeparture,// Date Format YYYY-MM-DD
+                                adults: 4
+                            }; // these are the params that we will send to our flight search api
+                            const requestDataString = Object.keys(SearchParams).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(SearchParams[key])).join('&');
+                            // Now Our Date And Uri is ready we will create a ajax Get request to send data and get data from response
+                            $.ajax({
+                                url: apiUrl + '?' + requestDataString,
+                                method: "Get",
+                                headers: {
+                                    'Authorization': 'Bearer ' + accessToken,
+                                },
+                                success: function (response) {
+                                    if (response.data == "" || response.data == null) {
+                                        alert("no flights found")
+                                    }
+                                    else {
+                                        console.log(response.data);
+                                    }
+
+                                }
+
+
+                            });
+                        }
+
+                    })
+
+
+                }
+                ///----------------./////////
                 else if (response.message == "toCountry") {
                     let FromCity  = response.fromCityDetails.iataCode;
                     let toCountry = response.toCountry.iataCode;
+                    // First we Will Authorize our self to Amadeus.com then we can get a generated access token for api product usage
+                    //Authorizing
+                    var tokenUrl = "https://test.api.amadeus.com/v1/security/oauth2/token";
+                    // Amadeus Client Credientals
+                    const clientid = "gOIqKp00iu9rGRDRb893Mwa6YgagLRLz"; //Your App Api Key
+                    const clientSecret = "86nyQTrv9AF5SkU4"; // Api Secret Key
+                    //Creating A Data Variable to send these credentials
+                    const requestData = {
+                        grant_type: 'client_credentials',
+                        client_id: clientid,
+                        client_secret: clientSecret
+                    };
+                    //Converting Data Request to A url-encode String
+                    const requestDataString = Object.keys(requestData).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(requestData[key])).join('&');
+                    // Now Sending Ajax Request
                     $.ajax({
+                        url: tokenUrl,
+                        method: 'Post',
+                        data: requestDataString,
+                        success: function (clientData) {
+                            const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers'; // The Api Service You Want Use
+                            const accessToken = clientData.access_token; // This Is mendatory to authorize user to use the api service
+                            const SearchParams = {
+                                originLocationCode: FromCity,
+                                destinationLocationCode: toCountry,
+                                departureDate: formattedDeparture,// Date Format YYYY-MM-DD
+                                adults: 4
+                            }; // these are the params that we will send to our flight search api
+                            const requestDataString = Object.keys(SearchParams).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(SearchParams[key])).join('&');
+                            // Now Our Date And Uri is ready we will create a ajax Get request to send data and get data from response
+                            $.ajax({
+                                url: apiUrl + '?' + requestDataString,
+                                method: "Get",
+                                headers: {
+                                    'Authorization': 'Bearer ' + accessToken,
+                                },
+                                success: function (response) {
+                                    if (response.data == "" || response.data == null) {
+                                        alert("no flights found")
+                                    }
+                                    else {
+                                        console.log(response.data);
+                                    }
 
-                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + FromCity + "/" + toCountry + "/"+ formattedDeparture +"/ ",
-                        type: 'GET',
-                        headers: {
-                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
-                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
-                        },
-                        success: function (response) {
+                                }
 
+
+                            });
                         }
-                    });
-                } else if (response.message == "FromCountryAndCity") {
-                    let fromCountry  = response.fromCountryDetails.iataCode;
-                    let toCountry    = response.toCountry.iataCode;
-                    $.ajax({
 
-                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + fromCountry  + "/" + toCountry + "/" + formattedDeparture + "/ ",
-                        type: 'GET',
-                        headers: {
-                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
-                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
-                        },
-                        success: function (response) {
-
-                        }
-                    });
+                    })
                 }
                 else
                 {
                     let FromCity = response.fromCityDetails.iataCode;
                     let toCity = response.toCityDetails.iataCode;
+                    var tokenUrl = "https://test.api.amadeus.com/v1/security/oauth2/token";
+                    // Amadeus Client Credientals
+                    const clientid = "gOIqKp00iu9rGRDRb893Mwa6YgagLRLz"; //Your App Api Key
+                    const clientSecret = "86nyQTrv9AF5SkU4"; // Api Secret Key
+                    //Creating A Data Variable to send these credentials
+                    const requestData = {
+                        grant_type: 'client_credentials',
+                        client_id: clientid,
+                        client_secret: clientSecret
+                    };
+                    //Converting Data Request to A url-encode String
+                    const requestDataString = Object.keys(requestData).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(requestData[key])).join('&');
+                    // Now Sending Ajax Request
                     $.ajax({
+                        url: tokenUrl,
+                        method: 'Post',
+                        data: requestDataString,
+                        success: function (clientData) {
+                            const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers'; // The Api Service You Want Use
+                            const accessToken = clientData.access_token; // This Is mendatory to authorize user to use the api service
+                            const SearchParams = {
+                                originLocationCode: FromCity,
+                                destinationLocationCode: toCity,
+                                departureDate: formattedDeparture,// Date Format YYYY-MM-DD
+                                adults: 4
+                            }; // these are the params that we will send to our flight search api
+                            const requestDataString = Object.keys(SearchParams).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(SearchParams[key])).join('&');
+                            // Now Our Date And Uri is ready we will create a ajax Get request to send data and get data from response
+                            $.ajax({
+                                url: apiUrl + '?' + requestDataString,
+                                method: "Get",
+                                headers: {
+                                    'Authorization': 'Bearer ' + accessToken,
+                                },
+                                success: function (response) {
+                                    if (response.data == "" || response.data == null) {
+                                        alert("no flights found")
+                                    }
+                                    else {
+                                        console.log(response.data);
+                                    }
 
-                        url: "https://timetable-lookup.p.rapidapi.com/TimeTable/" + FromCity + "/" + toCity + "/"+ formattedDeparture +"/ ",
-                        type: 'GET',
-                        headers: {
-                            'X-RapidAPI-Key': '4e3cc5fdc8msh063c63de0649857p189c22jsn90a8e5d61302',
-                            'X-RapidAPI-Host': 'timetable-lookup.p.rapidapi.com'
-                        },
-                        success: function (response) {
+                                }
 
+
+                            });
                         }
+
                     })
                 }
                 
