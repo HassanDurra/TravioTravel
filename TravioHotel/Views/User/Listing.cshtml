@@ -376,7 +376,7 @@
 <script>
 
     let getIataCode = '@Url.Action("getAirportsIata" , "BookingRequest")';
-
+    let getAirlines = '@Url.Action("getAirlinesService", "BookinRequest")';
     $(document).ready(function () {
 
         let from_city      = $('#from_city');
@@ -447,7 +447,20 @@
                                         alert("no flights found")
                                     }
                                     else {
-                                        console.log(response.data);
+                                        let uniqueAirlinesIata = [];
+                                        // Assuming 'response' is the JSON response object
+                                        $(response.data).each(function (index, value) {
+                                            $(value.itineraries).each(function (i, itinerary) {
+                                                $(itinerary.segments).each(function (j, segment) {
+                                                    uniqueAirlinesIata.push(segment.carrierCode);
+                                                });
+                                            });
+                                        });
+
+                                        // To remove duplicate carrier codes, you can use a Set
+                                        let allAirlinesIata = [...new Set(uniqueAirlinesIata)];
+
+                                        console.log(allAirlinesIata);
                                     }
 
                                 }
@@ -505,7 +518,21 @@
                                         alert("no flights found")
                                     }
                                     else {
-                                        console.log(response.data);
+                                        let uniqueAirlinesIata = [];
+                                        // Assuming 'response' is the JSON response object
+                                        $(response.data).each(function (index, value) {
+                                            $(value.itineraries).each(function (i, itinerary) {
+                                                $(itinerary.segments).each(function (j, segment) {
+                                                    uniqueAirlinesIata.push(segment.carrierCode);
+                                                });
+                                            });
+                                        });
+
+                                        // To remove duplicate carrier codes, you can use a Set
+                                        let allAirlinesIata = [...new Set(uniqueAirlinesIata)];
+
+                                        console.log(allAirlinesIata);
+                                    
                                     }
 
                                 }
@@ -563,7 +590,21 @@
                                         alert("no flights found")
                                     }
                                     else {
-                                        console.log(response.data);
+                                        let uniqueAirlinesIata = [];
+                                        // Assuming 'response' is the JSON response object
+                                        $(response.data).each(function (index, value) {
+                                            $(value.itineraries).each(function (i, itinerary) {
+                                                $(itinerary.segments).each(function (j, segment) {
+                                                    uniqueAirlinesIata.push(segment.carrierCode);
+                                                });
+                                            });
+                                        });
+
+                                        // To remove duplicate carrier codes, you can use a Set
+                                        let allAirlinesIata = [...new Set(uniqueAirlinesIata)];
+
+                                        console.log(allAirlinesIata);
+                                    
                                     }
 
                                 }
@@ -617,7 +658,21 @@
                                         alert("no flights found")
                                     }
                                     else {
-                                        console.log(response.data);
+                                        let uniqueAirlinesIata = [];
+                                        // Assuming 'response' is the JSON response object
+                                        $(response.data).each(function (index, value) {
+                                            $(value.itineraries).each(function (i, itinerary) {
+                                                $(itinerary.segments).each(function (j, segment) {
+                                                    uniqueAirlinesIata.push(segment.carrierCode);
+                                                });
+                                            });
+                                        });
+
+                                        // To remove duplicate carrier codes, you can use a Set
+                                        let allAirlinesIata = [...new Set(uniqueAirlinesIata)];
+
+                                        console.log(allAirlinesIata);
+                                    
                                     }
 
                                 }

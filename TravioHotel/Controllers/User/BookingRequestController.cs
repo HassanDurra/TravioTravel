@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using TravioHotel.DataContext;
 using TravioHotel.Models;
 using TravioHotel.Services;
@@ -78,5 +79,18 @@ namespace TravioHotel.Controllers.User
                  var message = new { message = "No Data Found" };
                  return Json(message);   
         }
+        //This function will retreive all the airlines that has been retreived by the api of (AMADUES.COM)
+        public async Task<IActionResult> getAirlinesService(List<string> airlinesIataCodes)
+        {
+            List<Airlines> airlines = new List<Airlines> ();
+            if(airlinesIataCodes != null && airlinesIataCodes.Any())
+            {
+                airlines =  Database.Airlines.Where(a => airlinesIataCodes.Contains(a.IATACode)).ToList();
+            }
+            string AirlinesData = JsonConvert.SerializeObject(airlines);
+
+            return Json(AirlinesData);
+        }
     }
+    
 }
