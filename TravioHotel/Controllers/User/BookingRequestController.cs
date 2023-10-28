@@ -80,16 +80,16 @@ namespace TravioHotel.Controllers.User
                  return Json(message);   
         }
         //This function will retreive all the airlines that has been retreived by the api of (AMADUES.COM)
-        public async Task<IActionResult> getAirlinesService(List<string> airlinesIataCodes)
+        public async Task<IActionResult> getAirlinesService(List<string> AirlinesIata)
         {
             List<Airlines> airlines = new List<Airlines> ();
-            if(airlinesIataCodes != null && airlinesIataCodes.Any())
+            if(AirlinesIata != null && AirlinesIata.Any())
             {
-                airlines =  Database.Airlines.Where(a => airlinesIataCodes.Contains(a.IATACode)).ToList();
+                airlines =  Database.Airlines.Where(a => AirlinesIata.Contains(a.IATACode)).ToList();
             }
-            string AirlinesData = JsonConvert.SerializeObject(airlines);
-
-            return Json(AirlinesData);
+         
+            var data = new { data = airlines };
+            return Json(data);
         }
     }
     
