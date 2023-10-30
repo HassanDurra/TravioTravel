@@ -512,56 +512,88 @@
                                     }
                                     else {
                                         let uniqueAirlinesIata = [];
+                                        let segementArray =  [] ;
                                         // Assuming 'response' is the JSON response object
+                                        let cardContainer = "" ;
                                         $(response.data).each(function (index, value) {
                                             $(value.itineraries).each(function (i, itinerary) {
-                                                $(itinerary.segments).each(function (j, segment) {
-                                                    uniqueAirlinesIata.push(segment.carrierCode);
-                                                });
-                                            });
-                                        });
 
-                                        // To remove duplicate carrier codes, you can use a Set
-                                        let allAirlinesIata = [...new Set(uniqueAirlinesIata)];
-                                        $.ajax({
-                                            url: getAirlines,
-                                            type: "Post",
-                                            data:{ AirlinesIata: allAirlinesIata },
-                                            success: function (response) {
-                                                let cardContainer = "" ;
-                                                $(response.data).each(function(index , value){
+                                                var durationValue = itinerary.duration;
+                                                var hour           = durationValue.match(/(\d+)H/);
+                                                var minutes        = durationValue.match(/(\d+)M/);
+                                                if(hour && minutes){
+                                                    var FormattedDuration  = hour[1] + "hours" +"-"+ minutes[1] +"minutes";
+                                                }
+                                              $(itinerary.segments).each(function( s , segment){
+                                                  
+                                                  // Changing Arrival And Departure Format from yyyy-mm-dd 00-00 to mm-dd-yyyy
+                                                    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                                                   //Departure Format
+                                                   var DepartureDate = segment.departure.at ;
+                                                   var dept_date     = new Date(DepartureDate);
+                                                   var d_year        = dept_date.getFullYear();
+                                                   var d_month       = dept_date.getMonth();
+                                                   var d_date        = dept_date.getDate();
+                                                   var d_hour        = dept_date.getHours();
+                                                   var d_minutes     = dept_date.getMinutes();
+                                                   var FormattedDepatures = months[d_month] + ", " + d_date + "-" + d_year + "(" + d_hour + ":" + (d_minutes < 10 ? '0' : '') + d_minutes + (d_hour < 12 ? "AM" : "PM") + ")"; //  // for example Aug, 02-2017 (8:40 PM)
+                                                  // Arrival Format
+                                                   var ArrivalDate = segment.arrival.at ;
+                                                   var arr_date    = new Date(ArrivalDate);
+                                                   var a_year            = arr_date.getFullYear();
+                                                   var a_month           = arr_date.getMonth();
+                                                   var a_date            = arr_date.getDate();
+                                                   var a_hour            = arr_date.getHours();
+                                                   var a_minutes         = arr_date.getMinutes();
+                                                   var FormattedArrival  = months[a_month] + ", " + a_date + "-" + a_year + "(" + a_hour  + ":" + (a_minutes < 10 ? '0' : '') + a_minutes + (a_hour >= 12 ? "AM" : "PM") + ")"; // for example Aug, 02-2017 (8:40 PM)
+                                                    var wayType  = "" ;
+                                                    var stayType = "" ;
+                                                    if(value.oneWay == false){
+                                                        wayType  = "Two Way" ;
+                                                        stayType = "Multi Stay";
+                                                    }
+                                                    else
+                                                    {
+                                                        wayType  = "One Way";
+                                                        stayType = "Single Stay";
+                                                    }
+
+                                              $(value.price).each(function(j , pricing){
                                                     cardContainer += `
-                                                         <div class="list-block main-block f-list-block">
-                                                    <div class="list-content">
-                                                        <div class="main-img list-img f-list-img">
-                                                            <a href="flight-detail-left-sidebar.html">
-                                                                <div class="f-img">
-                                                                        <img src="${value.airlineImage}" class="img-fluid" alt="flight-img" />
+                                                                 <div class="list-block main-block f-list-block">
+                                                            <div class="list-content">
+                                                                <div class="main-img list-img f-list-img">
+                                                                    <a href="flight-detail-left-sidebar.html">
+                                                                        <div class="f-img">
+                                                                                <img src="" class="img-fluid" alt="flight-img" />
+                                                                        </div><!-- end f-list-img -->
+                                                                    </a>
+                                                                    <ul class="list-unstyled list-inline offer-price-1">
+                                                                        <li class="list-inline-item duration"><i class="fa fa-clock-o"></i><span>${FormattedDuration}</span></li>
+                                                                        <li class="list-inline-item price">${pricing.currency}${pricing.total}<span class="divider">|</span><span class="pkg">${stayType}</span></li>
+                                                                    </ul>
+                                                                    <ul class="list-unstyled flight-timing">
+                                                                            <li><span><i class="fa fa-plane"></i></span><span class="date">${FormattedDepatures}</li>
+                                                                                <li><span><i class="fa fa-plane"></i></span><span class="date">${FormattedArrival}</li>
+                                                                    </ul>
                                                                 </div><!-- end f-list-img -->
-                                                            </a>
-                                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                                <li class="list-inline-item duration"><i class="fa fa-clock-o"></i><span>6 hours - 30 minutes</span></li>
-                                                                <li class="list-inline-item price">$568.00<span class="divider">|</span><span class="pkg">2 Stay</span></li>
-                                                            </ul>
-                                                            <ul class="list-unstyled flight-timing">
-                                                                <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 02-2017 </span>(8:40 PM)</li>
-                                                                <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 03-2017 </span>(8:40 PM)</li>
-                                                            </ul>
-                                                        </div><!-- end f-list-img -->
 
-                                                        <div class="list-info f-list-info">
-                                                                <h3 class="block-title"><a href="flight-detail-left-sidebar.html">${from_city.val()} to ${toCountry}</a></h3>
-                                                            <p class="block-minor"><span>Fr 5379,</span> Oneway Flight</p>
-                                                            <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum at, pro an eros perpetua ullamcorper.</p>
-                                                            <a href="flight-detail-left-sidebar.html" class="btn btn-orange">View More</a>
-                                                        </div><!-- end f-list-info -->
-                                                    </div><!-- end list-content -->
-                                                </div><!-- end f-list-block -->`;
-                                                }); // Foreach Ends here
-                                                $(serviceContainer).html(cardContainer);
-                                            }
-                                        }); // Ajax Ends here for Services
-
+                                                                <div class="list-info f-list-info">
+                                                                        <h3 class="block-title"><a href="flight-detail-left-sidebar.html">${from_city.val()} to ${toCountry}</a></h3>
+                                                                    <p class="block-minor"><span>Fr 5379,</span> ${wayType} Flight</p>
+                                                                    <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum at, pro an eros perpetua ullamcorper.</p>
+                                                                    <a href="flight-detail-left-sidebar.html" class="btn btn-orange">View More</a>
+                                                                </div><!-- end f-list-info -->
+                                                            </div><!-- end list-content -->
+                                                        </div><!-- end f-list-block -->`;
+                                              }); //  Pricing Ends Here
+                                                });  // Segments Foreach Ends here
+                                            }); // Foreach Ends here
+                                            $(serviceContainer).html(cardContainer);
+                                  
+                                        });// duration each function
+                          
+                                   
 
                                     }
 
