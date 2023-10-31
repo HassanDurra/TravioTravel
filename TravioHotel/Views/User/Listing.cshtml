@@ -514,10 +514,15 @@
                                         let uniqueAirlinesIata = [];
                                         let segementArray =  [] ;
                                         // Assuming 'response' is the JSON response object
-                                        let cardContainer = "" ;
+                                          let cardContainer = "" ;
+                                          var airlineData = [];
                                         $(response.data).each(function (index, value) {
                                             $(value.itineraries).each(function (i, itinerary) {
+                                                $(value.validatingAirlineCodes).each(function(a   , airlineCode){
+                                                
+                                             
 
+                                             
                                                 var durationValue = itinerary.duration;
                                                 var hour           = durationValue.match(/(\d+)H/);
                                                 var minutes        = durationValue.match(/(\d+)M/);
@@ -525,7 +530,8 @@
                                                     var FormattedDuration  = hour[1] + "hours" +"-"+ minutes[1] +"minutes";
                                                 }
                                               $(itinerary.segments).each(function( s , segment){
-                                                  
+                                                 
+                                                
                                                   // Changing Arrival And Departure Format from yyyy-mm-dd 00-00 to mm-dd-yyyy
                                                     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                                                    //Departure Format
@@ -550,22 +556,32 @@
                                                     var stayType = "" ;
                                                     if(value.oneWay == false){
                                                         wayType  = "Two Way" ;
-                                                        stayType = "Multi Stay";
+                                                        stayType = "2 Stay";
                                                     }
                                                     else
                                                     {
                                                         wayType  = "One Way";
-                                                        stayType = "Single Stay";
+                                                        stayType = "1 Stay";
                                                     }
 
                                               $(value.price).each(function(j , pricing){
+                                                            $.ajax({
+                                                                url: getAirlines,
+                                                                method: "Post",
+                                                                data: { AirlinesIata: airlineCode },
+                                                                success: function (airlines) {
+                                                                    var airlineInfo = {};
+                                                                    $(airlines).each(function (ar, airline) {
+                                                                   
+
+                                                            
                                                     cardContainer += `
                                                                  <div class="list-block main-block f-list-block">
                                                             <div class="list-content">
                                                                 <div class="main-img list-img f-list-img">
                                                                     <a href="flight-detail-left-sidebar.html">
                                                                         <div class="f-img">
-                                                                                <img src="" class="img-fluid" alt="flight-img" />
+                                                                                    <img src="${airline.airlineImage}" class="img-fluid" alt="flight-img" />
                                                                         </div><!-- end f-list-img -->
                                                                     </a>
                                                                     <ul class="list-unstyled list-inline offer-price-1">
@@ -586,11 +602,15 @@
                                                                 </div><!-- end f-list-info -->
                                                             </div><!-- end list-content -->
                                                         </div><!-- end f-list-block -->`;
-                                              }); //  Pricing Ends Here
+                                                                    });
+                                            $(serviceContainer).html(cardContainer);
+                                                                }
+                                                            });
+                                                                }); //  Pricing Ends Here    
                                                 });  // Segments Foreach Ends here
                                             }); // Foreach Ends here
-                                            $(serviceContainer).html(cardContainer);
-                                  
+                                              
+                                            }); // Foreach For Carrier Codes
                                         });// duration each function
                           
                                    
