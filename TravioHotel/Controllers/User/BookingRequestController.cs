@@ -36,9 +36,9 @@ namespace TravioHotel.Controllers.User
                         from_city     = booking_data.from_city,
                         to_city       = booking_data.to_city,
                         departureDate = booking_data.departure_date,
-                        arrivalDate   = booking_data.arrival_date,
                         adults        = booking_data.number_of_adults,
                     };
+
                     ViewBag.BookingDetails = BookingRequestDetails;
                     return View("Views/User/Listing.cshtml");
 
@@ -90,7 +90,10 @@ namespace TravioHotel.Controllers.User
             }
             return Json(airlines);
         }
-
+        public IActionResult FlightBooking()
+        {
+            return View("Views/User/FlightBooking.cshtml");
+        }
     }
     
 }

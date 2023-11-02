@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 using TravioHotel.DataContext;
-
+using Newtonsoft.Json;
 namespace TravioHotel.Controllers.User
 {  
     public class BookingController : Controller
@@ -10,12 +11,11 @@ namespace TravioHotel.Controllers.User
         {
             this.Database = _database;
         }
-        public IActionResult SearchFlight(string to , string from , string check_in , string check_out , string total_adults)
+        public IActionResult FlightBooking( string bookingDetails)
         {
-            var services = Database.Airlines.Where(e => e.deleted_at == null).ToList();
-            var Data = new { dropoff = to, destination = from, checkin = check_in, checkout = check_out };
-            ViewBag.data = new { service = services, details = Data };
-            return View("View/User/Services.cshtml");
+            var details = JsonConvert.DeserializeObject(bookingDetails);
+           
+            return Json(details);
         }
     }
 }

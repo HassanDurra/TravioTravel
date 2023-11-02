@@ -1,17 +1,17 @@
 ﻿
 @{
-	Layout = "~/Views/Shared/_UserLayout.cshtml";
-	ViewData["title"] = "Flight Booking";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewData["title"] = "Flight Booking Form";
 }
 <!--=============== PAGE-COVER =============-->
 <section class="page-cover" id="cover-flight-booking">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-title">Flight Booking</h1>
+                <h1 class="page-title">Flight Booking Form</h1>
                 <ul class="breadcrumb">
-                    <li ><a href="#">Home / </a></li>
-                    <li >  Flight Booking </li>
+                    <li ><a asp-action="Index" asp-controller="Home" asp-area="User">Home &nbsp; / </a></li>
+                    <li >Flight Booking Form</li>
                 </ul>
             </div><!-- end columns -->
         </div><!-- end row -->
@@ -104,73 +104,18 @@
                     <form class="lg-booking-form" id="frm_booking" name="frm_booking" method="post">
                         <div class="lg-booking-form-heading">
                             <span>1</span>
-                            <h3>Personal Information</h3>
+                            <h3>Passanger Details</h3>
                         </div><!-- end lg-bform-heading -->
 
-                        <div class="personal-info">
 
-                            <div class="row">
-                                <div class="col-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" id="txt_name" name="txt_name" />
-                                    </div>
-                                </div><!-- end columns -->
-
-                                <div class="col-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" id="txt_last_name" name="txt_last_name" />
-                                    </div>
-                                </div><!-- end columns -->
-                            </div><!-- end row -->
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Date of Birth</label>
-                                        <input type="text" class="form-control dpd3" id="txt_dob" name="txt_dob" />
-                                    </div>
-                                </div><!-- end columns -->
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Country</label>
-                                        <input type="text" class="form-control" id="txt_country" name="txt_country" />
-                                    </div>
-                                </div><!-- end columns -->
-                            </div><!-- end row -->
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email Address</label>
-                                        <input type="email" class="form-control" id="txt_email" name="txt_email" />
-                                    </div>
-                                </div><!-- end columns -->
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input type="text" class="form-control" id="txt_phone" name="txt_phone" />
-                                    </div>
-                                </div><!-- end columns -->
-                            </div><!-- end row -->
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Permanent Address</label>
-                                        <textarea type="text" class="form-control" rows="2" id="txt_address" name="txt_address" /></textarea>
-                                    </div>
-                                </div><!-- end columns -->
+                        <div class="payment-tabs">
+                            <ul class="nav nav-tabs" id="tabpanepassangerLinks">
+                            </ul>
+                            <!-- start here -->
+                            <div class="tab-content" id="tabpanepassangerContainer">
                             </div>
-                        </div><!-- end personal-info -->
-
-                        <div class="lg-booking-form-heading">
-                            <span>2</span>
-                            <h3>Payment Information</h3>
-                        </div><!-- end lg-bform-heading -->
+                            <!-- passange tab pane ends here -->
+                        </div><!-- end payment-tabs -->
 
                         <div class="payment-tabs">
                             <ul class="nav nav-tabs">
@@ -248,7 +193,7 @@
                                 <div id="tab-paypal" class="tab-pane">
                                     <img src="images/paypal.png" class="img-fluid" alt="paypal" />
                                     <div class="paypal-text">
-                                        <p><span>Important:</span> You will be redirected to Paypal Website to make the payment process secure and complete.</p>
+                                        <p><span>Important:</span>@ViewBag.booking_details</p>
                                         <a href="#" class="btn btn-default btn-lightgrey">Checkout via Paypal<span><i class="fa fa-angle-double-right"></i></span></a>
                                     </div><!-- end paypal-text -->
 
@@ -271,7 +216,6 @@
         </div><!-- end container -->
     </div><!-- end flight-booking -->
 </section><!-- end innerpage-wrapper -->
-
 <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
-
+<script src="~/userassets/js/custom/flightbooking.js"></script>
 

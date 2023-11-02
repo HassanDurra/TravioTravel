@@ -151,7 +151,7 @@ namespace TravioHotel.Migrations
                     b.ToTable("Airports");
                 });
 
-            modelBuilder.Entity("TravioHotel.Models.BookingRequest", b =>
+            modelBuilder.Entity("TravioHotel.Models.BookingFlightClientDetails", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -159,12 +159,137 @@ namespace TravioHotel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<string>("Cnic_number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("city_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("contact_number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("country_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("created_at")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("date_of_birth")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("firstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("flight_details_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("is_booked")
+                        .HasColumnType("int");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("passport_number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("status")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("BookingClientDetails");
+                });
+
+            modelBuilder.Entity("TravioHotel.Models.BookingFlightDetails", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("air_craft_id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("airline_image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("airline_name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("arrival_date")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("booking_code")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("arrival_time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("class_type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("created_at")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("deleted_at")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("departure_date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("departure_time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("flight_duration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("from")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("journey_type")
+                        .HasColumnType("int");
+
+                    b.Property<int>("to")
+                        .HasColumnType("int");
+
+                    b.Property<int>("total_price")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("BookingFlightDetails");
+                });
+
+            modelBuilder.Entity("TravioHotel.Models.BookingRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("created_at")
                         .HasColumnType("nvarchar(max)");
@@ -186,9 +311,6 @@ namespace TravioHotel.Migrations
                     b.Property<int>("number_of_adults")
                         .HasColumnType("int");
 
-                    b.Property<int>("status")
-                        .HasColumnType("int");
-
                     b.Property<string>("to_city")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -196,10 +318,7 @@ namespace TravioHotel.Migrations
                     b.Property<int>("to_country")
                         .HasColumnType("int");
 
-                    b.Property<int>("user_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("BookingRequests");
                 });
