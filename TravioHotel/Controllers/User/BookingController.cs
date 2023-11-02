@@ -11,11 +11,15 @@ namespace TravioHotel.Controllers.User
         {
             this.Database = _database;
         }
-        public IActionResult FlightBooking( string bookingDetails)
+        public IActionResult FlightBooking( string FlightDetails)
         {
-            var details = JsonConvert.DeserializeObject(bookingDetails);
-           
-            return Json(details);
+            ViewBag.details = FlightDetails;
+            return View("Views/User/FlightBooking.cshtml");
+        }
+        public IActionResult checkCurrency(string Currency)
+        {
+            var currencySymbol = Database.Countries.Where(e=> e.currency == Currency).FirstOrDefault();
+            return Json(currencySymbol);
         }
     }
 }

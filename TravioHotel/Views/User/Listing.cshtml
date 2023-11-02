@@ -215,13 +215,14 @@
     </div><!-- end flight-listings -->
 </section><!-- end innerpage-wrapper -->
 <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
-<script src="~/userassets/js/custom/ServiceListing.js"></script>
+
 
 <script>
 
     let getIataCode      = '@Url.Action("getAirportsIata" , "BookingRequest")';
     let getAirlines      = '@Url.Action("getAirlinesService", "BookingRequest")';
     let FlightBookingUrl = '@Url.Action("FlightBooking", "Booking")';
+    let currencySymbolurl = '@Url.Action("checkCurrency" , "Booking")';
     $(document).ready(function (e) {
         let serviceContainer = $('#serviceContainer');
         let searchingLoader = $('#searchingLoader');
@@ -520,7 +521,8 @@
                                         let cardContainer = "";
                                         var airlineData = [];
                                             const startIndex = (page - 1) * itemsPerPage;
-                                                const endIndex = startIndex + itemsPerPage;
+                                            const endIndex = startIndex + itemsPerPage;
+                                      
                                                 const itemsToDisplay = response.data.slice(startIndex, endIndex);
                                             $(itemsToDisplay).each(function (index, value) {
                                             $(value.itineraries).each(function (i, itinerary) {
@@ -583,7 +585,7 @@
                                                                         var departure_time = d_hour + ":" + (d_minutes < 10 ? '0' : '') + d_minutes + (d_hour >= 12 ? "AM" : "PM");
                                                                         var arrival_date = months[a_month] + ", " + a_date + "-" + a_year;
                                                                         var arrival_time = a_hour + ":" + (a_minutes < 10 ? '0' : '') + a_minutes + (a_hour >= 12 ? "AM" : "PM");
-
+                                                                        
                                                                         cardContainer += `
                                                                      <div class="list-block main-block f-list-block">
                                                                 <div class="list-content">
@@ -595,7 +597,7 @@
                                                                         </a>
                                                                         <ul class="list-unstyled list-inline offer-price-1">
                                                                             <li class="list-inline-item duration"><i class="fa fa-clock-o"></i><span>${FormattedDuration}</span></li>
-                                                                                <li class="list-inline-item price">${pricing.price.currency}${pricing.price.total}<span class="divider">|</span><span class="pkg">${stayType}</span></li>
+                                                                                    <li class="list-inline-item price"><div class="currencyContainer"></div>${pricing.price.total}<span class="divider">|</span><span class="pkg">${stayType}</span></li>
                                                                         </ul>
                                                                         <ul class="list-unstyled flight-timing">
                                                                                 <li><span><i class="fa fa-plane"></i></span><span class="date">${FormattedDepatures}</li>
@@ -635,6 +637,7 @@
                                                                     $(serviceContainer).html(cardContainer);
                                                                 }
                                                             });
+
                                                         }); //  Pricing Ends Here
                                                     });  // Segments Foreach Ends here
                                                 }); // Foreach Ends here
@@ -671,15 +674,9 @@
                                         price: $(this).closest('#bookingFormDetails').find('input[name="price"]').val(),
                                         currency: $(this).closest('#bookingFormDetails').find('input[name="currency"]').val()
                                     };
-                                    $.ajax({
-                                        url: FlightBookingUrl,
-                                        type: "Post",
-                                        data: { bookingDetails: formData },
-                                        success: function () {
-                                            e.preventDefault();
-                                           
-                                        }
-                                    })});
+                                   
+                                            window.location.href = FlightBookingUrl + '?FlightDetails=' + JSON.stringify(formData);
+                                      });
                         }
                     
                     });

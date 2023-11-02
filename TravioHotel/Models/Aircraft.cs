@@ -20,7 +20,7 @@ namespace TravioHotel.Models
         public int remaining_seats { get; set; } = 0;
         public int bussiness_seats { get; set; } = 0;
         public int economy_seats { get; set; } = 0;
-        public int first_class_seats { get; set; } = 0; 
+        public int first_class_seats { get; set; } = 0;
         public int bussiness_seats_occupied { get; set; } = 0;
         public int economy_seats_occupied { get; set; } = 0;
         public int first_class_seats_occupied { get; set; } = 0;
@@ -28,6 +28,6 @@ namespace TravioHotel.Models
         public int economy_seats_remaining { get; set; } = 0;
         public int first_class_seats_remaining { get; set; } = 0;
         public int availibility { get; set; } = 0;
-        
+
     }
 }

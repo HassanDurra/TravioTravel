@@ -20,7 +20,7 @@ namespace TravioHotel.Controllers.User
             string isLogedIn   = httpContext.HttpContext.Session.GetString("user") ?? ""; 
             
             ViewBag.isLoggedIn = isLogedIn;
-            ViewBag.country    = database.Countries.ToList();
+            ViewBag.country = database.Countries.ToList();
             return View("Views/User/Index.cshtml");
 
         }

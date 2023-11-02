@@ -2,6 +2,8 @@
 @{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
     ViewData["title"] = "Flight Booking Form";
+    var airlineDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ViewBag.details);
+    
 }
 <!--=============== PAGE-COVER =============-->
 <section class="page-cover" id="cover-flight-booking">
@@ -28,55 +30,56 @@
                         <div class="col-12 col-md-6 col-lg-12">
                             <div class="side-bar-block detail-block style1 text-center">
                                 <div class="detail-img text-center">
-                                    <a href="#"><img src="images/flight-1.jpg" class="img-fluid" /></a>
+                                    <a href="#"><img src="@airlineDetails.airlineImage" class="img-fluid" /></a>
                                 </div><!-- end detail-img -->
 
                                 <div class="detail-title">
                                     <h4><a href="#">London To Spain</a></h4>
-                                    <p>Oneway Flight</p>
-                                    <div class="rating">
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                    </div><!-- end rating -->
+                                    <p>@airlineDetails.airlineName</p>
+                                   
                                 </div><!-- end detail-title -->
-
+                               
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <tbody>
                                             <tr>
                                                 <td>Departure</td>
-                                                <td>20-05-2018</td>
+                                                <td>@airlineDetails.departureDate</td>
                                             </tr>
                                             <tr>
                                                 <td>Time</td>
-                                                <td>12:00 pm</td>
+                                                <td>@airlineDetails.departureTime</td>
                                             </tr>
                                             <tr>
                                                 <td>Class</td>
-                                                <td>Economy</td>
+                                                <td>@airlineDetails.class_name</td>
                                             </tr>
                                             <tr>
                                                 <td>Stops</td>
-                                                <td>Direct Flight</td>
+                                                @if (airlineDetails.journey_type == "Two Way")
+                                                {
+                                                    <td>Two Stops</td>
+                                                }
+                                                else{
+                                                    <td>Direct Flight</td>
+                                                }
                                             </tr>
                                             <tr>
                                                 <td>Flight Duration</td>
-                                                <td>190 Mins</td>
+                                                <td>@airlineDetails.duration</td>
                                             </tr>
                                             <tr>
                                                 <td>Price</td>
-                                                <td>£65</td>
+                                                <td><span class="currencyContainer"></span> @airlineDetails.price</td>
                                             </tr>
                                             <tr>
-                                                <td>Tax</td>
-                                                <td>£0</td>
+                                                <td>Total Passengers</td>
+                                                <td>@airlineDetails.number_of_adults</td>
                                             </tr>
                                             <tr>
+                                                
                                                 <td>Totel Price</td>
-                                                <td>£65</td>
+                                                <td><span class="currencyContainer"></span><span id="totalPrice"></span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -193,7 +196,7 @@
                                 <div id="tab-paypal" class="tab-pane">
                                     <img src="images/paypal.png" class="img-fluid" alt="paypal" />
                                     <div class="paypal-text">
-                                        <p><span>Important:</span>@ViewBag.booking_details</p>
+                                        <p><span>Important:</span>@ViewBag.details</p>
                                         <a href="#" class="btn btn-default btn-lightgrey">Checkout via Paypal<span><i class="fa fa-angle-double-right"></i></span></a>
                                     </div><!-- end paypal-text -->
 
@@ -218,4 +221,23 @@
 </section><!-- end innerpage-wrapper -->
 <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
 <script src="~/userassets/js/custom/flightbooking.js"></script>
+<script>
+    var price       = '@airlineDetails.price';
+    var passengers  = '@airlineDetails.number_of_adults';
+    var currency    = '@airlineDetails.currency';
+    let currencyContainer = $('.currencyContainer');
+    var totalContainer = $("#totalPrice");
+    let currencySymbolurl = '@Url.Action("checkCurrency" , "Booking")';
+    $(document).ready(function(){
+        let totalCountedPrice = price * passengers ;
+        totalContainer.html(totalCountedPrice);
+        $.ajax({
+            url : currencySymbolurl + '?Currency='+currency,
+            type:"get",
+            success:function(response){
+                currencyContainer.html(response.currency_symbol)
+            }
+        })
+    });
 
+</script>
