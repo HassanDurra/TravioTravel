@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
-    let totalPassanger = 3;
+ 
     let passangerFormContainer = $('#tabpanepassangerContainer');
     let passangerLinkContainer = $('#tabpanepassangerLinks');
     let links = "";
     let passangerContent = "";
-    for (let i = 1; i <= totalPassanger; i++) {
+    for (let i = 1; i <= passengers ; i++) {
         if (i === 1) {
             links += `
         <li class="nav-item"><a class="nav-link active" href="#tab-passanger-${i}" data-bs-toggle="tab"> Passanger ${i}</a></li>                                       
