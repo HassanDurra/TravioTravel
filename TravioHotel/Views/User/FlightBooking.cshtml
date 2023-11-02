@@ -1,0 +1,277 @@
+﻿
+@{
+	Layout = "~/Views/Shared/_UserLayout.cshtml";
+	ViewData["title"] = "Flight Booking";
+}
+<!--=============== PAGE-COVER =============-->
+<section class="page-cover" id="cover-flight-booking">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">Flight Booking</h1>
+                <ul class="breadcrumb">
+                    <li ><a href="#">Home / </a></li>
+                    <li >  Flight Booking </li>
+                </ul>
+            </div><!-- end columns -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end page-cover -->
+<!--===== INNERPAGE-WRAPPER ====-->
+<section class="innerpage-wrapper">
+    <div id="flight-booking" class="innerpage-section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-5 col-xl-4 side-bar left-side-bar">
+                    <div class="row">
+
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <div class="side-bar-block detail-block style1 text-center">
+                                <div class="detail-img text-center">
+                                    <a href="#"><img src="images/flight-1.jpg" class="img-fluid" /></a>
+                                </div><!-- end detail-img -->
+
+                                <div class="detail-title">
+                                    <h4><a href="#">London To Spain</a></h4>
+                                    <p>Oneway Flight</p>
+                                    <div class="rating">
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                    </div><!-- end rating -->
+                                </div><!-- end detail-title -->
+
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td>Departure</td>
+                                                <td>20-05-2018</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Time</td>
+                                                <td>12:00 pm</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Class</td>
+                                                <td>Economy</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Stops</td>
+                                                <td>Direct Flight</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Flight Duration</td>
+                                                <td>190 Mins</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Price</td>
+                                                <td>£65</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tax</td>
+                                                <td>£0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Totel Price</td>
+                                                <td>£65</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!-- end table-responsive -->
+                            </div><!-- end side-bar-block -->
+                        </div><!-- end columns -->
+
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <div class="side-bar-block support-block">
+                                <h3>Need Help</h3>
+                                <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum.</p>
+                                <div class="support-contact">
+                                    <span><i class="fa fa-phone"></i></span>
+                                    <p>+1 123 1234567</p>
+                                </div><!-- end support-contact -->
+                            </div><!-- end side-bar-block -->
+                        </div><!-- end columns -->
+
+                    </div><!-- end row -->
+
+                </div><!-- end columns -->
+
+
+                <div class="col-12 col-md-12 col-lg-7 col-xl-8 content-side">
+                    <form class="lg-booking-form" id="frm_booking" name="frm_booking" method="post">
+                        <div class="lg-booking-form-heading">
+                            <span>1</span>
+                            <h3>Personal Information</h3>
+                        </div><!-- end lg-bform-heading -->
+
+                        <div class="personal-info">
+
+                            <div class="row">
+                                <div class="col-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" id="txt_name" name="txt_name" />
+                                    </div>
+                                </div><!-- end columns -->
+
+                                <div class="col-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" id="txt_last_name" name="txt_last_name" />
+                                    </div>
+                                </div><!-- end columns -->
+                            </div><!-- end row -->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Date of Birth</label>
+                                        <input type="text" class="form-control dpd3" id="txt_dob" name="txt_dob" />
+                                    </div>
+                                </div><!-- end columns -->
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Country</label>
+                                        <input type="text" class="form-control" id="txt_country" name="txt_country" />
+                                    </div>
+                                </div><!-- end columns -->
+                            </div><!-- end row -->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="email" class="form-control" id="txt_email" name="txt_email" />
+                                    </div>
+                                </div><!-- end columns -->
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input type="text" class="form-control" id="txt_phone" name="txt_phone" />
+                                    </div>
+                                </div><!-- end columns -->
+                            </div><!-- end row -->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Permanent Address</label>
+                                        <textarea type="text" class="form-control" rows="2" id="txt_address" name="txt_address" /></textarea>
+                                    </div>
+                                </div><!-- end columns -->
+                            </div>
+                        </div><!-- end personal-info -->
+
+                        <div class="lg-booking-form-heading">
+                            <span>2</span>
+                            <h3>Payment Information</h3>
+                        </div><!-- end lg-bform-heading -->
+
+                        <div class="payment-tabs">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a class="nav-link active" href="#tab-credit-card" data-bs-toggle="tab"> Via Credit Card</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#tab-paypal" data-bs-toggle="tab">Via Paypal</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="tab-credit-card" class="tab-pane in active">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Card Type</label>
+                                                <select class="form-control" id="ddl_card_type" name="ddl_card_type">
+                                                    <option selected>Select</option>
+                                                </select>
+                                                <span><i class="fa fa-angle-down"></i></span>
+                                            </div>
+                                        </div><!-- end columns -->
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Card Number</label>
+                                                <input type="text" class="form-control" id="txt_card_number" name="txt_card_number" />
+                                            </div>
+                                        </div><!-- end columns -->
+                                    </div><!-- end row -->
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Card Holder Name</label>
+                                                <input type="text" class="form-control" id="txt_holder_name" name="txt_holder_name" />
+                                            </div>
+                                        </div><!-- end columns -->
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>CVC</label>
+                                                <input type="text" class="form-control" id="txt_cvc_number" name="txt_cvc_number" />
+                                            </div>
+                                        </div><!-- end columns -->
+                                    </div><!-- end row -->
+
+                                    <div class="row">
+                                        <div class="col-6 col-md-3">
+                                            <div class="form-group">
+                                                <label>Expiry Month</label>
+                                                <select class="form-control" id="ddl_expire_month" class="ddl_expire_month">
+                                                    <option selected>Select</option>
+                                                    <option>February</option>
+                                                    <option>March</option>
+                                                    <option>April</option>
+                                                </select>
+                                                <span><i class="fa fa-angle-down"></i></span>
+                                            </div>
+                                        </div><!-- end columns -->
+
+                                        <div class="col-6 col-md-3">
+                                            <div class="form-group">
+                                                <label>Expiry Year</label>
+                                                <select class="form-control" id="ddl_expire_year" class="ddl_expire_year">
+                                                    <option selected>Select</option>
+                                                    <option>2018</option>
+                                                    <option>2019</option>
+                                                    <option>2020</option>
+                                                </select>
+                                                <span><i class="fa fa-angle-down"></i></span>
+                                            </div>
+                                        </div><!-- end columns -->
+                                    </div><!-- end row -->
+
+                                </div><!-- end tab-credit-card -->
+
+                                <div id="tab-paypal" class="tab-pane">
+                                    <img src="images/paypal.png" class="img-fluid" alt="paypal" />
+                                    <div class="paypal-text">
+                                        <p><span>Important:</span> You will be redirected to Paypal Website to make the payment process secure and complete.</p>
+                                        <a href="#" class="btn btn-default btn-lightgrey">Checkout via Paypal<span><i class="fa fa-angle-double-right"></i></span></a>
+                                    </div><!-- end paypal-text -->
+
+                                    <div class="clearfix"></div>
+                                </div><!-- end tab-paypal -->
+
+                            </div><!-- end tab-content -->
+                        </div><!-- end payment-tabs -->
+
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="chk_agree" name="chk_agree"> By continuing, you are agree to the <a href="#">Terms and Conditions.</a></label>
+                        </div><!-- end checkbox -->
+                        <div class="col-md-12 text-center" id="result_msg"></div>
+                        <button type="submit" class="btn btn-orange" name="submit" id="submit">Confirm Booking</button>
+                    </form>
+
+                </div><!-- end columns -->
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end flight-booking -->
+</section><!-- end innerpage-wrapper -->
+
+<script src="~/userassets/js/jquery-3.3.1.min.js"></script>
+
+
