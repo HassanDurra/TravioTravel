@@ -10,13 +10,8 @@ namespace TravioHotel.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Description",
-                table: "Airports");
-
-            migrationBuilder.DropColumn(
-                name: "Image",
-                table: "Airports");
+            migrationBuilder.Sql("ALTER TABLE Airports DROP COLUMN IF EXISTS Description");
+            migrationBuilder.Sql("ALTER TABLE Airports DROP COLUMN IF EXISTS Image");
         }
 
         /// <inheritdoc />

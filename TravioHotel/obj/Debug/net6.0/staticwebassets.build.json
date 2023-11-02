@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rzrk6ROWbrMdpKuLKdjvJqwkqCe3BLYfPwimJ4o2qFE=",
+  "Hash": "80YYlHuDqhEXXnur8UnskQmTtWeoR3WxZASqf1zyoB0=",
   "Source": "TravioHotel",
   "BasePath": "_content/TravioHotel",
   "Mode": "Default",
@@ -15553,6 +15553,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\userassets\\js\\custom\\Authentication.js"
+    },
+    {
+      "Identity": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\flightbooking.js",
+      "SourceId": "TravioHotel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\",
+      "BasePath": "_content/TravioHotel",
+      "RelativePath": "userassets/js/custom/flightbooking.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\userassets\\js\\custom\\flightbooking.js"
     },
     {
       "Identity": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\home.js",

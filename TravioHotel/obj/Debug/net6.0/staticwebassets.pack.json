@@ -3721,6 +3721,10 @@
       "PackagePath": "staticwebassets\\userassets\\js\\custom\\ServiceListing.js"
     },
     {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\flightbooking.js",
+      "PackagePath": "staticwebassets\\userassets\\js\\custom\\flightbooking.js"
+    },
+    {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\js\\custom\\home.js",
       "PackagePath": "staticwebassets\\userassets\\js\\custom\\home.js"
     },
