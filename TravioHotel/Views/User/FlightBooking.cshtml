@@ -104,7 +104,7 @@
 
 
                 <div class="col-12 col-md-12 col-lg-7 col-xl-8 content-side">
-                    <form class="lg-booking-form" id="frm_booking" name="frm_booking" method="post">
+                    <form class="lg-booking-form" asp-action="addBookingDetails" asp-controller="Booking" asp-area="User" id="frm_booking" name="frm_booking" method="post" enctype="multipart/form-data">
                         <div class="lg-booking-form-heading">
                             <span>1</span>
                             <h3>Passanger Details</h3>
@@ -125,6 +125,20 @@
                                 <li class="nav-item"><a class="nav-link active" href="#tab-credit-card" data-bs-toggle="tab"> Via Credit Card</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#tab-paypal" data-bs-toggle="tab">Via Paypal</a></li>
                             </ul>
+                            
+                            <input name="airline_image" value="@airlineDetails.airlineImage" />
+                            <input name="airline_name" value="@airlineDetails.airlineName" />
+                            <input name="aircraft_code" value="@airlineDetails.aircraftCode" />
+                            <input name="journey_type" value="@airlineDetails.journey_type" />
+                            <input name="duration" value="@airlineDetails.duration" />
+                            <input name="departure_time" value="@airlineDetails.departureTime" />
+                            <input name="departure_date" value="@airlineDetails.departureDate" />
+                            <input name="arrival_time" value="@airlineDetails.arrivalTime" />
+                            <input name="arrival_date" value="@airlineDetails.arrivalDate" />
+                            <input name="from" value="@airlineDetails.from" />
+                            <input name="to" value="@airlineDetails.to"/>
+                            <input name="currency" />
+                            <input name="total_price" value="@airlineDetails.price"/>
 
                             <div class="tab-content">
                                 <div id="tab-credit-card" class="tab-pane in active">
@@ -236,8 +250,13 @@
             type:"get",
             success:function(response){
                 currencyContainer.html(response.currency_symbol)
+                $('input[name="currency"]').val(response.currency_symbol);
             }
         })
+      $(document).submit(function(e){
+          e.preventDefault();
+            console.log($('input[name="passanger_image[]"]').val())
+      })
     });
 
 </script>
