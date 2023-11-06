@@ -9,6 +9,22 @@
       "PackagePath": "staticwebassets\\AircraftImages\\9049cccc-aa4f-45b0-abe6-dd900624bcde.jpg"
     },
     {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\PassangersImages\\Ayesha@gmail.com.png",
+      "PackagePath": "staticwebassets\\PassangersImages\\Ayesha@gmail.com.png"
+    },
+    {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\PassangersImages\\Durra@gmail.com.png",
+      "PackagePath": "staticwebassets\\PassangersImages\\Durra@gmail.com.png"
+    },
+    {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\PassangersImages\\Saif@gmail.com.png",
+      "PackagePath": "staticwebassets\\PassangersImages\\Saif@gmail.com.png"
+    },
+    {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\PassangersImages\\hassan@gmail.com.png",
+      "PackagePath": "staticwebassets\\PassangersImages\\hassan@gmail.com.png"
+    },
+    {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\UserProfileImages\\108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg",
       "PackagePath": "staticwebassets\\UserProfileImages\\108b0c00-7011-49c1-afc2-9d8274563cc6.jpeg"
     },
@@ -2289,6 +2305,10 @@
       "PackagePath": "staticwebassets\\userassets\\fonts\\fontawesome-webfontd41d.eot"
     },
     {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\JazzCash.png",
+      "PackagePath": "staticwebassets\\userassets\\images\\JazzCash.png"
+    },
+    {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\about-content-2.png",
       "PackagePath": "staticwebassets\\userassets\\images\\about-content-2.png"
     },
@@ -2875,6 +2895,10 @@
     {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\destination-4.jpg",
       "PackagePath": "staticwebassets\\userassets\\images\\destination-4.jpg"
+    },
+    {
+      "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\easypaisa.jpg",
+      "PackagePath": "staticwebassets\\userassets\\images\\easypaisa.jpg"
     },
     {
       "Id": "C:\\xampp8.1.0\\htdocs\\TravioTravel\\TravioHotel\\wwwroot\\userassets\\images\\error-page-2.jpg",

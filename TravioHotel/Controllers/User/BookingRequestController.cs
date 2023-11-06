@@ -21,11 +21,7 @@ namespace TravioHotel.Controllers.User
         }
         public async Task<IActionResult> RequestBooking(BookingRequest booking_data)
         {
-            string isLogedIn = httpContext.HttpContext.Session.GetString("user") ?? "";
-            ViewBag.isLoggedIn = isLogedIn;
-                if (ViewBag.isLoggedIn == "")
-                {
-                
+          
                     var fromCountry = await Database.Countries.Where(e => e.id == booking_data.from_country).FirstOrDefaultAsync();
                     var toCountry   = await Database.Countries.Where(e => e.id == booking_data.to_country).FirstOrDefaultAsync();
 
@@ -42,10 +38,6 @@ namespace TravioHotel.Controllers.User
                     ViewBag.BookingDetails = BookingRequestDetails;
                     return View("Views/User/Listing.cshtml");
 
-                }
-
-                TempData["Error"] = "Before Requesting For A Flight Booking You must Login";
-                return View("Views/User/Listing.cshtml");
             
         }
         //This Function Will get The IATA Code from Airports 

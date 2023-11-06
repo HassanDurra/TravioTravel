@@ -18,7 +18,7 @@
             <div class="col-12 col-md-12">
                 <div class="form-group">
                     <label>Person Image</label>
-                                  <input type="file" class="form-control" name="passanger_image[]" multiple/>
+                                  <input type="file" class="form-control" name="passanger_images"/>
 
                 </div>
             </div><!-- end columns -->
@@ -43,13 +43,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date of Birth</label>
-                    <input type="text" class="form-control dpd3" id="txt_dob"  placeholder="Enter Date of birth" name="date_of_birth[]"/>
+                    <input type="date" class="form-control date_of_birth" id="txt_dob"  placeholder="Enter Date of birth" name="date_of_birth[]"/>
                 </div>
             </div><!-- end columns -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Age</label>
-                    <input type="input" readonly class="form-control" placeholder="Enter Age" name="age[]"/>
+                    <input type="input" readonly class="form-control age" placeholder="Enter Age" name="age[]"/>
                 </div>
             </div><!-- end columns -->
             
@@ -118,7 +118,7 @@
             <div class="col-12 col-md-12">
                 <div class="form-group">
                     <label>Person Image</label>
-                    <input type="file" class="form-control" name="passanger_image[]" multiple/>
+                    <input type="file" class="form-control" name="passanger_images" multiple/>
                 </div>
             </div><!-- end columns -->
         </div>    
@@ -142,13 +142,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date of Birth</label>
-                    <input type="text" class="form-control dpd3" id="txt_dob"  placeholder="Enter Date of birth" name="date_of_birth[]"/>
+                    <input type="date" class="form-control date_of_birth" id="txt_dob"  placeholder="Enter Date of birth" name="date_of_birth[]"/>
                 </div>
             </div><!-- end columns -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Age</label>
-                    <input type="input" readonly class="form-control" placeholder="Enter Age" name="age[]"/>
+                    <input type="input" readonly class="form-control age" placeholder="Enter Age" name="age[]"/>
                 </div>
             </div><!-- end columns -->
             

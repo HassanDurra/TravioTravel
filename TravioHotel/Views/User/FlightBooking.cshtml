@@ -1,8 +1,9 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
-    ViewData["title"] = "Flight Booking Form";
+    ViewData["title"]  = "Flight Booking Form";
     var airlineDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ViewBag.details);
+    var userDetails    = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ViewBag.isLoggedIn);
     
 }
 <!--=============== PAGE-COVER =============-->
@@ -101,7 +102,7 @@
                     </div><!-- end row -->
 
                 </div><!-- end columns -->
-
+           
 
                 <div class="col-12 col-md-12 col-lg-7 col-xl-8 content-side">
                     <form class="lg-booking-form" asp-action="addBookingDetails" asp-controller="Booking" asp-area="User" id="frm_booking" name="frm_booking" method="post" enctype="multipart/form-data">
@@ -124,21 +125,26 @@
                             <ul class="nav nav-tabs">
                                 <li class="nav-item"><a class="nav-link active" href="#tab-credit-card" data-bs-toggle="tab"> Via Credit Card</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#tab-paypal" data-bs-toggle="tab">Via Paypal</a></li>
+                               <li class="nav-item"><a class="nav-link" href="#tab-easypaisa" data-bs-toggle="tab">Via EasyPaisa</a></li>
+                               <li class="nav-item"><a class="nav-link" href="#tab-jazzcash" data-bs-toggle="tab">Via JazzCash</a></li>
+                           
                             </ul>
                             
-                            <input name="airline_image" value="@airlineDetails.airlineImage" />
-                            <input name="airline_name" value="@airlineDetails.airlineName" />
-                            <input name="aircraft_code" value="@airlineDetails.aircraftCode" />
-                            <input name="journey_type" value="@airlineDetails.journey_type" />
-                            <input name="duration" value="@airlineDetails.duration" />
-                            <input name="departure_time" value="@airlineDetails.departureTime" />
-                            <input name="departure_date" value="@airlineDetails.departureDate" />
-                            <input name="arrival_time" value="@airlineDetails.arrivalTime" />
-                            <input name="arrival_date" value="@airlineDetails.arrivalDate" />
-                            <input name="from" value="@airlineDetails.from" />
-                            <input name="to" value="@airlineDetails.to"/>
-                            <input name="currency" />
-                            <input name="total_price" value="@airlineDetails.price"/>
+                            <input type="hidden" name="airline_image" value="@airlineDetails.airlineImage" />
+                            <input type="hidden" name="airline_name" value="@airlineDetails.airlineName" />
+                            <input type="hidden" name="aircraft_code" value="@airlineDetails.aircraftCode" />
+                            <input type="hidden" name="journey_type" value="@airlineDetails.journey_type" />
+                            <input type="hidden" name="duration" value="@airlineDetails.duration" />
+                            <input type="hidden" name="departure_time" value="@airlineDetails.departureTime" />
+                            <input type="hidden" name="departure_date" value="@airlineDetails.departureDate" />
+                            <input type="hidden" name="arrival_time" value="@airlineDetails.arrivalTime" />
+                            <input type="hidden" name="arrival_date" value="@airlineDetails.arrivalDate" />
+                            <input type="hidden" name="from" value="@airlineDetails.from" />
+                            <input type="hidden" name="to" value="@airlineDetails.to"/>
+                            <input type="hidden" name="currency" />
+                            <input type="hidden" name="total_price" value="@airlineDetails.price"/>
+                            <input type="hidden" name="class_name" value="@airlineDetails.class_name"/>
+                            <input type="hidden" name="user_id" value="@userDetails.id" />
 
                             <div class="tab-content">
                                 <div id="tab-credit-card" class="tab-pane in active">
@@ -210,7 +216,7 @@
                                 <div id="tab-paypal" class="tab-pane">
                                     <img src="images/paypal.png" class="img-fluid" alt="paypal" />
                                     <div class="paypal-text">
-                                        <p><span>Important:</span>@ViewBag.details</p>
+                                        
                                         <a href="#" class="btn btn-default btn-lightgrey">Checkout via Paypal<span><i class="fa fa-angle-double-right"></i></span></a>
                                     </div><!-- end paypal-text -->
 
@@ -253,10 +259,252 @@
                 $('input[name="currency"]').val(response.currency_symbol);
             }
         })
-      $(document).submit(function(e){
-          e.preventDefault();
-            console.log($('input[name="passanger_image[]"]').val())
-      })
-    });
+    // function to generate Age
+        let passangerFormContainer = $('#tabpanepassangerContainer');
+        let passangerLinkContainer = $('#tabpanepassangerLinks');
+        
+        let links = "";
+        let passangerContent = "";
+        for (let i = 1; i <= passengers; i++) {
+            if (i === 1) {
+                links += `
+            <li class="nav-item"><a class="nav-link active" href="#tab-passanger-${i}" data-bs-toggle="tab"> Passanger ${i}</a></li>
+            `;
+                passangerContent += `
+           <div id="tab-passanger-${i}" class="tab-pane in active">
 
+       <div class="personal-info">
+
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="form-group">
+                        <label>Person Image <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                                      <input type="file" class="form-control" name="passanger_images"/>
+
+                    </div>
+                </div><!-- end columns -->
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-6">
+                    <div class="form-group">
+                            <label>First Name <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="text" class="form-control" id="txt_name"  placeholder="Enter First Name" name="first_name[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-6 col-md-6">
+                    <div class="form-group">
+                        <label>Last Name </label>
+                        <input type="text" class="form-control" id="txt_last_name"  placeholder="Enter Last Name" name="last_name[]"/>
+                    </div>
+                </div><!-- end columns -->
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Date of Birth <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="date" class="form-control date_of_birth" id="txt_dob"  placeholder="Enter Date of birth" name="date_of_birth[]"/>
+                    </div>
+                </div><!-- end columns -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Age  <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <label> <small>( Select the Date of Birth to Calculate Age )</small></label>
+                        <input type="input" readonly class="form-control age" placeholder="Enter Age" name="age[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Passport Number <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="text" class="form-control"  placeholder="Enter Passport number" name="passport_number[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Cnic Number <span class="cnic_age" style="color:red; position:relative; bottom:2px;font-size:15px;">*</span> (If Age is 18+)</label>
+                        <input type="text" class="form-control"  placeholder="Enter Cnic Number" name="cnic_number[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Country <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                     <input type="text" class="form-control" placeholder="Enter Country Name" name="country_name[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>City <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                     <input type="text" class="form-control" placeholder="Enter City Name" name="city[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Email Address <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="email" class="form-control"  placeholder="Enter Email address" id="txt_email" name="email[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Phone Number <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="text" class="form-control"  placeholder="Enter Phone Number" id="txt_phone" name="phone_number[]"/>
+                    </div>
+                </div><!-- end columns -->
+            </div><!-- end row -->
+
+
+        </div><!-- end personal-info -->
+
+    </div>
+    `;
+            }
+            else {
+                links += `
+            <li class="nav-item"><a class="nav-link" href="#tab-passanger-${i}" data-bs-toggle="tab"> Passanger ${i}</a></li>
+            `;
+                passangerContent += `
+           <div id="tab-passanger-${i}" class="tab-pane">
+
+        <div class="personal-info">
+
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="form-group">
+                            <label>Person Image <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="file" class="form-control" name="passanger_images" multiple/>
+                    </div>
+                </div><!-- end columns -->
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-6">
+                    <div class="form-group">
+                            <label>First Name <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="text" class="form-control" id="txt_name"  placeholder="Enter First Name" name="first_name[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-6 col-md-6">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" id="txt_last_name"  placeholder="Enter Last Name" name="last_name[]"/>
+                    </div>
+                </div><!-- end columns -->
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Date of Birth <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="date" class="form-control date_of_birth" id="txt_dob"  placeholder="Enter Date of birth" name="date_of_birth[]"/>
+                    </div>
+                </div><!-- end columns -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Age <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                            <label> <small>( Select the Date of Birth to Calculate Age )</small></label>
+
+                                <input type="input" readonly class="form-control age" placeholder="Enter Age" name="age[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Passport Number <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="text" class="form-control"  placeholder="Enter Passport number" name="passport_number[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Cnic Number <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span>(If Age is 18+)</label>
+                        <input type="text" class="form-control"  placeholder="Enter Cnic Number" name="cnic_number[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Country <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                     <input type="text" class="form-control" placeholder="Enter Country Name" name="country_name[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>City <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                     <input type="text" class="form-control" placeholder="Enter City Name" name="city[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Email Address <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="email" class="form-control"  placeholder="Enter Email address" id="txt_email" name="email[]"/>
+                    </div>
+                </div><!-- end columns -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Phone Number <span style="color:red; position:relative; bottom:2px;font-size:15px;">*</span></label>
+                        <input type="text" class="form-control"  placeholder="Enter Phone Number" id="txt_phone" name="phone_number[]"/>
+                    </div>
+                </div><!-- end columns -->
+            </div><!-- end row -->
+
+        </div><!-- end personal-info -->
+
+    </div>
+    `;
+            }
+
+
+        }
+        passangerLinkContainer.html(links);
+        passangerFormContainer.html(passangerContent);
+    // Function for Changing the age
+       
+    $(document).on('change' , '.date_of_birth' , function(e){
+       e.preventDefault();
+           var dateOfBirth  = calculate_age($(this).val()); // This Will add the  dateofbirth value to the parameters
+           var ageInput = $(this).closest(".col-md-6").next('.col-md-6').find('.age'); // it will find the closest col-md class then will target the next col-md class and find the age input
+           ageInput.val(dateOfBirth);
+            
+    });
+    
+    function calculate_age(dateOfBirth){ // this function will calculate the age
+            let dob = new Date(dateOfBirth);
+            let currentDate = new Date();
+            let age = currentDate.getFullYear() - dob.getFullYear();
+          if( age ===  0){
+              var months  = currentDate.getMonth() - dob.getMonth(); // This will calculate age if Its below to a year
+              if(months < 0){
+                  months = 12 - dob.getMonth   + currentDate.getMonth();
+              }
+              if (months > 6) {  // If its greater then 6 it means its eligble to have a seat or else its a child 
+                return months +" "+"Months Old";
+             }
+             else{
+                return "Child Ticket";
+             }
+          }
+          else
+          {
+              return age +" "+"Yrs"  ;
+          }
+     }
+    
+    
+    });
+    
 </script>

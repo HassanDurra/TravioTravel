@@ -14,13 +14,15 @@ namespace TravioHotel.Models
         public string passport_number { get; set; }
         public string? Cnic_number { get; set; }   
         public string contact_number { get; set; } 
-        public int age { get; set; }    
+        public string age { get; set; }    
         public string date_of_birth { get; set; }   
         public string country_name { get; set; }    
         public string city_name { get; set ; }
         public int is_booked { get; set; } = 0;
         public int status { get; set; } = 0;
+        public string Booking_Number { get; set; }
+        public string? created_at { get; set; }
 
-        public string created_at { get; set; }
+        public string payment_method { get; set; }
     }
 }

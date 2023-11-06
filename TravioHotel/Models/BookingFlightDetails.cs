@@ -20,10 +20,10 @@ namespace TravioHotel.Models
         public string arrival_date { get; set; }    
         public string flight_duration { get; set; }
         public string class_type { get; set; }
-        public int total_price { get; set; } = 0;   
+        public string total_price { get; set; }   
         public string? deleted_at { get; set; }
         public string? created_at { get; set; }
-        public int? user_id { get; set; }
+        public int? user_id { get; set; } = 0 ;
 
     }
 }

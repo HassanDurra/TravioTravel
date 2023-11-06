@@ -17,7 +17,7 @@ namespace TravioHotel.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -159,11 +159,16 @@ namespace TravioHotel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<string>("Booking_Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Cnic_number")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("age")
-                        .HasColumnType("int");
+                    b.Property<string>("age")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("city_name")
                         .IsRequired()
@@ -178,7 +183,6 @@ namespace TravioHotel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("created_at")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("date_of_birth")
@@ -207,6 +211,10 @@ namespace TravioHotel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("passport_number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("payment_method")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -269,13 +277,19 @@ namespace TravioHotel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("journey_type")
-                        .HasColumnType("int");
+                    b.Property<string>("journey_type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("to")
-                        .HasColumnType("int");
+                    b.Property<string>("to")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("total_price")
+                    b.Property<string>("total_price")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("user_id")
                         .HasColumnType("int");
 
                     b.HasKey("id");
