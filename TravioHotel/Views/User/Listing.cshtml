@@ -329,7 +329,7 @@
                                                                 var ArrivalDate = segment[s].arrival.at;
                                                                 var arr_date = new Date(ArrivalDate);
                                                                 var a_year = arr_date.getFullYear();
-                                                                var a_month = arr_date.getMonth();
+                                                               var a_month = arr_date.getMonth();
                                                                 var a_date = arr_date.getDate();
                                                                 var a_hour = arr_date.getHours();
                                                                 var a_minutes = arr_date.getMinutes();
@@ -900,7 +900,7 @@
                                                                             </div><!-- end f-list-img -->
 
                                                                             <div class="list-info f-list-info">
-                                                                                            <h3 class="block-title"><a href="flight-detail-left-sidebar.html">${fromCountryName} to ${toCityName}</a></h3>
+                                                                                            <h3 class="block-title"><a href="flight-detail-left-sidebar.html">${FromCityName} to ${toCountryName}</a></h3>
                                                                                 <p class="block-minor"><span>Fr 5379,</span> ${wayType} Flight</p>
                                                                                 <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum at, pro an eros perpetua ullamcorper.</p>
 
@@ -914,8 +914,8 @@
                                                                                             <input type ="hidden" name="departure_time" value="${departure_time}" />
                                                                                             <input type ="hidden" name="arrival_date" value="${arrival_date}" />
                                                                                             <input type ="hidden" name="arrival_time" value="${arrival_time}" />
-                                                                                            <input type ="hidden" name="from" value="${toCityName}" />
-                                                                                            <input type ="hidden" name="to" value="${fromCountryName}" />
+                                                                                            <input type ="hidden" name="from" value="${FromCityName}" />
+                                                                                            <input type ="hidden" name="to" value="${toCountryName}" />
                                                                                             <input type="hidden"  name="adults" value="${numberofAdults.val()}" />
                                                                                             <input type="hidden"  name="currency" value="${pricing.price.currency}" />
                                                                                             <input type="hidden"  name="price" value="${pricing.price.total}" />
