@@ -2,6 +2,7 @@
 @{
     ViewData["title"] = "Home";
     Layout = "~/Views/Shared/_Userlayout.cshtml";
+    var sliderImage = "userassets/images/homepage-slider-1.jpg";
 }
 <!--Data start from here-->
 <!--========================= FLEX SLIDER =====================-->
@@ -10,7 +11,7 @@
     <div class="flexslider slider" id="slider-1">
         <ul class="slides">
 
-            <li class="item-1" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(images/homepage-slider-1.jpg) 50% 0%;background-size:cover;
+            <li class="item-1" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('@sliderImage') 50% 0%;background-size:cover;
                         height:100%;">
                 <div class=" meta">
                     <div class="container">
@@ -21,7 +22,7 @@
                 </div><!-- end meta -->
             </li><!-- end item-1 -->
 
-            <li class="item-2" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(~/images/homepage-slider-1.jpg) 50% 0%;background-size:cover;
+            <li class="item-2" style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('@sliderImage') 50% 0%;background-size:cover;
                         height:100%;">
                 <div class=" meta">
                     <div class="container">

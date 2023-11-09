@@ -3,6 +3,7 @@ using TravioHotel.DataContext;
 using TravioHotel.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,7 +13,7 @@ builder.Services.AddScoped<MailServer, MailServer>();
 builder.Services.AddScoped<RandomGenerate , RandomGenerate>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
-// Connection String Calling
+
 builder.Services.AddDbContext<DatabaseContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
 var app = builder.Build();
@@ -34,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Booking}/{action=GenerateTicket}/{id?}");
 
 app.Run();

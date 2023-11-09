@@ -289,3 +289,13 @@ C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\obj\Debug\net6.0\refint\TravioHote
 C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\obj\Debug\net6.0\TravioHotel.pdb
 C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\obj\Debug\net6.0\TravioHotel.genruntimeconfig.cache
 C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\obj\Debug\net6.0\ref\TravioHotel.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\DinkToPdf.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Rotativa.AspNetCore.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\obj\Debug\net6.0\TravioHotel.MvcApplicationPartsAssemblyInfo.cs

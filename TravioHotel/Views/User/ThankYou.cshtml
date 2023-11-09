@@ -1,9 +1,9 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";   
+    var passangerData = Newtonsoft.Json.JsonConvert.DeserializeObject(ViewBag.Data);
     ViewData["title"] = "Booking Confirmed";
 }
-
 <style>
     th{
         background:black!important;
@@ -58,23 +58,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach (var passangerDetails in @passangerData)
+                                        {
                                         <tr>
-                                            <td>000-111-222</td>
-                                        
-                                         
-                                            <td>James</td>
-                          
-                                            <td>Anderson</td>
-                                       
-                                            <td>info@loremipsum.com</td>
-                                        
-                                            <td>25Yrs</td>
-                                            
-                                            <td>Paris</td>
-                                        
-                                            <td>USA</td>
+                                            <td>@passangerDetails.Booking_Number</td>
+                                            <td>@passangerDetails.firstName </td>
+                                            <td>@passangerDetails.lastName </td>    
+                                            <td>@passangerDetails.email</td>
+                                            <td>@passangerDetails.age</td>
+                                            <td>@passangerDetails.city_name</td>                             
+                                            <td>@passangerDetails.country_name</td>
                                             <td><center><a class="btn btn-warning" style="border-radius:5px; "><i class="fa fa-print"></i></a></center></td>
-                                        </tr>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div><!-- end table-responsive -->

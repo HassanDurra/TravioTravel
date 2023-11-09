@@ -6,6 +6,7 @@ using TravioHotel.Models;
 using System.Diagnostics.Metrics;
 using Microsoft.AspNetCore.Http;
 
+
 namespace TravioHotel.Controllers.User
 {
     public class BookingController : Controller
@@ -13,11 +14,13 @@ namespace TravioHotel.Controllers.User
         public readonly DatabaseContext Database;
         public readonly IWebHostEnvironment fileEnvironment;
         public readonly IHttpContextAccessor httpContext;
+  
         public BookingController(DatabaseContext _database, IWebHostEnvironment fileEnvironment , IHttpContextAccessor _httpContext)
         {
             this.Database = _database;
             this.fileEnvironment = fileEnvironment;
             this.httpContext = _httpContext;
+       
         }
         public IActionResult FlightBooking(string FlightDetails)
         {
@@ -65,7 +68,8 @@ namespace TravioHotel.Controllers.User
             await Database.BookingFlightDetails.AddAsync(airlineDetails);
             var addAirlinesDetails = await Database.SaveChangesAsync();
             if (addAirlinesDetails > 0) {
-               
+                List<BookingFlightClientDetails> passangersDetailsList = new List<BookingFlightClientDetails>();
+
                 for (int index = 0; index < requestData["email[]"].Count; index++)
                 {
                     Random random = new Random();
@@ -103,19 +107,18 @@ namespace TravioHotel.Controllers.User
                         payment_method = "EasyPaisa"
 
                     };
+                    passangersDetailsList.Add(passangersDetailsAdd);
                     await Database.BookingClientDetails.AddAsync(passangersDetailsAdd);
-
+                
                 }
                 var passangersDetailsSave = await Database.SaveChangesAsync();
-                if (passangersDetailsSave > 0)
+
+                if(passangersDetailsSave > 0)
                 {
-
-                    TempData["Success"] = "Booking Has Been Confirmed";
-                    return View("Views/User/ThankYou.cshtml");
+                    TempData["Success"] = "Booking Has Been successful";
+                    TempData["Passangers"] = JsonConvert.SerializeObject(passangersDetailsList);
+                    return RedirectToAction("ThankYou" , "Booking");
                 }
-
-                TempData["Error"] = "Failed To Book Your Tickets";
-                return RedirectToAction("FlightBooking", "Booking");
 
             }
             ViewBag.Data = "Error";
@@ -125,7 +128,10 @@ namespace TravioHotel.Controllers.User
 
         public IActionResult ThankYou()
         {
+            ViewBag.Data = TempData["Passangers"] ;
             return View("Views/User/Thankyou.cshtml");
         }
+        // Pdf Generate
+        
     }
 }
