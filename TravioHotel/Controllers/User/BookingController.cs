@@ -5,7 +5,8 @@ using Newtonsoft.Json;
 using TravioHotel.Models;
 using System.Diagnostics.Metrics;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.EntityFrameworkCore;
+using TravioHotel.Services;
 
 namespace TravioHotel.Controllers.User
 {
@@ -14,12 +15,13 @@ namespace TravioHotel.Controllers.User
         public readonly DatabaseContext Database;
         public readonly IWebHostEnvironment fileEnvironment;
         public readonly IHttpContextAccessor httpContext;
-  
-        public BookingController(DatabaseContext _database, IWebHostEnvironment fileEnvironment , IHttpContextAccessor _httpContext)
+        public readonly PDFGenerate _PdfGenerator;
+        public BookingController(DatabaseContext _database, IWebHostEnvironment fileEnvironment , IHttpContextAccessor _httpContext , PDFGenerate pDFGenerate)
         {
             this.Database = _database;
             this.fileEnvironment = fileEnvironment;
             this.httpContext = _httpContext;
+            this._PdfGenerator = pDFGenerate;
        
         }
         public IActionResult FlightBooking(string FlightDetails)
@@ -116,7 +118,8 @@ namespace TravioHotel.Controllers.User
                 if(passangersDetailsSave > 0)
                 {
                     TempData["Success"] = "Booking Has Been successful";
-                    TempData["Passangers"] = JsonConvert.SerializeObject(passangersDetailsList);
+                    var passanger = JsonConvert.SerializeObject(passangersDetailsList);
+                    httpContext.HttpContext.Session.SetString("passangers", passanger);
                     return RedirectToAction("ThankYou" , "Booking");
                 }
 
@@ -128,10 +131,23 @@ namespace TravioHotel.Controllers.User
 
         public IActionResult ThankYou()
         {
-            ViewBag.Data = TempData["Passangers"] ;
+            ViewBag.Data = httpContext.HttpContext.Session.GetString("passangers");
             return View("Views/User/Thankyou.cshtml");
         }
         // Pdf Generate
+        public async Task<IActionResult>TicketGenerate(int Id)
+        {
+            var userData      = await Database.BookingClientDetails.Where(e => e.id == Id).FirstOrDefaultAsync();
+            var FlightDetails = await Database.BookingFlightDetails.Where(e => e.id == userData.flight_details_id).FirstOrDefaultAsync();
+            var Data = new { PassangersDetails = userData, Flight = FlightDetails };
+            return Json(Data);
+        }
         
+        public IActionResult generatePdf()
+        {
+            var htmlContent = "<html><body><h1>Hello, PDF!</h1></body></html>";
+            var pdfBytes    = _PdfGenerator.GeneratePDF(htmlContent);
+            return File(pdfBytes, "application/pdf", "Ticket.pdf");
+        }
     }
 }

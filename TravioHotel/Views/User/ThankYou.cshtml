@@ -68,7 +68,11 @@
                                             <td>@passangerDetails.age</td>
                                             <td>@passangerDetails.city_name</td>                             
                                             <td>@passangerDetails.country_name</td>
-                                            <td><center><a class="btn btn-warning" style="border-radius:5px; "><i class="fa fa-print"></i></a></center></td>
+                                            <td class="pdfContainer"><center>
+                                                <input name="passangerID" value="@passangerDetails.id">
+                                                        <a class="btn btn-warning pdfGenerateButton" style="border-radius:5px;"><i class="fa fa-print"></i></a>
+                                            </center>
+                                            </td>
                                             </tr>
                                         }
                                     </tbody>
@@ -212,3 +216,14 @@
     </div><!-- end container -->
 </section><!-- end best-features -->
 <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
+<script>
+    let PdfButton  = $(".pdfGenerateButton");
+
+    $(PdfButton).on('click' , function(e){
+        e.preventDefault();
+        let id = $(this).closest('.PdfContainer').find('input[name="passangerID"]').val();
+        console.log(id);
+    })
+
+
+</script>

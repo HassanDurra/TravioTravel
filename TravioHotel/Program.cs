@@ -11,6 +11,7 @@ builder.Services.AddControllersWithViews();
 // Custom Services Dependency Injections
 builder.Services.AddScoped<MailServer, MailServer>();
 builder.Services.AddScoped<RandomGenerate , RandomGenerate>();
+builder.Services.AddScoped<PDFGenerate , PDFGenerate>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 
@@ -35,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Booking}/{action=GenerateTicket}/{id?}");
+    pattern: "{controller=Booking}/{action=generatePdf}/{id?}");
 
 app.Run();
