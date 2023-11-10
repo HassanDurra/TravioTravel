@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "PDF Viewer";
+    Layout = "";
+}
+
+<h2>PDF Viewer</h2>
+
+<!-- Display PDF content in an iframe -->
+<iframe id="pdfViewer" src="@Url.Action("GeneratePdf" , "Booking")" width="100%" height="600"></iframe>
+
+@section scripts {
+    <script>
+        // Function to update the PDF content in the iframe
+        function updatePdfContent() {
+            var iframe = document.getElementById("pdfViewer");
+            iframe.src = "@Url.Action("GeneratePdf" , "Booking")";
+        }
+
+        // Call the function to update PDF content on page load
+        updatePdfContent();
+
+        // Optionally, you can use other events to trigger the update, such as a button click or a timer.
+        // Example: document.getElementById("refreshButton").addEventListener("click", updatePdfContent);
+    </script>
+}

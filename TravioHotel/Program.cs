@@ -36,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Booking}/{action=generatePdf}/{id?}");
+    pattern: "{controller=Booking}/{action=pdfViewer}/{id?}");
 
 app.Run();

@@ -304,3 +304,4 @@ C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\itext.html2pdf.dl
 C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\BouncyCastle.Crypto.dll
 C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\itext.bouncy-castle-adapter.dll
+C:\xampp8.1.0\htdocs\TravioTravel\TravioHotel\bin\Debug\net6.0\QRCoder.dll
