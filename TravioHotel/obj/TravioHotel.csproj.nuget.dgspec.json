@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "BarCode": {
+              "target": "Package",
+              "version": "[2023.11.8, )"
+            },
             "BouncyCastle": {
               "target": "Package",
               "version": "[1.8.9, )"
@@ -65,6 +69,10 @@
             "Microsoft.AspNetCore.Session": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.Bcl.AsyncInterfaces": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -84,9 +92,9 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
-            "QRCoder": {
+            "Nito.Disposables": {
               "target": "Package",
-              "version": "[1.4.3, )"
+              "version": "[2.4.0, )"
             },
             "itext.bouncy-castle-adapter": {
               "target": "Package",

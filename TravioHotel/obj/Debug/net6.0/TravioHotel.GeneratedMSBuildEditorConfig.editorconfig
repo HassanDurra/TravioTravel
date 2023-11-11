@@ -40,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWlycG9ydHNcVHJhc2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Bookings/Flights.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va2luZ3NcRmxpZ2h0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Bookings/rescheduleFlight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va2luZ3NccmVzY2hlZHVsZUZsaWdodC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
