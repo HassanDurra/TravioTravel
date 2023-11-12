@@ -31,9 +31,10 @@ namespace TravioHotel.Controllers.User
             var Data   = new { city = cities };
             return Json(Data);
         }
-        public IActionResult Listing()
+        public IActionResult ComingSoon( string Name)
         {
-            return View("Views/User/Listing.cshtml");
+            TempData["page_title"] = Name;
+            return View("Views/User/ComingSoon.cshtml");
         }
     }
 }
