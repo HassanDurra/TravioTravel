@@ -211,14 +211,32 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link  bg-warning btn btn-warning text-white" style="white-space:nowrap" href="@Url.Action("Index" , "Home")">Register </a>
+                        @if(ViewBag.isLoggedIn == null || ViewBag.isLoggedIn == "")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link  bg-warning btn rounded btn-warning text-white" style="white-space:nowrap" href="@Url.Action("Login" , "Auth")">Register </a>
 
-                        </li> <li class="nav-item ">
-                            <a class="nav-link bg-warning btn btn-warning text-white" style="white-space:nowrap" href="@Url.Action("Index" , "Home")">Sign In </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link bg-warning btn rounded btn-warning text-white" style="white-space:nowrap" href="@Url.Action("Registeration" , "Auth")">Sign In </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link" data-bs-toggle="dropdown">@ViewBag.<span><i class="fa fa-angle-down"></i></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><i class="fa fa-plane"></i>&nbsp; Flight Booking</a></li>
+                                    <li><a class="dropdown-item text-danger" href="@Url.Action("ComingSoon" , "Home" , new {Name = "Hotels Boooking"})"><i class="fa fa-lock"></i> &nbsp; Hotel Bookings <small>( Coming Soon )</small></a></li>
+                                    <li><a class="dropdown-item text-danger" href="@Url.Action("ComingSoon" , "Home" , new {Name = "Cruise Boooking"})" disabled><i class="fa fa-lock"></i> &nbsp; Cruise Booking <small>( Coming Soon )</small></a></li>
+                                    <li><a class="dropdown-item text-danger" href="@Url.Action("ComingSoon" , "Home" , new {Name = "Cars Boooking"})"><i class="fa fa-lock"></i> &nbsp; Car Booking <small>( Coming Soon )</small></a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link bg-warning btn rounded btn-warning text-white" style="white-space:nowrap" href="@Url.Action("Registeration" , "Auth")">Sign In </a>
+                            </li>
+                        }
 
-                        </li>
-                        
                        
                       
                         <li class="dropdown-item search-btn">

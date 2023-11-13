@@ -15,17 +15,23 @@
     </div>
     <div class="card-body">
         <div class="basic-form">
-            <form id="airlinesForm" action="@Url.Action("updateTime" , "Bookings")" method="Post">
+            <form id="scheduleForm" action="@Url.Action("updateTime" , "Bookings")" method="Post">
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Departure Date</label>
                         
-                        <input type="date" name="departureDate"  class="form-control" placeholder="Service Logo Url">
-                        <input type="number" readonly name="Id" value="@id.id" class="form-control" placeholder="Service Logo Url">
+                        <input type="date" id="departureDate" name="departureDate"  class="form-control" placeholder="Service Logo Url">
+                        <input type="hidden" readonly name="Id" value="@id.id" class="form-control" placeholder="Service Logo Url">
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Departure Time</label>
-                        <input type="time" name="departureTime"  class="form-control" placeholder="Service Name">
+                        <input type="time" id="departureTime"  name="departureTime" class="form-control" placeholder="Service Name">
+                    </div> <div class="mb-3 col-md-6">
+                        <label class="form-label">Arrival Date</label>
+                        <input type="date" id="arrivalDate" name="arrivalDate" class="form-control" placeholder="Service Name">
+                    </div> <div class="mb-3 col-md-6">
+                        <label class="form-label">Arrival Time</label>
+                        <input type="time" id="arrivalTime" name="arrivalTime" class="form-control" placeholder="Service Name">
                     </div>
                    
                 </div>
@@ -78,3 +84,55 @@
 
 <script src="~/dashboardassets/custom/js/Airlines.js"></script>
 <!--End of Script Files-->
+<script>
+    $(document).ready(function(){
+        let DepartureForm  = $("#scheduleForm");
+        let departureDate  = $("#departureDate");
+        let departureTime  = $("#departureTime");
+        let arrivalDate    = $("#arrivalDate");
+        let arrivalTime    = $("#arrivalTime");
+        let currentDate    = new Date();
+        let departureCurrentTime  = new Date(departureTime.val());
+        console.log(departureCurrentTime.getTime());
+        $(DepartureForm).submit(function(e){
+            const currentDateTime = new Date();
+
+            // Parse departure date and time inputs
+            const departureDateInput = departureDate.val();
+            const departureTimeInput = departureTime.val();
+
+            // Parse arrival date and time inputs
+            const arrivalDateInput = arrivalDate.val();
+            const arrivalTimeInput = arrivalTime.val();
+
+            // Validate departure date and time
+            const departureDateTime = new Date(`${departureDateInput}T${departureTimeInput}`);
+            if (isNaN(departureDateTime.getTime()) || departureDateTime < currentDateTime) {
+                e.preventDefault();
+                toastr["error"]("Invalid Departure Date or Time cannot be empty");
+            }
+           
+            // Validate arrival date and time
+            const arrivalDateTime = new Date(`${arrivalDateInput}T${arrivalTimeInput}`);
+            if (isNaN(arrivalDateTime.getTime()) || arrivalDateTime < currentDateTime) {
+                e.preventDefault();
+                toastr["error"]("Invalid Arrival Date or Time cannot be empty");
+            }
+            if (arrivalDateTime < departureDateTime) {
+                e.preventDefault();
+                toastr["error"]("Arrival Date Cannot Be Less Than Departure Date");
+            }
+
+            // Check if departure and arrival dates are the same, and their times are also the same
+            if (departureDate.val() == arrivalDate.val() && departureTime.val() == arrivalTime.val()) {
+                e.preventDefault();
+                toastr["error"]("Departure and Arrival Times Cannot Be the Same on the Same Day");
+            }
+            // Check if departure time is greater than arrival time
+            if (departureDateInput === arrivalDateInput && departureDateTime > arrivalDateTime) {
+                e.preventDefault();
+                toastr["error"]("Departure Time Must Be Less Than Arrival");
+            }
+        })
+    })
+</script>

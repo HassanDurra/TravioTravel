@@ -40,7 +40,8 @@
                         <th>Status</th>
                         <th>Re-Scheduled</th>
                         <th>Print Ticket</th>
-                        <th>Action</th>
+                        <th>Cancel Booking</th>
+                        <th>Remove Booking</th>
 
                     </tr>
                 </thead>
@@ -80,12 +81,21 @@
                                 {
                                     <a class="btn btn-success text-white" title="Arrived"><i class="fa fa-plane-arrival"></i></a>
                                 }
-                               
+                                else if (@bookings.passangers.status == 3)
+                                {
+                                    <a class="btn btn-danger text-white" title="Cancelled"><i class="fa fa-ban"></i></a>
+                                }
                                
                             </td>
                             <td>
+                                @if(@bookings.passangers.status == 0){
+                                    <a href="@Url.Action("Scheduled" , "Bookings" , new { id = @bookings.passangers.flight_details_id})" class="btn btn-success text-white" title="Re-Schedule Ticket"><i class="fa fa-clock"></i></a>
+                                }
+                                else
+                                {
+                                    <a href="#" class="btn btn-danger text-white" title="Cannot Re-Scheduled"><i class="fa fa-clock"></i></a>
+                                }
 
-                                <a href="@Url.Action("Scheduled" , "Bookings" , new { id = @bookings.passangers.flight_details_id})" class="btn btn-success text-white" title="Re-Schedule Ticket"><i class="fa fa-clock"></i></a>
                             </td>
                               <td>
                                     <a class="btn btn-warning text-white" title="Print Ticket"><i class="fa fa-print"></i></a>
@@ -93,9 +103,23 @@
                                
                             </td>
                             <td>
-
-                                <a class="btn btn-danger" href="@Url.Action("Cancel" , "Bookings" , new { id = @bookings.passangers.id})" title="Cancel Booking"><i class="fa fa-trash"></i></a>
-                               
+                                @if (@bookings.passangers.status == 0)
+                                {
+                                    <a class="btn btn-danger" href="@Url.Action("Cancel" , "Bookings" , new { id = @bookings.passangers.id  , Status ="Scheduled"})" disabled title="Cancel Booking"><i class="fa fa-ban"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-danger" href="@Url.Action("Cancel" , "Bookings" , new { id = @bookings.passangers.id  , Status ="DepartedOrArrived"})" disabled title="Cannot Cancel Booking"><i class="fa fa-ban"></i></a>
+                                }
+                            </td>
+                            <td>
+                               @if(@bookings.passangers.status == 1){
+                                    <a class="btn btn-danger" href="@Url.Action("RemoveTicketTicket" , "Bookings" , new { id = @bookings.passangers.id , Status ="invalid"})" title="Remove Booking"><i class="fa fa-trash"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-danger" href="@Url.Action("RemoveTicket" , "Bookings" , new { id = @bookings.passangers.id , Status ="valid"})" title="Remove Booking"><i class="fa fa-trash"></i></a>
+                                }
                             </td>
                         </tr>
                     }
