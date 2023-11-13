@@ -76,12 +76,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/ComingSoon.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb21pbmdTb29uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/FlightBooking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGbGlnaHRCb29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/FlightBookingPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGbGlnaHRCb29raW5nUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/xampp8.1.0/htdocs/TravioTravel/TravioHotel/Views/User/Index.cshtml]

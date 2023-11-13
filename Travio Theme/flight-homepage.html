@@ -697,380 +697,123 @@
                 </ul>
             </div><!-- end slider -->
 
-            <div class="search-tabs" id="search-tabs-2">
+            <div class="search-tabs" id="search-tabs-1">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item"><a class="nav-link active" href="#flights"
-                                        data-bs-toggle="tab"><span><i class="fa fa-plane"></i></span><span
-                                            class="d-md-inline-flex d-none st-text">Flights</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="#hotels" data-bs-toggle="tab"><span><i
-                                                class="fa fa-building"></i></span><span
-                                            class="d-md-inline-flex d-none st-text">Hotels</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="#tours" data-bs-toggle="tab"><span><i
-                                                class="fa fa-suitcase"></i></span><span
-                                            class="d-md-inline-flex d-none st-text">Tours</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="#cruise" data-bs-toggle="tab"><span><i
-                                                class="fa fa-ship"></i></span><span
-                                            class="d-md-inline-flex d-none st-text">Cruise</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="#cars" data-bs-toggle="tab"><span><i
-                                                class="fa fa-car"></i></span><span
-                                            class="d-md-inline-flex d-none st-text">Cars</span></a></li>
+        
+                            <ul class="nav nav-tabs justify-content-center">
+                                <li class="nav-item"><a class="nav-link active" href="#flights" data-bs-toggle="tab"><span><i class="fa fa-plane"></i></span><span class="d-md-inline-flex d-none st-text">Flights</span></a></li>
+                            
                             </ul>
-
+        
                             <div class="tab-content">
-
+        
                                 <div id="flights" class="tab-pane in active">
-                                    <form>
+                                    <form asp-action="RequestBooking" asp-controller="BookingRequest" id="flightBookingForm" asp-area="User" method="Post">
                                         <div class="row">
-
+        
                                             <div class="col-12 col-md-12 col-lg-5 col-xl-4">
                                                 <div class="row">
-
+        
                                                     <div class="col-12 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control" placeholder="From">
+                                                        <label><i class="fa text-warning fa-map-marker"></i>&nbsp; From Country<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+                                                        <div class="form-group right-icon">
+                                                            <select class="form-control" id="from_country" name="from_country" asp-for="from_country">
+                                                                <option value="">Select Country</option>
+                                                                @foreach(var country in ViewBag.country){
+                                                                <option value="@country.id">@country.name</option>
+                                                                }
+                                                            </select>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div><!-- end columns -->
-
-                                                    <div class="col-12 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control" placeholder="To">
+                                                      <div class="col-12 col-md-6 col-lg-6">
+                                                        <label><i class="fa text-warning fa-map-marker"></i>&nbsp; From City <span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+        
+                                                        <div class="form-group right-icon">
+                                                            <select class="form-control" id="from_city" readonly name="from_city" asp-for="from_city">
+                                                                <option value="">Select City</option>
+                                                            </select>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div><!-- end columns -->
-
+                                                      <div class="col-12 col-md-6 col-lg-6">
+                                                        <label><i class="fa text-warning fa-map-marker"></i> &nbsp;To Country<span class="text-danger" style="position:relative; bottom:3px ; left:1px">*</span></label>
+        
+                                                        <div class="form-group right-icon">
+                                                            <select class="form-control" id="to_country" name="to_country" asp-for="to_country">
+                                                                <option value="">Select Country</option>
+                                                                @foreach (var country in ViewBag.country)
+                                                                {
+                                                                    <option value="@country.id">@country.name</option>
+                                                                }
+                                                            </select>
+                                                            <i class="fa fa-map-marker"></i>
+                                                           
+                                                        </div>
+                                                    </div><!-- end columns -->
+        
+                                                    <div class="col-12 col-md-6 col-lg-6">
+                                                        <label><i class="fa text-warning fa-map-marker"></i> &nbsp; To City<span class="text-danger" style="position:relative; bottom:3px ; left:1px">*</span></label>
+        
+                                                        <div class="form-group right-icon">
+                                                            <select class="form-control" readonly id="to_city" name="to_city" asp-for="to_city">
+                                                                <option value="">Select City</option>
+                                                            </select>
+                                                            
+        
+                                                            <i class="fa fa-map-marker"></i>
+                                                        </div>
+                                                    </div><!-- end columns -->
+        
                                                 </div><!-- end row -->
                                             </div><!-- end columns -->
-
+        
                                             <div class="col-12 col-md-12 col-lg-5 col-xl-4">
                                                 <div class="row">
-
-                                                    <div class="col-6 col-md-6 col-lg-6">
+        
+                                                    <div class="col-12 col-md-12 col-lg-12">
+                                                        <label><i class="fa text-warning fa-calendar"></i> &nbsp; Departure Date<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+        
                                                         <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd1"
-                                                                placeholder="Check In">
+                                                            <input type="text" class="form-control dpd1" id="departure_date" placeholder="Departure Date" name="departure_date" asp-for="departure_date">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
                                                     </div><!-- end columns -->
-
-                                                    <div class="col-6 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd2"
-                                                                placeholder="Check Out">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
+        
+                                                  
+        
                                                 </div><!-- end row -->
                                             </div><!-- end columns -->
-
+        
                                             <div class="col-12 col-md-12 col-lg-2 col-xl-2">
-                                                <div class="form-group right-icon">
-                                                    <select class="form-control">
-                                                        <option selected>Adults</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                    </select>
+                                                <label> <i class="fa text-warning fa-user"></i> &nbsp;Total Adults<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+        
+                                                <div class="form-group left-icon">
+                                                    <input name="number_of_adults" type="number" id="number_of_adults" placeholder="No Adults" asp-for="number_of_adults" class="form-control" />
                                                     <i class="fa fa-angle-down"></i>
                                                 </div>
                                             </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                                <button class="btn btn-orange">Search</button>
+        
+                                            <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn mt-4" style="position:relative;top:6px">
+                                                <button class="btn btn-orange searchBtn" type="submit">Search</button>
                                             </div><!-- end columns -->
-
+        
                                         </div><!-- end row -->
                                     </form>
                                 </div><!-- end flights -->
-
-                                <div id="hotels" class="tab-pane">
-                                    <form>
-                                        <div class="row">
-
-                                            <div class="col-12 col-md-12 col-lg-6 col-xl-5">
-                                                <div class="row">
-
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd1"
-                                                                placeholder="Check In">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd2"
-                                                                placeholder="Check Out">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-6 col-xl-5">
-                                                <div class="row">
-
-                                                    <div class="col-12 col-md-12 col-lg-4">
-                                                        <div class="form-group right-icon">
-                                                            <select class="form-control">
-                                                                <option selected>Rooms</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-6 col-md-6 col-lg-4">
-                                                        <div class="form-group right-icon">
-                                                            <select class="form-control">
-                                                                <option selected>Adults</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-6 col-md-6 col-lg-4">
-                                                        <div class="form-group right-icon">
-                                                            <select class="form-control">
-                                                                <option selected>Kids</option>
-                                                                <option>0</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                            </select>
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                                <button class="btn btn-orange">Search</button>
-                                            </div><!-- end columns -->
-
-                                        </div><!-- end row -->
-                                    </form>
-                                </div><!-- end hotels -->
-
-                                <div id="tours" class="tab-pane">
-                                    <form>
-                                        <div class="row">
-
-                                            <div class="col-12 col-md-12 col-lg-3 col-xl-4">
-                                                <div class="form-group left-icon">
-                                                    <input type="text" class="form-control"
-                                                        placeholder="City,Country" />
-                                                    <i class="fa fa-map-marker"></i>
-                                                </div>
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-3 col-xl-3">
-                                                <div class="form-group right-icon">
-                                                    <select class="form-control">
-                                                        <option selected>Month</option>
-                                                        <option>January</option>
-                                                        <option>February</option>
-                                                        <option>March</option>
-                                                        <option>April</option>
-                                                        <option>May</option>
-                                                        <option>June</option>
-                                                        <option>July</option>
-                                                        <option>August</option>
-                                                        <option>September</option>
-                                                        <option>October</option>
-                                                        <option>November</option>
-                                                        <option>December</option>
-                                                    </select>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-6 col-xl-3">
-                                                <div class="row">
-
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="form-group right-icon">
-                                                            <select class="form-control">
-                                                                <option selected>Adults</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="form-group right-icon">
-                                                            <select class="form-control">
-                                                                <option selected>Kids</option>
-                                                                <option>0</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                            </select>
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                                <button class="btn btn-orange">Search</button>
-                                            </div><!-- end columns -->
-
-                                        </div><!-- end row -->
-                                    </form>
-                                </div><!-- end tours -->
-
-                                <div id="cruise" class="tab-pane">
-                                    <form>
-                                        <div class="row">
-
-                                            <div class="col-12 col-md-12 col-lg-5 col-xl-4">
-                                                <div class="row">
-
-                                                    <div class="col-12 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control" placeholder="From">
-                                                            <i class="fa fa-map-marker"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-12 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control" placeholder="To">
-                                                            <i class="fa fa-map-marker"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-5 col-xl-4">
-                                                <div class="row">
-
-                                                    <div class="col-6 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd1"
-                                                                placeholder="Check In">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-6 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd2"
-                                                                placeholder="Check Out">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-2 col-xl-2">
-                                                <div class="form-group right-icon">
-                                                    <select class="form-control">
-                                                        <option selected>Adults</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                    </select>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </div>
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                                <button class="btn btn-orange">Search</button>
-                                            </div><!-- end columns -->
-
-                                        </div><!-- end columns -->
-                                    </form>
-                                </div><!-- end cruises -->
-
-                                <div id="cars" class="tab-pane">
-                                    <form>
-                                        <div class="row">
-
-                                            <div class="col-12 col-md-12 col-lg-7 col-xl-6">
-                                                <div class="row">
-
-                                                    <div class="col-md-6 col-lg-4">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Country" />
-                                                            <i class="fa fa-globe"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-md-6 col-lg-4">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="City" />
-                                                            <i class="fa fa-map-marker"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-md-12 col-lg-4">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Location" />
-                                                            <i class="fa fa-street-view"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-5 col-xl-4">
-                                                <div class="row">
-
-                                                    <div class="col-6 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd1"
-                                                                placeholder="Check In">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                    <div class="col-6 col-md-6 col-lg-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control dpd2"
-                                                                placeholder="Check Out">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end columns -->
-
-                                            <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                                <button class="btn btn-orange">Search</button>
-                                            </div><!-- end columns -->
-
-                                        </div><!-- end row -->
-                                    </form>
-                                </div><!-- end cars -->
-
+        
+                            
+                                
+                               
                             </div><!-- end tab-content -->
-
+        
                         </div><!-- end columns -->
                     </div><!-- end row -->
                 </div><!-- end container -->
             </div><!-- end search-tabs -->
+        
 
         </section><!-- end flexslider-container -->
 

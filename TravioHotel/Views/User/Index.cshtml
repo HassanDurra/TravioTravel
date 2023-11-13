@@ -2,7 +2,7 @@
 @{
     ViewData["title"] = "Home";
     Layout = "~/Views/Shared/_Userlayout.cshtml";
-    var sliderImage = "userassets/images/homepage-slider-1.jpg";
+    var sliderImage = "~/userassets/images/homepage-slider-1.jpg";
 }
 
 <!--Data start from here-->
@@ -1404,31 +1404,80 @@
         $(FligthSearchForm).submit(function (e) {
             if(fromCountry.val()==""){
                 e.preventDefault();
-                toastr["error"]("Departure Country Is Required");
+                  Swal.fire({
+                title: 'You Missing Something!',
+                    text: 'Departure Country Is Required',
+                icon: 'warning',
+                confirmButtonText: 'Fill it!'
+                 });
+             return false; 
             }
             if (fromCity.val() == "") {
                 e.preventDefault();
-                toastr["error"]("Departure City Is Required");
+             
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Departure City Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+                
             }
             if (toCountry.val() == "") {
                 e.preventDefault();
-                toastr["error"]("Arrival Country Is Required");
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Arrival Country Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+                
             }
             if (toCity.val() == "") {
                 e.preventDefault();
-                toastr["error"]("Arrival City Is Required");
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Arrival City Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+
             } 
             if (fromCountry.val() == toCountry.val() && fromCity.val() ==  toCity.val()) {
                 e.preventDefault();
-                toastr["error"]("Departure Country and City Cannot Be As same as the Arrival Country and City");
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Departure Country and City Cannot Be As same as the Arrival Country and City',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+                
             }
             if (departureDate.val() == "") {
                 e.preventDefault();
-                toastr["error"]("Departure Date Is Required");
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Departure Date Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+              
             }
             if (TotalAduts.val() == "") {
                 e.preventDefault();
-                toastr["error"]("Number of Adults Is Required");
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Number of Adults Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+                
             }
        
         });

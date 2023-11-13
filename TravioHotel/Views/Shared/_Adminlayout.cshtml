@@ -900,22 +900,38 @@
 
 
 	</div>
-	
 
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<!-- Datatable -->
 	<!-- Page Scripts Ends -->
 	<!-- Using Toastr-->
+	
 	@if (TempData["Success"] != null)
 	{
 		<script>
-			toastr.success('@TempData["Success"]');
+			Swal.fire({
+				title: 'Success!',
+				text: '@TempData["Success"]',
+				icon: 'success',
+				confirmButtonText: 'Cool!'
+			})
+
 		</script>
 	}
 	@if (TempData["Error"] != null)
 	{
 		<script>
-			toastr.error('@TempData["Error"]');
+			Swal.fire({
+				title: 'Oops!',
+				text: '@TempData["Error"]',
+				icon: 'error',
+				confirmButtonText: 'Close it!'
+			})
+
 		</script>
 	}
+
 	<script>
 		function TravlCarousel()
 			{

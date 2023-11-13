@@ -114,11 +114,11 @@
                             </td>
                             <td>
                                @if(@bookings.passangers.status == 1){
-                                    <a class="btn btn-danger" href="@Url.Action("RemoveTicketTicket" , "Bookings" , new { id = @bookings.passangers.id , Status ="invalid"})" title="Remove Booking"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-danger" href="@Url.Action("Remove" , "Bookings" , new { id = @bookings.passangers.id , Status ="invalid"})" title="Remove Booking"><i class="fa fa-trash"></i></a>
                                 }
                                 else
                                 {
-                                    <a class="btn btn-danger" href="@Url.Action("RemoveTicket" , "Bookings" , new { id = @bookings.passangers.id , Status ="valid"})" title="Remove Booking"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-danger" href="@Url.Action("Remove" , "Bookings" , new { id = @bookings.passangers.id , Status ="valid"})" title="Remove Booking"><i class="fa fa-trash"></i></a>
                                 }
                             </td>
                         </tr>

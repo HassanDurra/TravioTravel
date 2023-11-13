@@ -155,10 +155,10 @@
                                         <div class="col-md">
                                             <ul class="list-unstyled">
                                                 <li class="dropdown-item dropdown-header">Standard <span>Pages</span></li>
-                                                <li><a href="about-us-1.html">About Us</a></li>                                            
+                                                <li><a href="@Url.Action("About" , "Home")">About Us</a></li>                                            
                                                 <li><a href="services-2.html">Services</a></li>
                                                 <li><a href="team-2.html">Our Team </a></li>
-                                                <li><a href="contact-us-2.html">Contact Us </a></li>
+                                                <li><a href="@Url.Action("Index" , "Contact")">Contact Us </a></li>
                                             </ul>
                                         </div>
                                         @if(@ViewBag.isLoggedIn != null || ViewBag.isLoggedIn != "")
@@ -498,7 +498,7 @@
                         <div class="col-12 col-md-6 col-lg-3 col-xl-3 footer-widget ftr-contact">
                             <h3 class="footer-heading">CONTACT US</h3>
                             <ul class="list-unstyled">
-                                <li><span><i class="fa fa-map-marker"></i></span>29 Land St, Lorem City, CA</li>
+                                <li><span><i class="fa fa-map-marker"></i></span>karachi/Sindh , Pakistan</li>
                                 <li><span><i class="fa fa-phone"></i></span>+92 3030 239865</li>
                                 <li><span><i class="fa fa-envelope"></i></span>hassandurra81@gmail.com</li>
                             </ul>
@@ -517,24 +517,22 @@
                             <h3 class="footer-heading">RESOURCES</h3>
                             <ul class="list-unstyled">
                                 <li><a href="#">Blogs</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="@Url.Action("Index", "Contact")">Contact Us</a></li>
                                 <li><a href="@Url.Action("Login" , "Auth")">Login</a></li>
                                 <li><a href="@Url.Action("Registeration" , "Auth")">Register</a></li>
-                                <li><a href="#">Site Map</a></li>
+                             
                             </ul>
                         </div><!-- end columns -->
 
                         <div class="col-12 col-md-6 col-lg-4 col-xl-4 footer-widget ftr-about">
                             <h3 class="footer-heading">ABOUT US</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
+                            <p>Welcome to TravioTravel – Your Gateway to Seamless Airline Reservations! At TravioTravel, we are passionate about transforming your travel experience. Whether you're a seasoned globetrotter or embarking on your very first journey, our mission is to make airline reservation a breeze, ensuring that every step of your travel is as exciting as the destination itself.</p>
                             <ul class="social-links list-inline list-unstyled">
-                                <li class="list-inline-item"><a href="#"><span><i class="fa fa-facebook"></i></span></a></li>
-                                <li class="list-inline-item"><a href="#"><span><i class="fa fa-twitter"></i></span></a></li>
-                                <li class="list-inline-item"><a href="#"><span><i class="fa fa-google-plus"></i></span></a></li>
-                                <li class="list-inline-item"><a href="#"><span><i class="fa fa-pinterest-p"></i></span></a></li>
-                                <li class="list-inline-item"><a href="#"><span><i class="fa fa-instagram"></i></span></a></li>
-                                <li class="list-inline-item"><a href="#"><span><i class="fa fa-linkedin"></i></span></a></li>
-                                <li class="list-inline-item"><a href="#"><span><i class="fa fa-youtube-play"></i></span></a></li>
+                                <li class="list-inline-item"><a href="https://www.facebook.com/hhugf.lunf"><span><i class="fa fa-facebook"></i></span></a></li>
+                                <li class="list-inline-item"><a href="mailto:hassandurra81@gmail.com"><span><i class="fa fa-google-plus"></i></span></a></li>
+                                <li class="list-inline-item"><a href="https://www.instagram.com/hassan_.983/?hl=en"><span><i class="fa fa-instagram"></i></span></a></li>
+                                <li class="list-inline-item"><a href ="https://www.linkedin.com/in/hassan-durra-68b123220/"><span><i class="fa fa-linkedin"></i></span></a></li>
+                                <li class="list-inline-item"><a href="https://github.com/HassanDurra"><span><i class="fa fa-github"></i></span></a></li>
                             </ul>
                         </div><!-- end columns -->
 
@@ -582,21 +580,42 @@
     <script src="~/userassets/js/popup-ad.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Datatable -->
 
     <!-- Page Scripts Ends -->
     <!-- Using Toastr-->
+    <script>
+        Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+    </script>
     @if(TempData["Success"] != null)
     {
         <script>
-            toastr.success('@TempData["Success"]');
+            Swal.fire({
+                title: 'Success!',
+                text: '@TempData["Success"]',
+                icon: 'success',
+                confirmButtonText: 'Cool!'
+            })
+         
         </script>
     }
     @if(TempData["Error"] != null)
     {
         <script>
-            toastr.error('@TempData["Error"]');
+            Swal.fire({
+                title: 'Oops!',
+                text: '@TempData["Error"]',
+                icon: 'error',
+                confirmButtonText: 'Close it!'
+            })
+           
         </script>
     }
     

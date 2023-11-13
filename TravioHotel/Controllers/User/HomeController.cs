@@ -23,6 +23,15 @@ namespace TravioHotel.Controllers.User
             ViewBag.country = database.Countries.ToList();
             return View("Views/User/Index.cshtml");
 
+        }public IActionResult FlightBookingPage()
+        {
+
+            string isLogedIn   = httpContext.HttpContext.Session.GetString("user") ?? ""; 
+            
+            ViewBag.isLoggedIn = isLogedIn;
+            ViewBag.country = database.Countries.ToList();
+            return View("Views/User/FlightBookingPage.cshtml");
+
         }
         // Selecting Country
         public IActionResult getCities(int id)
@@ -35,6 +44,10 @@ namespace TravioHotel.Controllers.User
         {
             TempData["page_title"] = Name;
             return View("Views/User/ComingSoon.cshtml");
+        }
+        public IActionResult About()
+        {        
+            return View("Views/User/About.cshtml");
         }
     }
 }

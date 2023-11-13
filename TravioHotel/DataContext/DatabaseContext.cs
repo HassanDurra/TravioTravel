@@ -18,7 +18,7 @@ namespace TravioHotel.DataContext
         public DbSet<VerificationModel> Verification {  get ; set; } 
         public DbSet<BookingRequest> BookingRequests { get; set; }  
         public DbSet<BookingFlightDetails> BookingFlightDetails { get; set; }  
-        public DbSet<BookingFlightClientDetails> BookingClientDetails { get; set; }  
-    
+        public DbSet<BookingFlightClientDetails> BookingClientDetails { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }

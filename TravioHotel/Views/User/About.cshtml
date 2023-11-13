@@ -1,0 +1,249 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewData["title"] = "About Us";
+}
+<section class="page-cover" id="cover-about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1 class="page-title">About Us 2</h1>
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index" , "Home")">Home / </a></li>
+                    <li >About Us 2</li>
+                </ul>
+            </div><!-- end columns -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end page-cover -->
+<!--===== INNERPAGE-WRAPPER ====-->
+<section class="innerpage-wrapper">
+    <div id="about-content-2" class="innerpage-section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-lg-5 col-xl-4">
+                    <div id="abt-cnt-2-img">
+                        <img src="~/userassets/images/about-content-2.png" class="img-fluid" alt="about-img" />
+                    </div><!-- end abt-cnt-2-img -->
+                </div><!-- end columns -->
+
+                <div class="col-12 col-sm-12 col-lg-7 col-xl-8">
+                    <div id="abt-cnt-2-text">
+                        <h2>Welcome to<span><span><i class="fa fa-plane"></i> Travio</span>Travels</span></h2>
+                        <p>
+                            Welcome to TravioTravel – Your Gateway to Seamless Airline Reservations!
+
+                            At TravioTravel, we are passionate about transforming your travel experience. Whether you're a seasoned globetrotter or embarking on your very first journey, our mission is to make airline reservation a breeze, ensuring that every step of your travel is as exciting as the destination itself.
+                        </p>
+                        <div class="row">
+                            <div class="col-4 col-sm-4">
+                                <div class="abt-cnt-2-ftr">
+                                    <span><i class="fa fa-diamond"></i></span>
+                                    <h4>Best Service</h4>
+                                </div><!-- end abt-cnt-2-ftr -->
+                            </div><!-- end columns -->
+
+                            <div class="col-4 col-sm-4">
+                                <div class="abt-cnt-2-ftr">
+                                    <span><i class="fa fa-clock-o"></i></span>
+                                    <h4>24/7 Availability</h4>
+                                </div><!-- end abt-cnt-2-ftr -->
+                            </div><!-- end columns -->
+
+                            <div class="col-4 col-sm-4">
+                                <div class="abt-cnt-2-ftr">
+                                    <span><i class="fa fa-star"></i></span>
+                                    <h4>5 Star Rating</h4>
+                                </div><!-- end abt-cnt-2-ftr -->
+                            </div><!-- end columns -->
+                        </div><!-- end row -->
+                    </div><!-- end abt-cnt-2-text -->
+                </div><!-- end columns -->
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end about-content-2 -->
+
+    <div id="video-banner" class="banner-padding back-size">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h2>Take a Video Tour</h2>
+                    <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum at, pro an eros perpetua ullamcorper.</p>
+                    <div class="margin-small py-5 mt-5 m-sm-0 "></div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn video-btn" id="play-button" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/0O2aH4XLbto" data-bs-target="#myModal">
+                        <span><i class="fa fa-play mt-0 m-sm-0"></i></span>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+
+                                    <button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <!-- 16:9 aspect ratio -->
+
+                                    <div class="ratio ratio-16x9">
+                                        <iframe class="embed-responsive-item" src="#" id="video" allowscriptaccess="always">></iframe>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end video-banner -->
+
+    <div id="why-us" class="innerpage-section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="page-heading innerpage-heading">
+                        <h2>Why Choose Us</h2>
+                        <hr class="heading-line" />
+                    </div><!-- end page-heading -->
+
+                    <div class="row">
+
+                        <div class="col-sm-12 col-md-7 col-lg-7" id="why-us-tabs">
+
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a href="#tb-happy-client" data-bs-toggle="tab" class="nav-link active"><span><i class="fa fa-smile-o "></i></span>Happy Clients</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#tb-satisfaction" data-bs-toggle="tab" class="nav-link"><span><i class="fa fa-thumbs-o-up"></i></span>Satisfaction</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#tb-daily-tours" data-bs-toggle="tab" class="nav-link"><span><i class="fa fa-plane"></i></span>Cutting-Edge Technology</a>
+                                </li>
+                            </ul><!-- end nav-tabs -->
+
+                            <div class="tab-content">
+
+                                <div id="tb-happy-client" class="container tab-pane active">
+                                    <p>At TravioTravel, our success is measured not just in the miles traveled but in the smiles we create. We take immense pride in the satisfaction of our clients, and here's why our clients choose us for their journeys:</p>
+                                    
+                                    <a href="#">Discover More<span><i class="fa fa-angle-double-right"></i></span></a>
+                                </div><!-- end tb-happy-client -->
+
+                                <div id="tb-satisfaction" class="container tab-pane">
+                                    <p>Your satisfaction is our priority. We understand the nuances of travel planning, and our user-friendly platform reflects our commitment to offering you a hassle-free booking experience.</p>
+                                    <a href="#">Discover More<span><i class="fa fa-angle-double-right"></i></span></a>
+                                </div><!-- end tb-satisfaction -->
+
+                                <div id="tb-daily-tours" class="container tab-pane">
+                                    <p> We leverage the latest in travel technology to bring you real-time updates, secure transactions, and innovative features that enhance your overall booking process.</p>
+                                    
+                                    <a href="#">Discover More<span><i class="fa fa-angle-double-right"></i></span></a>
+                                </div><!-- end b-daily-tours -->
+
+                            </div><!-- end tab-content -->
+                        </div><!-- end columns -->
+
+                        <div class="col-sm-12 col-md-5 col-lg-5" id="progress-bars">
+
+                            <div class="bar">
+                                <h4>Satisfied Clients</h4>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%"><span>90%</span></div>
+                                </div><!-- end progress -->
+                            </div><!-- end bar -->
+
+                            <div class="bar">
+                                <h4>Packages</h4>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width:86%"><span>86%</span></div>
+                                </div><!-- end progress -->
+                            </div><!-- end bar -->
+
+                            <div class="bar">
+                                <h4>Accomodation</h4>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%"><span>75%</span></div>
+                                </div><!-- end progress -->
+                            </div><!-- end bar -->
+
+                            <div class="bar">
+                                <h4>Price Guarantee</h4>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" style="width:83%"><span>83%</span></div>
+                                </div><!-- end progress -->
+                            </div><!-- end bar -->
+
+                        </div><!-- end columns -->
+
+                        <div class="col-sm-12" id="company-logos">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h3>We Have Investor Relations.</h3>
+                                    <p>Don't take our words for granted. See what all this hipe about.</p>
+                                </div><!-- end columns -->
+
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="owl-carousel owl-theme" id="owl-company-logo">
+                                            <div class="col px-3">
+                                                <div class="item">
+                                                    <div class="company-img">
+                                                        <img src="~/userassets/images/company-1.png" class="img-fluid" alt="logo" />
+                                                    </div><!-- company-img -->
+                                                </div><!-- item -->
+                                            </div><!-- end columns -->
+
+                                            <div class="col px-3">
+                                                <div class="item">
+                                                    <div class="company-img">
+                                                        <img src="~/userassets/images/company-2.png" class="img-fluid" alt="logo" />
+                                                    </div><!-- company-img -->
+                                                </div><!-- item -->
+                                            </div><!-- end columns -->
+
+                                            <div class="col px-3">
+                                                <div class="item">
+                                                    <div class="company-img">
+                                                        <img src="~/userassets/images/company-3.png" class="img-fluid" alt="logo" />
+                                                    </div><!-- company-img -->
+                                                </div><!-- item -->
+                                            </div><!-- end columns -->
+
+                                            <div class="col px-3">
+                                                <div class="item">
+                                                    <div class="company-img">
+                                                        <img src="~/userassets/images/company-4.png" class="img-fluid" alt="logo" />
+                                                    </div><!-- company-img -->
+                                                </div><!-- item -->
+                                            </div><!-- end columns -->
+
+                                            <div class="col px-3">
+                                                <div class="item">
+                                                    <div class="company-img">
+                                                        <img src="~/userassets/images/company-5.png" class="img-fluid" alt="logo" />
+                                                    </div><!-- company-img -->
+                                                </div><!-- item -->
+                                            </div><!-- end columns -->
+
+                                        </div><!-- owl-company -->
+                                    </div><!-- end row -->
+
+                                </div><!-- end columns -->
+                            </div><!-- end row -->
+                        </div><!-- end columns -->
+
+                    </div><!-- end row -->
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end why-us -->
+
+</section><!-- end innerpage-wrapper -->
+<script src="~/userassets/js/jquery-3.3.1.min.js"></script>

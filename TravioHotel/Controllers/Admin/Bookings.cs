@@ -137,7 +137,7 @@ namespace TravioHotel.Controllers.Admin
             var bookingDetails = await Database.BookingClientDetails.Where(e => e.id == Id).FirstOrDefaultAsync();
             if (bookingDetails != null)
             {
-                if(Status == "Valid") {             
+                if(Status == "valid") {             
                 TempData["Success"] = $"Booking Details For {bookingDetails.firstName} {bookingDetails.lastName} Has been Removed";
                 Database.BookingClientDetails.Remove(bookingDetails);
                 return RedirectToAction("FlightsBookings", "Bookings");

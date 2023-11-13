@@ -1,0 +1,726 @@
+﻿@model TravioHotel.Models.BookingRequest ;
+@{
+    ViewData["title"] = "Home";
+    Layout = "~/Views/Shared/_Userlayout.cshtml";
+    var sliderImage = "userassets/images/flight-slider-1.jpg";
+}
+<!--========================= FLEX SLIDER =====================-->
+<section class="flexslider-container" id="flexslider-container-2">
+
+    <div class="flexslider slider" id="slider-2">
+        <ul class="slides">
+
+            <li class="item-1 back-size"
+                style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('@sliderImage') 50% 15%; background-size:cover;    height:100%;">
+                <div class="meta">
+                    <div class="container">
+                        <h2>Best Flight Offers</h2>
+                        <p>
+                           Finding Best Flight You Reach The Right Destination!
+                        </p>
+                    </div><!-- end container -->
+                </div><!-- end meta -->
+            </li><!-- end item-1 -->
+
+            <li class="item-2 back-size"
+                style="background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('@sliderImage') 50% 15%; background-size:cover;    height:100%;">
+                <div class=" meta">
+                    <div class="container">
+                        <h2>Travel The World</h2>
+                        <h1>With TravioTravel</h1>
+                    </div><!-- end container -->
+                </div><!-- end meta -->
+            </li><!-- end item-2 -->
+
+        </ul>
+    </div><!-- end slider -->
+
+    <div class="search-tabs" id="search-tabs-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <ul class="nav nav-tabs justify-content-center">
+                        <li class="nav-item"><a class="nav-link active" href="#flights" data-bs-toggle="tab"><span><i class="fa fa-plane"></i></span><span class="d-md-inline-flex d-none st-text">Flights</span></a></li>
+
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div id="flights" class="tab-pane in active">
+                            <form asp-action="RequestBooking" asp-controller="BookingRequest" id="flightBookingForm" asp-area="User" method="Post">
+                                <div class="row">
+
+                                    <div class="col-12 col-md-12 col-lg-5 col-xl-4">
+                                        <div class="row">
+
+                                            <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i>&nbsp; From Country<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" id="from_country" name="from_country" asp-for="from_country">
+                                                        <option value="">Select Country</option>
+                                                        @foreach (var country in ViewBag.country)
+                                                        {
+                                                            <option value="@country.id">@country.name</option>
+                                                        }
+                                                    </select>
+                                                    <i class="fa fa-map-marker"></i>
+                                                </div>
+                                            </div><!-- end columns -->
+                                            <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i>&nbsp; From City <span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" id="from_city" readonly name="from_city" asp-for="from_city">
+                                                        <option value="">Select City</option>
+                                                    </select>
+                                                    <i class="fa fa-map-marker"></i>
+                                                </div>
+                                            </div><!-- end columns -->
+                                            <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i> &nbsp;To Country<span class="text-danger" style="position:relative; bottom:3px ; left:1px">*</span></label>
+
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" id="to_country" name="to_country" asp-for="to_country">
+                                                        <option value="">Select Country</option>
+                                                        @foreach (var country in ViewBag.country)
+                                                        {
+                                                            <option value="@country.id">@country.name</option>
+                                                        }
+                                                    </select>
+                                                    <i class="fa fa-map-marker"></i>
+
+                                                </div>
+                                            </div><!-- end columns -->
+
+                                            <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i> &nbsp; To City<span class="text-danger" style="position:relative; bottom:3px ; left:1px">*</span></label>
+
+                                                <div class="form-group right-icon">
+                                                    <select class="form-control" readonly id="to_city" name="to_city" asp-for="to_city">
+                                                        <option value="">Select City</option>
+                                                    </select>
+
+
+                                                    <i class="fa fa-map-marker"></i>
+                                                </div>
+                                            </div><!-- end columns -->
+
+                                        </div><!-- end row -->
+                                    </div><!-- end columns -->
+
+                                    <div class="col-12 col-md-12 col-lg-5 col-xl-4">
+                                        <div class="row">
+
+                                            <div class="col-12 col-md-12 col-lg-12">
+                                                <label><i class="fa text-warning fa-calendar"></i> &nbsp; Departure Date<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+
+                                                <div class="form-group left-icon">
+                                                    <input type="text" class="form-control dpd1" id="departure_date" placeholder="Departure Date" name="departure_date" asp-for="departure_date">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div><!-- end columns -->
+
+
+
+                                        </div><!-- end row -->
+                                    </div><!-- end columns -->
+
+                                    <div class="col-12 col-md-12 col-lg-2 col-xl-2">
+                                        <label> <i class="fa text-warning fa-user"></i> &nbsp;Total Adults<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+
+                                        <div class="form-group left-icon">
+                                            <input name="number_of_adults" type="number" id="number_of_adults" placeholder="No Adults" asp-for="number_of_adults" class="form-control" />
+                                            <i class="fa fa-angle-down"></i>
+                                        </div>
+                                    </div><!-- end columns -->
+
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn mt-4" style="position:relative;top:6px">
+                                        <button class="btn btn-orange searchBtn" type="submit">Search</button>
+                                    </div><!-- end columns -->
+
+                                </div><!-- end row -->
+                            </form>
+                        </div><!-- end flights -->
+
+
+
+
+                    </div><!-- end tab-content -->
+
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end search-tabs -->
+
+
+</section><!-- end flexslider-container -->
+<!--================= FLIGHT OFFERS =============-->
+<section id="flight-offers" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-heading">
+                    <h2>Flight Offers</h2>
+                    <hr class="heading-line" />
+                </div><!-- end page-heading -->
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="main-block flight-block">
+                            <a href="flight-detail-right-sidebar.html">
+                                <div class="flight-img">
+                                    <img src="images/flight-1.jpg" class="img-fluid" alt="flight-img" />
+                                </div><!-- end flight-img -->
+
+                                <div class="flight-info">
+                                    <div class="flight-title">
+                                        <h3>
+                                            <span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span>
+                                        </h3>
+                                    </div><!-- end flight-title -->
+
+                                    <div class=" flight-timing">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    02-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    03-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                        </ul>
+                                    </div><!-- end flight-timing -->
+
+                                    <ul class="list-unstyled list-inline offer-price-1">
+                                        <li class="list-inline-item price">
+                                            $568.00<span class="pkg">Avg/Person</span>
+                                        </li>
+                                        <li class="list-inline-item rating">
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star lightgrey"></i></span>
+                                        </li>
+                                    </ul>
+                                </div><!-- end flight-info -->
+                            </a>
+                        </div><!-- end flight-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="main-block flight-block">
+                            <a href="flight-detail-right-sidebar.html">
+                                <div class="flight-img">
+                                    <img src="images/flight-2.jpg" class="img-fluid" alt="flight-img" />
+                                </div><!-- end flight-img -->
+
+                                <div class="flight-info">
+                                    <div class="flight-title">
+                                        <h3>
+                                            <span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span>
+                                        </h3>
+                                    </div><!-- end flight-title -->
+
+                                    <div class=" flight-timing">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    02-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    03-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                        </ul>
+                                    </div><!-- end flight-timing -->
+
+                                    <ul class="list-unstyled list-inline offer-price-1">
+                                        <li class="list-inline-item price">
+                                            $568.00<span class="pkg">Avg/Person</span>
+                                        </li>
+                                        <li class="list-inline-item rating">
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star lightgrey"></i></span>
+                                        </li>
+                                    </ul>
+                                </div><!-- end flight-info -->
+                            </a>
+                        </div><!-- end flight-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="main-block flight-block">
+                            <a href="flight-detail-right-sidebar.html">
+                                <div class="flight-img">
+                                    <img src="images/flight-3.jpg" class="img-fluid" alt="flight-img" />
+                                </div><!-- end flight-img -->
+
+                                <div class="flight-info">
+                                    <div class="flight-title">
+                                        <h3>
+                                            <span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span>
+                                        </h3>
+                                    </div><!-- end flight-title -->
+
+                                    <div class=" flight-timing">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    02-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    03-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                        </ul>
+                                    </div><!-- end flight-timing -->
+
+                                    <ul class="list-unstyled list-inline offer-price-1">
+                                        <li class="list-inline-item price">
+                                            $568.00<span class="pkg">Avg/Person</span>
+                                        </li>
+                                        <li class="list-inline-item rating">
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star lightgrey"></i></span>
+                                        </li>
+                                    </ul>
+                                </div><!-- end flight-info -->
+                            </a>
+                        </div><!-- end flight-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="main-block flight-block">
+                            <a href="flight-detail-right-sidebar.html">
+                                <div class="flight-img">
+                                    <img src="images/flight-4.jpg" class="img-fluid" alt="flight-img" />
+                                </div><!-- end flight-img -->
+
+                                <div class="flight-info">
+                                    <div class="flight-title">
+                                        <h3>
+                                            <span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span>
+                                        </h3>
+                                    </div><!-- end flight-title -->
+
+                                    <div class=" flight-timing">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    02-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    03-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                        </ul>
+                                    </div><!-- end flight-timing -->
+
+                                    <ul class="list-unstyled list-inline offer-price-1">
+                                        <li class="list-inline-item price">
+                                            $568.00<span class="pkg">Avg/Person</span>
+                                        </li>
+                                        <li class="list-inline-item rating">
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star lightgrey"></i></span>
+                                        </li>
+                                    </ul>
+                                </div><!-- end flight-info -->
+                            </a>
+                        </div><!-- end flight-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="main-block flight-block">
+                            <a href="flight-detail-right-sidebar.html">
+                                <div class="flight-img">
+                                    <img src="images/flight-5.jpg" class="img-fluid" alt="flight-img" />
+                                </div><!-- end flight-img -->
+
+                                <div class="flight-info">
+                                    <div class="flight-title">
+                                        <h3>
+                                            <span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span>
+                                        </h3>
+                                    </div><!-- end flight-title -->
+
+                                    <div class=" flight-timing">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    02-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    03-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                        </ul>
+                                    </div><!-- end flight-timing -->
+
+                                    <ul class="list-unstyled list-inline offer-price-1">
+                                        <li class="list-inline-item price">
+                                            $568.00<span class="pkg">Avg/Person</span>
+                                        </li>
+                                        <li class="list-inline-item rating">
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star lightgrey"></i></span>
+                                        </li>
+                                    </ul>
+                                </div><!-- end flight-info -->
+                            </a>
+                        </div><!-- end flight-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="main-block flight-block">
+                            <a href="flight-detail-right-sidebar.html">
+                                <div class="flight-img">
+                                    <img src="images/flight-6.jpg" class="img-fluid" alt="flight-img" />
+                                </div><!-- end flight-img -->
+
+                                <div class="flight-info">
+                                    <div class="flight-title">
+                                        <h3>
+                                            <span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span>
+                                        </h3>
+                                    </div><!-- end flight-title -->
+
+                                    <div class=" flight-timing">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    02-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                            <li>
+                                                <span><i class="fa fa-plane"></i></span><span class="date">
+                                                    Aug,
+                                                    03-2017
+                                                </span>(8:40 PM)
+                                            </li>
+                                        </ul>
+                                    </div><!-- end flight-timing -->
+
+                                    <ul class="list-unstyled list-inline offer-price-1">
+                                        <li class="list-inline-item price">
+                                            $568.00<span class="pkg">Avg/Person</span>
+                                        </li>
+                                        <li class="list-inline-item rating">
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star orange"></i></span>
+                                            <span><i class="fa fa-star lightgrey"></i></span>
+                                        </li>
+                                    </ul>
+                                </div><!-- end flight-info -->
+                            </a>
+                        </div><!-- end flight-block -->
+                    </div><!-- end columns -->
+
+                </div><!-- end row -->
+
+                <div class="view-all text-center">
+                    <a href="flight-grid-right-sidebar.html" class="btn btn-orange">View All</a>
+                </div><!-- end view-all -->
+            </div><!-- end columns -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end flight-offers -->
+<!--============== TOP DESTINATIONS ============-->
+<section id="destinations" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-heading">
+                    <h2>Top Destinations</h2>
+                    <hr class="heading-line" />
+                </div><!-- end page-heading -->
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-6">
+                        <div class="main-block destination-block">
+                            <div class="row">
+
+                                <div class="col-md-12 col-lg-6 col-lg-pull-6 no-pd-r">
+                                    <div class="destination-info">
+                                        <div class="destination-title">
+                                            <a href="tour-detail-right-sidebar.html">Blue Beach</a>
+                                            <p class="country">Dubai</p>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy
+                                                text of the printing.
+                                            </p>
+                                            <span class="destination-price">$899/Person</span>
+                                            <a href="tour-detail-right-sidebar.html" class="btn btn-orange">
+                                                Book
+                                                Now
+                                            </a>
+                                        </div><!-- end destination-title -->
+                                    </div><!-- end destination-info -->
+                                </div><!-- end columns -->
+
+                                <div class="col-md-12 col-lg-6 col-lg-push-6 no-pd-l">
+                                    <div class="main-img destination-img">
+                                        <a href="tour-detail-right-sidebar.html">
+                                            <img src="images/destination-1.jpg" class="img-fluid"
+                                                 alt="destination-img" />
+                                        </a>
+                                    </div><!-- end destination-img -->
+                                </div><!-- end columns -->
+
+                            </div><!-- end row -->
+                        </div><!-- end destination-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-6">
+                        <div class="main-block destination-block">
+                            <div class="row">
+
+                                <div class="col-md-12 col-lg-6 col-lg-pull-6 no-pd-r">
+                                    <div class="destination-info">
+                                        <div class="destination-title">
+                                            <a href="tour-detail-right-sidebar.html">Sydney Tour</a>
+                                            <p class="country">Australia</p>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy
+                                                text of the printing.
+                                            </p>
+                                            <span class="destination-price">$899/Person</span>
+                                            <a href="tour-detail-right-sidebar.html" class="btn btn-orange">
+                                                Book
+                                                Now
+                                            </a>
+                                        </div><!-- end destination-title -->
+                                    </div><!-- end destination-info -->
+                                </div><!-- end columns -->
+
+                                <div class="col-md-12 col-lg-6 col-lg-push-6 no-pd-l">
+                                    <div class="main-img destination-img">
+                                        <a href="tour-detail-right-sidebar.html">
+                                            <img src="images/destination-2.jpg" class="img-fluid"
+                                                 alt="destination-img" />
+                                        </a>
+                                    </div><!-- end destination-img -->
+                                </div><!-- end columns -->
+
+                            </div><!-- end row -->
+                        </div><!-- end destination-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-6">
+                        <div class="main-block destination-block">
+                            <div class="row">
+
+                                <div class="col-md-12 col-lg-6 col-lg-pull-6 no-pd-r">
+                                    <div class="destination-info">
+                                        <div class="destination-title">
+                                            <a href="tour-detail-right-sidebar.html">Wild Forest</a>
+                                            <p class="country">Africa</p>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy
+                                                text of the printing.
+                                            </p>
+                                            <span class="destination-price">$899/Person</span>
+                                            <a href="tour-detail-right-sidebar.html" class="btn btn-orange">
+                                                Book
+                                                Now
+                                            </a>
+                                        </div><!-- end destination-title -->
+                                    </div><!-- end destination-info -->
+                                </div><!-- end columns -->
+
+                                <div class="col-md-12 col-lg-6 col-lg-push-6 no-pd-l">
+                                    <div class="main-img destination-img">
+                                        <a href="tour-detail-right-sidebar.html">
+                                            <img src="images/destination-3.jpg" class="img-fluid"
+                                                 alt="destination-img" />
+                                        </a>
+                                    </div><!-- end destination-img -->
+                                </div><!-- end columns -->
+
+                            </div><!-- end row -->
+                        </div><!-- end destination-block -->
+                    </div><!-- end columns -->
+
+                    <div class="col-md-6 col-lg-6">
+                        <div class="main-block destination-block">
+                            <div class="row">
+
+                                <div class="col-md-12 col-lg-6 col-lg-pull-6 no-pd-r">
+                                    <div class="destination-info">
+                                        <div class="destination-title">
+                                            <a href="tour-detail-right-sidebar.html">Beautiful Paris</a>
+                                            <p class="country">France</p>
+                                            <p>
+                                                Lorem Ipsum is simply dummy text. Lorem Ipsum is simply dummy
+                                                text of the printing.
+                                            </p>
+                                            <span class="destination-price">$899/Person</span>
+                                            <a href="tour-detail-right-sidebar.html" class="btn btn-orange">
+                                                Book
+                                                Now
+                                            </a>
+                                        </div><!-- end destination-title -->
+                                    </div><!-- end destination-info -->
+                                </div><!-- end columns -->
+
+                                <div class="col-md-12 col-lg-6 col-lg-push-6 no-pd-l">
+                                    <div class="main-img destination-img">
+                                        <a href="tour-detail-right-sidebar.html">
+                                            <img src="images/destination-4.jpg" class="img-fluid"
+                                                 alt="destination-img" />
+                                        </a>
+                                    </div><!-- end destination-img -->
+                                </div><!-- end columns -->
+
+                            </div><!-- end row -->
+                        </div><!-- end destination-block -->
+                    </div><!-- end columns -->
+
+                </div><!-- end row -->
+
+                <div class="view-all text-center">
+                    <a href="tour-listing-right-sidebar.html" class="btn btn-g-border">View All</a>
+                </div><!-- end view-all -->
+            </div><!-- end columns -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end destinations -->
+<script src="~/userassets/js/jquery-3.3.1.min.js"></script>
+<script src="~/userassets/js/custom/home.js"></script>
+
+<script>
+
+    let getCitiesUrl = '@Url.Action("getCities" , "Home")';
+    $(document).ready(function () {
+        let FligthSearchForm = $("#flightBookingForm");
+        let fromCountry = $("#from_country");
+        let fromCity = $("#from_city");
+        let toCountry = $("#to_country");
+        let toCity = $("#to_city");
+        let departureDate = $("#departure_date");
+        let TotalAduts = $("#number_of_adults");
+
+        $(FligthSearchForm).submit(function (e) {
+            if (fromCountry.val() == "") {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Departure Country Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+            }
+            if (fromCity.val() == "") {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Departure City Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+
+            }
+            if (toCountry.val() == "") {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Arrival Country Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+
+            }
+            if (toCity.val() == "") {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Arrival City Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+
+            }
+            if (fromCountry.val() == toCountry.val() && fromCity.val() == toCity.val()) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Departure Country and City Cannot Be As same as the Arrival Country and City',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+
+            }
+            if (departureDate.val() == "") {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Departure Date Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+
+            }
+            if (TotalAduts.val() == "") {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Number of Adults Is Required',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+
+            }
+
+        });
+
+    })
+
+</script>
