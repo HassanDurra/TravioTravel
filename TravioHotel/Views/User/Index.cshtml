@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Userlayout.cshtml";
     var sliderImage = "userassets/images/homepage-slider-1.jpg";
 }
+
 <!--Data start from here-->
 <!--========================= FLEX SLIDER =====================-->
 <section class="flexslider-container" id="flexslider-container-1">
@@ -52,16 +53,17 @@
                     <div class="tab-content">
 
                         <div id="flights" class="tab-pane in active">
-                            <form asp-action="RequestBooking" asp-controller="BookingRequest" asp-area="User" method="Post">
+                            <form asp-action="RequestBooking" asp-controller="BookingRequest" id="flightBookingForm" asp-area="User" method="Post">
                                 <div class="row">
 
                                     <div class="col-12 col-md-12 col-lg-5 col-xl-4">
                                         <div class="row">
 
                                             <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i>&nbsp; From Country<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" name="from_country" asp-for="from_country">
-                                                        <option value="">From Country</option>
+                                                    <select class="form-control" id="from_country" name="from_country" asp-for="from_country">
+                                                        <option value="">Select Country</option>
                                                         @foreach(var country in ViewBag.country){
                                                         <option value="@country.id">@country.name</option>
                                                         }
@@ -70,17 +72,21 @@
                                                 </div>
                                             </div><!-- end columns -->
                                               <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i>&nbsp; From City <span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" readonly name="from_city" asp-for="from_city">
-                                                        <option value="">From City</option>
+                                                    <select class="form-control" id="from_city" readonly name="from_city" asp-for="from_city">
+                                                        <option value="">Select City</option>
                                                     </select>
                                                     <i class="fa fa-map-marker"></i>
                                                 </div>
                                             </div><!-- end columns -->
                                               <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i> &nbsp;To Country<span class="text-danger" style="position:relative; bottom:3px ; left:1px">*</span></label>
+
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" name="to_country" asp-for="to_country">
-                                                        <option value="">To Country</option>
+                                                    <select class="form-control" id="to_country" name="to_country" asp-for="to_country">
+                                                        <option value="">Select Country</option>
                                                         @foreach (var country in ViewBag.country)
                                                         {
                                                             <option value="@country.id">@country.name</option>
@@ -92,9 +98,11 @@
                                             </div><!-- end columns -->
 
                                             <div class="col-12 col-md-6 col-lg-6">
+                                                <label><i class="fa text-warning fa-map-marker"></i> &nbsp; To City<span class="text-danger" style="position:relative; bottom:3px ; left:1px">*</span></label>
+
                                                 <div class="form-group right-icon">
-                                                    <select class="form-control" readonly name="to_city" asp-for="to_city">
-                                                        <option value="">To City</option>
+                                                    <select class="form-control" readonly id="to_city" name="to_city" asp-for="to_city">
+                                                        <option value="">Select City</option>
                                                     </select>
                                                     
 
@@ -109,8 +117,10 @@
                                         <div class="row">
 
                                             <div class="col-12 col-md-12 col-lg-12">
+                                                <label><i class="fa text-warning fa-calendar"></i> &nbsp; Departure Date<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+
                                                 <div class="form-group left-icon">
-                                                    <input type="text" class="form-control dpd1" placeholder="Departure Date" name="departure_date" asp-for="departure_date">
+                                                    <input type="text" class="form-control dpd1" id="departure_date" placeholder="Departure Date" name="departure_date" asp-for="departure_date">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
                                             </div><!-- end columns -->
@@ -121,14 +131,16 @@
                                     </div><!-- end columns -->
 
                                     <div class="col-12 col-md-12 col-lg-2 col-xl-2">
+                                        <label> <i class="fa text-warning fa-user"></i> &nbsp;Total Adults<span class="text-danger" style="position:relative; bottom:3px;left:1px">*</span></label>
+
                                         <div class="form-group left-icon">
-                                           <input name="number_of_adults"  type="number" placeholder="No Adults" asp-for="number_of_adults" class="form-control" />
+                                            <input name="number_of_adults" type="number" id="number_of_adults" placeholder="No Adults" asp-for="number_of_adults" class="form-control" />
                                             <i class="fa fa-angle-down"></i>
                                         </div>
                                     </div><!-- end columns -->
 
-                                    <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn">
-                                        <button class="btn btn-orange" type="submit">Search</button>
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-2 search-btn mt-4" style="position:relative;top:6px">
+                                        <button class="btn btn-orange searchBtn" type="submit">Search</button>
                                     </div><!-- end columns -->
 
                                 </div><!-- end row -->
@@ -1344,6 +1356,35 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end vehicle-offers -->
+<div id="popup-ad" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="btn close" data-bs-dismiss="modal">&times;</button>
+
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="popup-ad-text">
+                            <h4>Get</h4>
+                            <h2><span>20%</span> off</h2>
+                            <h4>on all flights booking</h4>
+                            <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri.</p>
+                            <a href="#" class="btn btn-orange">Book Now</a>
+                        </div><!-- end popup-ad-text -->
+                    </div><!-- end columns -->
+
+                    <div class="col-12 col-md-6">
+                        <div class="popup-ad-img">
+                            <img src="~/userassets/images/about-content-2.png" class="img-fluid" />
+                        </div><!-- end popup-ad-img -->
+                    </div><!-- end columns -->
+                </div><!-- end row -->
+
+            </div><!-- end modal-bpdy -->
+        </div><!-- end modal-content -->
+    </div><!-- end modal-dialog -->
+</div><!-- end popup-ad -->
 <!--Data ends here-->
     <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
     <script src="~/userassets/js/custom/home.js"></script>
@@ -1351,5 +1392,47 @@
 <script>
 
     let getCitiesUrl = '@Url.Action("getCities" , "Home")';
+    $(document).ready(function(){
+        let FligthSearchForm = $("#flightBookingForm");
+        let fromCountry      = $("#from_country");
+        let fromCity         = $("#from_city");
+        let toCountry        = $("#to_country");
+        let toCity           = $("#to_city");
+        let departureDate    = $("#departure_date");
+        let TotalAduts       = $("#number_of_adults");
+
+        $(FligthSearchForm).submit(function (e) {
+            if(fromCountry.val()==""){
+                e.preventDefault();
+                toastr["error"]("Departure Country Is Required");
+            }
+            if (fromCity.val() == "") {
+                e.preventDefault();
+                toastr["error"]("Departure City Is Required");
+            }
+            if (toCountry.val() == "") {
+                e.preventDefault();
+                toastr["error"]("Arrival Country Is Required");
+            }
+            if (toCity.val() == "") {
+                e.preventDefault();
+                toastr["error"]("Arrival City Is Required");
+            } 
+            if (fromCountry.val() == toCountry.val() && fromCity.val() ==  toCity.val()) {
+                e.preventDefault();
+                toastr["error"]("Departure Country and City Cannot Be As same as the Arrival Country and City");
+            }
+            if (departureDate.val() == "") {
+                e.preventDefault();
+                toastr["error"]("Departure Date Is Required");
+            }
+            if (TotalAduts.val() == "") {
+                e.preventDefault();
+                toastr["error"]("Number of Adults Is Required");
+            }
+       
+        });
+
+    })
 
 </script>

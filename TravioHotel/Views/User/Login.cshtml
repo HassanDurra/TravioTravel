@@ -29,20 +29,20 @@
                         <div class="custom-form custom-form-fields">
                             <h3>Login</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <form asp-area="Auth" asp-action="Authentication" method="Post">
+                            <form asp-area="Auth" asp-action="Authentication" method="Post" id="LoginForm">
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email Address" asp-for="Email" name="Email" required />
+                                    <input type="email" id="Email" class="form-control" placeholder="Email Address" asp-for="Email" name="Email"  />
                                     <span><i class="fa fa-user"></i></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <input asp-for="Password" name="Password" type="password" class="form-control" placeholder="Password" required />
+                                    <input asp-for="Password" id="Password" name="Password" type="password" class="form-control" placeholder="Password"  />
                                     <span><i class="fa fa-lock"></i></span>
                                 </div>
 
                                 <div class="checkbox">
-                                    <label><input type="checkbox"> Remember me</label>
+                                    <label><input id="rememberMe" type="checkbox"> Remember me</label>
                                 </div>
 
                                 <button type="submit" class="btn btn-orange btn-block mt-0">Login</button>
@@ -66,3 +66,4 @@
 </section><!-- end innerpage-wrapper -->
 <!-- Script Links-->
 <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
+<script src="~/userassets/js/custom/Authentication.js"></script>
