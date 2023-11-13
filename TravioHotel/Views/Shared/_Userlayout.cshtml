@@ -51,21 +51,7 @@
 
 
         <!--======== SEARCH-OVERLAY =========-->
-        <div id="myOverlay" class="overlay">
-            <span class="closebtn" onClick="closeSearch()" title="Close Overlay">×</span>
-            <div class="overlay-content">
-
-                <form>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="float-left" type="text" placeholder="Search.." name="search">
-                            <button class="float-left" type="submit"><i class="fa fa-search"></i></button>
-                        </div><!-- end input-group -->
-                    </div><!-- end form-group -->
-                </form>
-
-            </div><!-- end overlay-content -->
-        </div><!-- end overlay -->
+        
         <!--============= TOP-BAR ===========-->
         <div id="top-bar" class="tb-text-white">
             <div class="container">
@@ -140,7 +126,7 @@
         <nav class="navbar navbar-expand-xl sticky-top navbar-custom main-navbar p-1" id="mynavbar-1">
             <div class="container">
 
-                <a href="#" class="navbar-brand py-1 m-0"><span><i class="fa fa-plane"></i>STAR</span>TRAVELS</a>
+                <a href="@Url.Action("Index" , "Home")" class="navbar-brand py-1 m-0"><span><i class="fa fa-plane"></i>TRAVIO</span>TRAVELS</a>
                
                 <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="sidebarCollapse">
                     <i class="fa fa-navicon py-1"></i>
@@ -211,18 +197,36 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link  bg-warning btn btn-warning text-white" style="white-space:nowrap" href="@Url.Action("Index" , "Home")">Register </a>
 
-                        </li> <li class="nav-item ">
-                            <a class="nav-link bg-warning btn btn-warning text-white" style="white-space:nowrap" href="@Url.Action("Index" , "Home")">Sign In </a>
+                        @if (@ViewBag.isLoggedIn != null && @ViewBag.isLoggedIn != "")
+                        {
+                            var userData = Newtonsoft.Json.JsonConvert.DeserializeObject(@ViewBag.isLoggedIn);
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link" data-bs-toggle="dropdown">@userData.name<span><i class="fa fa-angle-down"></i></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i>&nbsp; My Profile</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa fa-dashboard"></i>&nbsp; My Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa fa-calendar"></i>&nbsp; Bookings</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa fa-dollar"></i>&nbsp; Payment Methods</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa fa-heart"></i>&nbsp; Wishlist</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link btn-orange btn  text-white" style="white-space:nowrap" href="@Url.Action("Registeration" , "Auth")">Register </a>
 
-                        </li>
-                        
-                       
-                      
+                            </li>
+                            <li class="nav-item ml-3">
+                                <a class="nav-link btn-orange btn  text-white" style="white-space:nowrap ; position:relative; left:10px" href="@Url.Action("Login" , "Auth")">Sign In </a>
+
+                            </li>
+
+                        }
+
                         <li class="dropdown-item search-btn">
-                            <a href="#" class="search-button" onClick="openSearch()"><span><i class="fa fa-search"></i></span></a>
+                            
                         </li>
                     </ul>
                 </div><!-- end navbar collapse -->
@@ -495,20 +499,17 @@
                             <h3 class="footer-heading">CONTACT US</h3>
                             <ul class="list-unstyled">
                                 <li><span><i class="fa fa-map-marker"></i></span>29 Land St, Lorem City, CA</li>
-                                <li><span><i class="fa fa-phone"></i></span>+00 123 4567</li>
-                                <li><span><i class="fa fa-envelope"></i></span>info@starhotel.com</li>
+                                <li><span><i class="fa fa-phone"></i></span>+92 3030 239865</li>
+                                <li><span><i class="fa fa-envelope"></i></span>hassandurra81@gmail.com</li>
                             </ul>
                         </div><!-- end columns -->
 
                         <div class="col-12 col-md-6 col-lg-2 col-xl-2 footer-widget ftr-links">
                             <h3 class="footer-heading">COMPANY</h3>
                             <ul class="list-unstyled">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Flight</a></li>
-                                <li><a href="#">Hotel</a></li>
-                                <li><a href="#">Tours</a></li>
-                                <li><a href="#">Cruise</a></li>
-                                <li><a href="#">Cars</a></li>
+                                <li><a href="@Url.Action("Index" , "Home")">Home</a></li>
+                                <li><a href="@Url.Action("Login" , "Auth")">Flight</a></li>
+                             
                             </ul>
                         </div><!-- end columns -->
 
@@ -517,8 +518,8 @@
                             <ul class="list-unstyled">
                                 <li><a href="#">Blogs</a></li>
                                 <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Register</a></li>
+                                <li><a href="@Url.Action("Login" , "Auth")">Login</a></li>
+                                <li><a href="@Url.Action("Registeration" , "Auth")">Register</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>
                         </div><!-- end columns -->
@@ -545,7 +546,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-6 col-lg-6 col-xl-6" id="copyright">
-                            <p>© 2017 <a href="#">StarTravel</a>. All rights reserved.</p>
+                            <p>© 2023 <a href="@Url.Action("Index" , "Home")">TravioTravel</a>. All rights reserved.</p>
                         </div><!-- end columns -->
 
                         <div class="col-12 col-md-6 col-lg-6 col-xl-6" id="terms">
@@ -561,35 +562,7 @@
         </section><!-- end footer -->
 
 
-        <div id="popup-ad" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-body">
-                        <button type="button" class="btn close" data-bs-dismiss="modal">&times;</button>
-
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="popup-ad-text">
-                                    <h4>Get</h4>
-                                    <h2><span>20%</span> off</h2>
-                                    <h4>on all flights booking</h4>
-                                    <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri.</p>
-                                    <a href="#" class="btn btn-orange">Book Now</a>
-                                </div><!-- end popup-ad-text -->
-                            </div><!-- end columns -->
-
-                            <div class="col-12 col-md-6">
-                                <div class="popup-ad-img">
-                                    <img src="~/userassets/images/about-content-2.png" class="img-fluid" />
-                                </div><!-- end popup-ad-img -->
-                            </div><!-- end columns -->
-                        </div><!-- end row -->
-
-                    </div><!-- end modal-bpdy -->
-                </div><!-- end modal-content -->
-            </div><!-- end modal-dialog -->
-        </div><!-- end popup-ad -->
+      
     </div>
 
     <!-- News Letter Section-->

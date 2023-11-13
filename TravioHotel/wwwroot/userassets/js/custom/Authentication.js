@@ -148,6 +148,31 @@
 
       
     });
-   
+   // Login For Authentications
+    let Email = $("#Email");
+    let Password = $("#Password");
+    let LoginForm = $("#LoginForm");
+    let rememberMe = $("#rememberMe")
+    $(LoginForm).submit(function (e) {
+        isValid = true;
+        if (Email.val() == "") {
+            e.preventDefault();
+            isValid = false;
+            toastr["error"]("Email is Required");
+        }
+        if (Email.val() != "" && !Email.val().match(/^\S+@\S+\.\S+$/)) {
+            e.preventDefault();
+        isValid = false;
+        toastr["error"]("Invalid Email Pattern eg.Example@gmail.com");
+    }
+        if (Password.val() == "") {
+        e.preventDefault();
+        isValid = false;
+        toastr["error"]("Password is Required");
+    }
+    if (isValid == true) {
+
+    }
+})
 
 });
