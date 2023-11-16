@@ -29,33 +29,33 @@
                         <div class="custom-form custom-form-fields">
                             <h3>Registration</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <form asp-action="Store" asp-controller="Auth" method="Post" enctype="multipart/form-data">
+                            <form asp-action="Store" asp-controller="Auth" id="registerForm" method="Post" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <input type="file" asp-for="Image" name="Image" class="form-control" placeholder="Username"  />
                                     <span><i class="fa fa-user"></i></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" asp-for="Name" name="Name" class="form-control" placeholder="Enter Your Name" required />
+                                    <input type="text" asp-for="Name" name="Name" class="form-control" placeholder="Enter Your Name"  />
                                     <span><i class="fa fa-user"></i></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" asp-for="User_name" name="User_name" class="form-control" placeholder="Enter Your Name" required />
+                                    <input type="text" asp-for="User_name" name="User_name" class="form-control" placeholder="Enter Your User Name"  />
                                     <span><i class="fa fa-user"></i></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="email" asp-for="Email" name="Email" class="form-control" placeholder="Email" required />
+                                    <input type="email" asp-for="Email" name="Email" class="form-control" placeholder="Enter Your Email"  />
                                     <span><i class="fa fa-envelope"></i></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" asp-for="Password" name="Password" class="form-control" placeholder="Password" required />
+                                    <input type="password" asp-for="Password" name="Password" class="form-control" placeholder="Enter Your Password"  />
                                     <span><i class="fa fa-lock"></i></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Confirm Password" required />
+                                    <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password"  />
                                     <span><i class="fa fa-lock"></i></span>
                                 </div>
 
@@ -79,3 +79,111 @@
 </section><!-- end innerpage-wrapper -->
 <!-- Content Ends Here-->
 <script src="~/userassets/js/jquery-3.3.1.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+
+        let email           = $('input[name="Email"]');
+        let Name            = $('input[name="Name"]');
+        let User_name       = $('input[name="User_name"]');
+        let Password        = $('input[name="Password"]');
+        let confirmPassword = $('input[name="confirmPassword"]');
+        let Image           = $('input[name="Image"]');
+        let registerForm    = $('#registerForm');
+
+        $(registerForm).submit(function(e){
+            isValid = true ;
+            if(Image.val() == ""){
+                e.preventDefault();
+
+                isValid = false;
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Profile image is required!',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+            }
+            if(Name.val() == ""){
+                e.preventDefault();
+
+                isValid = false;
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Name is required!',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+             }
+             if(User_name.val() == ""){
+                e.preventDefault();
+
+                isValid = false;
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'User Name is required!',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+             }
+            if(email.val() == ""){
+                e.preventDefault();
+
+                isValid = false;
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Email is required!',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+            }
+             if(Password.val() == "")
+             {
+                e.preventDefault();
+
+                isValid = false;
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Password is required!',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+             }
+             if(Password.val() != "" && Password.val().length < 8 ){
+                e.preventDefault();
+
+                isValid = false;
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Password must be greater then 8-characters!',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+             }
+             if(Password.val() != confirmPassword.val() ){
+                e.preventDefault();
+
+                isValid = false;
+                Swal.fire({
+                    title: 'You Missing Something!',
+                    text: 'Confirm Password  must match the Password!',
+                    icon: 'warning',
+                    confirmButtonText: 'Fill it!'
+                });
+                return false;
+             }
+
+        })
+     
+
+    });
+
+
+
+</script>

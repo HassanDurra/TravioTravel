@@ -41,8 +41,21 @@ namespace TravioHotel.Controllers
         {
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(userData.Password);
             var createdDate    = Convert.ToString(DateTime.UtcNow);
+            var userEmail = await Database.User.Where(e => e.Email == userData.Email).FirstOrDefaultAsync();
+            var userName  = await Database.User.Where(e => e.User_name == userData.User_name).FirstOrDefaultAsync();
+            if(userEmail != null )
+            {
+                TempData["Error"] = "Email Is Already Used use Another email";
+                return RedirectToAction("Registeration", "Auth");
+            }
+
+            if (userName != null)
+            {
+                TempData["Error"] = "User Name Is Already Used use Another Name";
+                return RedirectToAction("Registeration", "Auth");
+            }
             // user information with image
-            if(Image != null && Image.Length > 1)
+            if (Image != null && Image.Length > 1)
             {
                       var fileName   = Guid.NewGuid() + Path.GetExtension(Image.FileName); // This Code will create or generate a unique name for the image
                       var filePath   = Path.Combine(fileEnvironment.WebRootPath, "UserProfileImages"); // It will create the directory if does'nt exists
@@ -191,9 +204,9 @@ namespace TravioHotel.Controllers
 
                         }; // This will the array of our data to be stored in Session
                         string userDataJson = JsonConvert.SerializeObject(UserData); // We Will Get The Data in Json Format
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
                         httpContext.HttpContext.Session.SetString("service", userDataJson); // Then we will store it to session
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
                         return RedirectToAction("Create", "Aircraft");
                     }
                 }
@@ -315,12 +328,24 @@ namespace TravioHotel.Controllers
         }
         public IActionResult User_Logout()
         {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
             httpContext.HttpContext.Session.Remove("user");
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return RedirectToAction("Index" , "Home");
         }
-        
+        // User Profile
+        public IActionResult UserProfile()
+        {
+            var loggedInData = httpContext.HttpContext.Session.GetString("user");
+            ViewBag.isLoggedIn = loggedInData;
+            if(ViewBag.isLoggedIn != "" || ViewBag.isLoggedIn != null) {
+                var userId = Newtonsoft.Json.JsonConvert.DeserializeObject(loggedInData);
+                var userData = Database.User.Where(e => e.Id == Convert.ToInt32(userId.id)).FirstOrDefault();
+            
+            }
+            TempData["Error"] = "Cannot Access Personal Dashboard Without Signing To Our System";
+            return RedirectToAction("Login" , "Auth");
+        }
+
         } // The Password Code Reseted 
 
     }
